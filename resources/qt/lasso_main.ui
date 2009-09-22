@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>window_main</class>
+ <widget class="QMainWindow" name="window_main">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1124</width>
+    <height>975</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Lasso</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tab_layout">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1111</width>
+      <height>911</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="tab_add_job">
+     <attribute name="title">
+      <string>Add Job</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_jobs">
+     <attribute name="title">
+      <string>Jobs</string>
+     </attribute>
+     <widget class="QTreeWidget" name="tree_jobs">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1081</width>
+        <height>821</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string notr="true">1</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="btn_refresh_jobs">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>840</y>
+        <width>141</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refresh List</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_view_tasks">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>840</y>
+        <width>151</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>View Tasks</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_refresh_task">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>840</y>
+        <width>151</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refresh Tasks</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_nodes">
+     <attribute name="title">
+      <string>Nodes</string>
+     </attribute>
+     <widget class="QTreeWidget" name="tree_nodes">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1081</width>
+        <height>821</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string notr="true">1</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="btn_refresh_nodes">
+      <property name="geometry">
+       <rect>
+        <x>951</x>
+        <y>840</y>
+        <width>141</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refresh List</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1124</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_Quit"/>
+   </widget>
+   <addaction name="menu_File"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Quit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
