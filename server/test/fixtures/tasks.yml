@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  priority: 1
+  command: MyString
+  status: 1
+  job: 
+
+two:
+  priority: 1
+  command: MyString
+  status: 1
+  job: 

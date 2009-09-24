@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @job.name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @job.status %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%=h @job.owner %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

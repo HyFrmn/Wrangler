@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hostname: MyString
+  memory: 1.5
+  system: MyString
+  processor: MyString
+  ncpus: 1
+  enabled: false
+
+two:
+  hostname: MyString
+  memory: 1.5
+  system: MyString
+  processor: MyString
+  ncpus: 1
+  enabled: false

@@ -1,0 +1,24 @@
+<h1>Listing jobs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Owner</th>
+  </tr>
+
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%=h job.name %></td>
+    <td><%=h job.status %></td>
+    <td><%=h job.owner %></td>
+    <td><%= link_to 'Show', job %></td>
+    <td><%= link_to 'Edit', edit_job_path(job) %></td>
+    <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New job', new_job_path %>

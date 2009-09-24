@@ -1,0 +1,33 @@
+<p>
+  <b>Hostname:</b>
+  <%=h @cattle.hostname %>
+</p>
+
+<p>
+  <b>Memory:</b>
+  <%=h @cattle.memory %>
+</p>
+
+<p>
+  <b>System:</b>
+  <%=h @cattle.system %>
+</p>
+
+<p>
+  <b>Processor:</b>
+  <%=h @cattle.processor %>
+</p>
+
+<p>
+  <b>Ncpus:</b>
+  <%=h @cattle.ncpus %>
+</p>
+
+<p>
+  <b>Enabled:</b>
+  <%=h @cattle.enabled %>
+</p>
+
+
+<%= link_to 'Edit', edit_cattle_path(@cattle) %> |
+<%= link_to 'Back', cattles_path %>

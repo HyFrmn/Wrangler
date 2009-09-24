@@ -1,0 +1,36 @@
+<h1>Editing cattle</h1>
+
+<% form_for(@cattle) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :hostname %><br />
+    <%= f.text_field :hostname %>
+  </p>
+  <p>
+    <%= f.label :memory %><br />
+    <%= f.text_field :memory %>
+  </p>
+  <p>
+    <%= f.label :system %><br />
+    <%= f.text_field :system %>
+  </p>
+  <p>
+    <%= f.label :processor %><br />
+    <%= f.text_field :processor %>
+  </p>
+  <p>
+    <%= f.label :ncpus %><br />
+    <%= f.text_field :ncpus %>
+  </p>
+  <p>
+    <%= f.label :enabled %><br />
+    <%= f.check_box :enabled %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @cattle %> |
+<%= link_to 'Back', cattles_path %>
