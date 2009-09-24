@@ -9,7 +9,7 @@ from random import randint
 from sqlalchemy import desc
 
 from wrangler import *
-from wrangler.db import Session
+from wrangler.db.session import Session
 from wrangler.jobs import RenderJob
 from wrangler.config import config_lasso
 from wrangler.network import WranglerServer
@@ -75,16 +75,15 @@ class LassoServer(WranglerServer):
     def queue_job(self, job):
         """ Add job to the queue and return the job's id number."""
         job = cPickle.loads(job)
+        db = Session()
+        db.add(job)
+        self.debug('Adding job "%s" to queue.' % job.name)
         job.status = Job.WAITING
         for task in job.tasks:
             task.status = task.WAITING
-        self.debug('Adding job "%s" to queue.' % job.name)
-        db = Session()
-        db.add(job)
         db.commit()
         jobid = job.id
-        db.commit()
-        self.debug('Added job %s to queue with priority %d. [%d]' % (job.name, job.priority, job.id))
+        #self.debug('Added job %s to queue with priority %d. [%d]' % (job.name, job.priority, job.id))
         db.close()
         return jobid
 

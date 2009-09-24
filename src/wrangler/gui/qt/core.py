@@ -5,7 +5,7 @@ import cPickle
 
 from PyQt4 import QtGui, QtCore
 
-import wrangler.db
+import wrangler.db.session
 from wrangler import *
 from wrangler.gui.core import WranglerGUI
 
@@ -27,14 +27,25 @@ class StableModel(QtCore.QAbstractListModel):
                     return self.tasks[index.row()]
         print index, role
 
-class JobTable(QtGui.QTreeWidget):
+class BaseTable(QtGui.QTreeWidget):
     def __init__(self,  *args):
         QtGui.QTreeWidget.__init__(self, *args)
         self.setItemsExpandable(False)
         self.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
         self.menu = QtGui.QMenu()
-        self.menu.addAction('&View Tasks', self.view_tasks)
         self.menu.addAction('&Refresh', self.refresh)
+
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == 2:
+            pos = event.globalPos()
+            self.menu.popup(pos)
+
+
+class JobTable(BaseTable):
+    def __init__(self, *args):
+        BaseTable.__init__(self, *args)
+        self.menu.addAction('&View Tasks', self.view_tasks)
 
     def refresh(self):
         #Initialize Table
@@ -43,7 +54,7 @@ class JobTable(QtGui.QTreeWidget):
         self.setHeaderLabels(['ID', 'Name', 'Status','Waiting','Running', 'Paused', 'Finished', 'Total Tasks'])
         
         #Get Jobs from Database. 
-        db = wrangler.db.Session()
+        db = wrangler.db.session.Session()
         jobs = db.query(Job).all()
         for i, job in enumerate(jobs):
             item = QtGui.QTreeWidgetItem(self)
@@ -59,7 +70,7 @@ class JobTable(QtGui.QTreeWidget):
     def view_tasks(self):
         item = self.selectedItems()[0]
         jobid = item.text(0)
-        db = wrangler.db.Session()
+        db = wrangler.db.session.Session()
         job = db.query(Job).filter_by(id=jobid).one()
         task_dialog = TaskDialog(self)
         task_dialog.refresh(job)
@@ -67,24 +78,13 @@ class JobTable(QtGui.QTreeWidget):
         #task_table.setFocus()
         task_dialog.show()
 
-    def mouseReleaseEvent(self, event):
-        if event.button() == 2:
-            pos = event.globalPos()
-            self.menu.popup(pos)
-
-
-class CattleTable(QtGui.QTreeWidget):
-    def __init__(self, *args):
-        QtGui.QTreeWidget.__init__(self, *args)
-        self.setItemsExpandable(False)
-        self.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
-
+class CattleTable(BaseTable):
     def refresh(self):
         self.clear()
         self.setColumnCount(6)
         self.setHeaderLabels(['Hostname', 'Memory', 'System', 'Processor', 'CPU Counts', 'Enabled'])
 
-        db = wrangler.db.Session()
+        db = wrangler.db.session.Session()
         cattle = db.query(Cattle).all()
         for c in cattle:
             item = QtGui.QTreeWidgetItem(self)

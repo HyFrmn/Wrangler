@@ -3,7 +3,7 @@ import thread
 
 
 from wrangler import *
-from wrangler.db import Session
+from wrangler.db.session import Session
 from wrangler.hardware import info
 from wrangler.network import WranglerServer
 from wrangler.lasso.client import LassoClient
@@ -46,6 +46,7 @@ class CattleServer(WranglerServer):
         cattle.enabled = True
         self.cattle = cattle
         db.commit()
+        self.cattle_id = cattle.id
         db.expunge(cattle)
         db.close()
         self.debug('%s was added to the heard.' % hostname)
@@ -63,6 +64,7 @@ class CattleServer(WranglerServer):
 
     def _handle_metrics(self):
         if self._timeout('metrics'):
+            self.debug('Logging metrics')
             metrics = {}
             metrics['hostname'] = info.hostname()
             metrics['time'] = time.time()
@@ -99,13 +101,13 @@ class CattleServer(WranglerServer):
 
     def _monitor(self, task):
         self.debug('Executing task %d' % task.id)
-        log = task.run()
+        returncode, delta_time, stdout, stderr = task.run()
 
         #Log task results. 
         db = Session()
         db.add(task)
         task.status = task.FINISHED
-        task_log = TaskLog(task, *log)
+        task_log = TaskLog(task, returncode, delta_time, stdout, stderr, self.cattle_id)
         db.add(task_log)
         db.commit()
         self.info('Finished task %d.' % task.id)

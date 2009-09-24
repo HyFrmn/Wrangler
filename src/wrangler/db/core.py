@@ -10,7 +10,7 @@ from sqlalchemy.orm import mapper, sessionmaker, relation, backref, synonym, col
 from sqlalchemy.types import TypeDecorator
 
 from wrangler import *
-from wrangler.config import config_base
+
 
 metadata = MetaData()
 
@@ -37,7 +37,7 @@ jobs_table = Table('jobs', metadata,
 
 task_table = Table('tasks', metadata,
                    Column('id', Integer, primary_key=True),
-                   Column('jobid', Integer, ForeignKey('jobs.id')),
+                   Column('job_id', Integer, ForeignKey('jobs.id')),
                    Column('priority', Integer, default=500),
                    Column('command', String(1024)),
                    Column('status', Integer),
@@ -47,9 +47,10 @@ task_table = Table('tasks', metadata,
 
 task_log_table = Table('task_logs', metadata,
                        Column('id', Integer, primary_key=True),
-                       Column('taskid', Integer, ForeignKey('tasks.id')),
+                       Column('task_id', Integer, ForeignKey('tasks.id')),
                        Column('time', Float),
                        Column('returncode', Integer),
+                       Column('cattle_id', Integer, ForeignKey('cattle.id'))
 )
 
 cattle_table = Table('cattle', metadata,
@@ -64,7 +65,7 @@ cattle_table = Table('cattle', metadata,
 
 cattle_metrics_table = Table('cattle_metrics', metadata,
                              Column('id', Integer, primary_key=True),
-                             Column('hostid', Integer, ForeignKey('cattle.id')),
+                             Column('cattle_id', Integer, ForeignKey('cattle.id')),
                              Column('load_avg', Float),
                              Column('running_tasks', Integer),
                              Column('time', Float),
@@ -73,16 +74,16 @@ cattle_metrics_table = Table('cattle_metrics', metadata,
 mapper(Job, jobs_table, 
        properties = {'tasks' : relation(Task, lazy=False),
                      'running' : column_property(select([func.count(task_table.c.id)],
-                                        and_(jobs_table.c.id==task_table.c.jobid,
+                                        and_(jobs_table.c.id==task_table.c.job_id,
                                              task_table.c.status==Task.RUNNING)).label('running')),
                      'waiting' : column_property(select([func.count(task_table.c.id)],
-                                        and_(jobs_table.c.id==task_table.c.jobid,
+                                        and_(jobs_table.c.id==task_table.c.job_id,
                                              task_table.c.status==Task.WAITING)).label('waiting')),
                      'paused' : column_property(select([func.count(task_table.c.id)],
-                                        and_(jobs_table.c.id==task_table.c.jobid,
+                                        and_(jobs_table.c.id==task_table.c.job_id,
                                              task_table.c.status==Task.PAUSED)).label('paused')),
                      'finished' : column_property(select([func.count(task_table.c.id)],
-                                        and_(jobs_table.c.id==task_table.c.jobid,
+                                        and_(jobs_table.c.id==task_table.c.job_id,
                                              task_table.c.status==Task.FINISHED)).label('finished'))})
 
 mapper(Task, task_table, properties={'logs' : relation(TaskLog)})
@@ -93,11 +94,6 @@ mapper(Cattle, cattle_table, properties={'metrics' : relation(CattleMetrics)})
 
 mapper(CattleMetrics, cattle_metrics_table)
 
-config = config_base()
-engine_url = config.get('database', 'url')
-engine_url = os.path.expandvars(engine_url)
-engine = create_engine(engine_url, echo=False)
-metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
 
-__all__ = ['Session', ]
+
+__all__ = ['metadata', ]

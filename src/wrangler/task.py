@@ -32,7 +32,7 @@ class Task(Queueable):
         delta_time = end_time - start_time
         output = popen.stdout.read()
         error = popen.stderr.read()
-        return (delta_time, output, error)
+        return (returncode, delta_time, output, error)
 
 
 def main():

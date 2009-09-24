@@ -3,6 +3,7 @@
 import optparse
 
 import wrangler
+import wrangler.db.core
 from wrangler.lasso.client import LassoClient
 
 def main():
@@ -36,7 +37,8 @@ def main():
     job = wrangler.RenderJob(command=opts.command,
                              start=opts.start,
                              end=opts.end,
-                             priority=opts.priority)
+                             priority=opts.priority,
+                             name=opts.name)
     if opts.verbose:
         print("""Adding Job:
 Name:     %s

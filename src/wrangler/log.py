@@ -9,9 +9,12 @@ config = config_base()
 class TaskLog(object):
     logdir = os.path.expandvars(config.get('logging', 'directory'))
 
-    def __init__(self, task, time, stdout, stderr):
+    def __init__(self, task, returncode, time, stdout, stderr, cattle_id):
+        self.task_id = task.id
         self.task = task
         self.time = time
+        self.returncode = returncode
+        self.cattle_id = cattle_id
         self._log_stdout(stdout)
         self._log_stderr(stderr)
 
@@ -34,7 +37,7 @@ class TaskLog(object):
         fd.close()
 
     def _stdout_file_path(self):
-        return os.path.join(self.logdir, str(self.task.jobid), str(self.task.id) + '_out.log')
+        return os.path.join(self.logdir, str(self.task.job_id), str(self.task.id) + '_out.log')
 
     def _stderr_file_path(self):
-        return os.path.join(self.logdir, str(self.task.jobid), str(self.task.id) + '_err.log')
+        return os.path.join(self.logdir, str(self.task.job_id), str(self.task.id) + '_err.log')

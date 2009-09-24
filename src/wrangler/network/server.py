@@ -69,6 +69,7 @@ class WranglerServer(object):
                 try:
                     for handle in self._handles:
                         handle()
+                    time.sleep(0.01)
                 except socket.error, msg:
                     self.error('Socket Error: %s' % msg)
         except KeyboardInterrupt:
