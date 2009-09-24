@@ -1,0 +1,24 @@
+<h1>Editing task_log</h1>
+
+<% form_for(@task_log) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :time %><br />
+    <%= f.text_field :time %>
+  </p>
+  <p>
+    <%= f.label :returncode %><br />
+    <%= f.text_field :returncode %>
+  </p>
+  <p>
+    <%= f.label :task %><br />
+    <%= f.text_field :task %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @task_log %> |
+<%= link_to 'Back', task_logs_path %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Time:</b>
+  <%=h @task_log.time %>
+</p>
+
+<p>
+  <b>Returncode:</b>
+  <%=h @task_log.returncode %>
+</p>
+
+<p>
+  <b>Task:</b>
+  <%=h @task_log.task %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_log_path(@task_log) %> |
+<%= link_to 'Back', task_logs_path %>

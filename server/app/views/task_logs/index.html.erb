@@ -1,0 +1,22 @@
+<h1>Listing task_logs</h1>
+
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Returncode</th>
+    <th>Task</th>
+  </tr>
+
+<% @task_logs.each do |task_log| %>
+  <tr>
+    <td><%=h task_log.time %></td>
+    <td><%=h task_log.returncode %></td>
+    <td><%=h task_log.task.id %></td>
+    <td><%= link_to 'Show', task_log %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New task_log', new_task_log_path %>

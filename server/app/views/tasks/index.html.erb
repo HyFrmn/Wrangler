@@ -13,10 +13,10 @@
     <td><%=h task.priority %></td>
     <td><%=h task.command %></td>
     <td><%=h task.status %></td>
-    <td><%=h task.job %></td>
+    <td><%=h task.job.name %></td>
     <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% # <td><%= link_to 'Edit', edit_task_path(task) %></td> %>
+    <% # <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td> %>
   </tr>
 <% end %>
 </table>

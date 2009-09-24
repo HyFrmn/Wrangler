@@ -199,3 +199,2241 @@ Rendering tasks/index
   [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
   [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
 Completed in 497ms (View: 476, DB: 11) | 200 OK [http://localhost/tasks/]
+/!\ FAILSAFE /!\  Thu Sep 24 09:18:15 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 09:18:55 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 09:19:01 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 09:24:52 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 09:24:57 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 13:21:10 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 13:21:13 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 13:21:18 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Thu Sep 24 13:25:57 -0500 2009
+  Status: 500 Internal Server Error
+  uninitialized constant MysqlCompat::MysqlRes
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:440:in `load_missing_constant'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:80:in `const_missing'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:9:in `define_all_hashes_method!'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/mysql_adapter.rb:66:in `mysql_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for ::ffff:127.0.0.1 at 2009-09-24 13:56:29) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+Completed in 103ms (View: 18, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing JobsController#index (for ::ffff:127.0.0.1 at 2009-09-24 13:56:34) [GET]
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` [0m
+Rendering template within layouts/jobs
+Rendering jobs/index
+  [4;36;1mJob Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `jobs`[0m
+Completed in 741ms (View: 728, DB: 1) | 200 OK [http://localhost/jobs/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TasksController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:07:44) [GET]
+  [4;35;1mTask Load (18.9ms)[0m   [0mSELECT * FROM `tasks` [0m
+Rendering template within layouts/tasks
+Rendering tasks/index
+  [4;36;1mTask Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `tasks`[0m
+  [4;35;1mJob Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `jobs`[0m
+  [4;36;1mJob Load (0.3ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mJob Load (0.3ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+Completed in 1337ms (View: 1128, DB: 21) | 200 OK [http://localhost/tasks/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TasksController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:08:57) [GET]
+  [4;36;1mTask Load (18.8ms)[0m   [0;1mSELECT * FROM `tasks` [0m
+Rendering template within layouts/tasks
+Rendering tasks/index
+  [4;35;1mTask Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `tasks`[0m
+  [4;36;1mJob Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `jobs`[0m
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+Completed in 1176ms (View: 1140, DB: 21) | 200 OK [http://localhost/tasks/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TasksController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:09:31) [GET]
+  [4;35;1mTask Load (18.8ms)[0m   [0mSELECT * FROM `tasks` [0m
+Rendering template within layouts/tasks
+Rendering tasks/index
+  [4;36;1mTask Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `tasks`[0m
+  [4;35;1mJob Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `jobs`[0m
+  [4;36;1mJob Load (0.3ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mJob Load (0.3ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+Completed in 1213ms (View: 1177, DB: 21) | 200 OK [http://localhost/tasks/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TasksController#show (for ::ffff:127.0.0.1 at 2009-09-24 14:15:07) [GET]
+  Parameters: {"id"=>"7"}
+  [4;36;1mTask Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `tasks`[0m
+  [4;35;1mTask Load (0.8ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 7) [0m
+Rendering template within layouts/tasks
+Rendering tasks/show
+  [4;36;1mJob Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `jobs`[0m
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+Completed in 44ms (View: 29, DB: 3) | 200 OK [http://localhost/tasks/7]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TasksController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:15:21) [GET]
+  [4;36;1mTask Load (18.9ms)[0m   [0;1mSELECT * FROM `tasks` [0m
+Rendering template within layouts/tasks
+Rendering tasks/index
+  [4;35;1mTask Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `tasks`[0m
+  [4;36;1mJob Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `jobs`[0m
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+Completed in 1142ms (View: 1106, DB: 21) | 200 OK [http://localhost/tasks/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TasksController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:18:18) [GET]
+  [4;35;1mTask Load (18.8ms)[0m   [0mSELECT * FROM `tasks` [0m
+Rendering template within layouts/tasks
+Rendering tasks/index
+  [4;36;1mTask Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `tasks`[0m
+  [4;35;1mJob Columns (0.4ms)[0m   [0mSHOW FIELDS FROM `jobs`[0m
+  [4;36;1mJob Load (0.3ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 1) [0m
+  [4;36;1mJob Load (0.2ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `jobs` WHERE (`jobs`.`id` = 2) [0m
+Completed in 253ms (View: 217, DB: 21) | 200 OK [http://localhost/tasks/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:20:12) [GET]
+/!\ FAILSAFE /!\  Thu Sep 24 14:20:12 -0500 2009
+  Status: 500 Internal Server Error
+  can't find user for 1047
+    /data/studio/release/rubygems-1.3.5/lib/rubygems.rb:929:in `getpwuid'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems.rb:929:in `set_paths'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems.rb:924:in `each'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems.rb:924:in `set_paths'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems.rb:690:in `path'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/backtrace_cleaner.rb:32:in `add_gem_filters'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/backtrace_cleaner.rb:22:in `initialize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/initializer.rb:47:in `new'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/initializer.rb:47:in `backtrace_cleaner'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:179:in `clean_backtrace'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:86:in `log_error'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activesupport-2.3.4/lib/active_support/deprecation.rb:44:in `silence'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:80:in `log_error'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:142:in `rescue_action_without_handler'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:74:in `rescue_action'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:532:in `send'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:532:in `process_without_filters'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:606:in `process'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:65:in `call_with_exception'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:90:in `dispatch'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:121:in `_call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:29:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:29:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+    /data/home/mpetersen/.gem/ruby/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `gem_original_require'
+    /data/studio/release/rubygems-1.3.5/lib/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing CattlesController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:20:15) [GET]
+  [4;36;1mCattle Load (0.0ms)[0m   [0;1mMysql::Error: Table 'wrangler.cattles' doesn't exist: SELECT * FROM `cattles` [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'wrangler.cattles' doesn't exist: SELECT * FROM `cattles` ):
+  app/controllers/cattles_controller.rb:5:in `index'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (90.3ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:20:38) [GET]
+
+ActionController::RoutingError (No route matches "/task_logs/" with {:method=>:get}):
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TaskLogsController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:27:45) [GET]
+  [4;35;1mTaskLog Load (0.8ms)[0m   [0mSELECT * FROM `task_logs` [0m
+Rendering template within layouts/task_logs
+Rendering task_logs/index
+  [4;36;1mTaskLog Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `task_logs`[0m
+
+ActionView::TemplateError (undefined method `task' for #<TaskLog:0x7f6756e4afb0>) on line #14 of app/views/task_logs/index.html.erb:
+11:   <tr>
+12:     <td><%=h task_log.time %></td>
+13:     <td><%=h task_log.returncode %></td>
+14:     <td><%=h task_log.task %></td>
+15:     <td><%= link_to 'Show', task_log %></td>
+16:     <td><%= link_to 'Edit', edit_task_log_path(task_log) %></td>
+17:     <td><%= link_to 'Destroy', task_log, :confirm => 'Are you sure?', :method => :delete %></td>
+
+    app/views/task_logs/index.html.erb:14
+    app/views/task_logs/index.html.erb:10:in `each'
+    app/views/task_logs/index.html.erb:10
+    app/controllers/task_logs_controller.rb:7:in `index'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (94.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TaskLogsController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:29:42) [GET]
+  [4;35;1mTaskLog Load (0.8ms)[0m   [0mSELECT * FROM `task_logs` [0m
+Rendering template within layouts/task_logs
+Rendering task_logs/index
+  [4;36;1mTaskLog Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `task_logs`[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mMysql::Error: Unknown column 'tasks.task_log_id' in 'where clause': SELECT * FROM `tasks` WHERE (`tasks`.task_log_id = 1) LIMIT 1[0m
+
+ActionView::TemplateError (Mysql::Error: Unknown column 'tasks.task_log_id' in 'where clause': SELECT * FROM `tasks` WHERE (`tasks`.task_log_id = 1)  LIMIT 1) on line #14 of app/views/task_logs/index.html.erb:
+11:   <tr>
+12:     <td><%=h task_log.time %></td>
+13:     <td><%=h task_log.returncode %></td>
+14:     <td><%=h task_log.task %></td>
+15:     <td><%= link_to 'Show', task_log %></td>
+16:     <td><%= link_to 'Edit', edit_task_log_path(task_log) %></td>
+17:     <td><%= link_to 'Destroy', task_log, :confirm => 'Are you sure?', :method => :delete %></td>
+
+    app/views/task_logs/index.html.erb:14
+    app/views/task_logs/index.html.erb:10:in `each'
+    app/views/task_logs/index.html.erb:10
+    app/controllers/task_logs_controller.rb:7:in `index'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (104.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TaskLogsController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:30:02) [GET]
+  [4;36;1mTaskLog Load (0.8ms)[0m   [0;1mSELECT * FROM `task_logs` [0m
+Rendering template within layouts/task_logs
+Rendering task_logs/index
+  [4;35;1mTaskLog Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `task_logs`[0m
+
+ActionView::TemplateError (undefined method `task' for #<TaskLog:0x7f6755894950>) on line #14 of app/views/task_logs/index.html.erb:
+11:   <tr>
+12:     <td><%=h task_log.time %></td>
+13:     <td><%=h task_log.returncode %></td>
+14:     <td><%=h task_log.task %></td>
+15:     <td><%= link_to 'Show', task_log %></td>
+16:     <td><%= link_to 'Edit', edit_task_log_path(task_log) %></td>
+17:     <td><%= link_to 'Destroy', task_log, :confirm => 'Are you sure?', :method => :delete %></td>
+
+    app/views/task_logs/index.html.erb:14
+    app/views/task_logs/index.html.erb:10:in `each'
+    app/views/task_logs/index.html.erb:10
+    app/controllers/task_logs_controller.rb:7:in `index'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /data/studio/release/ruby-1.8.7-p173/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (40.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TaskLogsController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:30:47) [GET]
+  [4;36;1mTaskLog Load (0.8ms)[0m   [0;1mSELECT * FROM `task_logs` [0m
+Rendering template within layouts/task_logs
+Rendering task_logs/index
+  [4;35;1mTaskLog Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `task_logs`[0m
+  [4;36;1mTask Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `tasks`[0m
+  [4;35;1mTask Load (0.8ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 3) [0m
+  [4;36;1mTask Load (0.7ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 4) [0m
+  [4;35;1mTask Load (0.7ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 5) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 6) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 7) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 8) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 9) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 10) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 12) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 11) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 13) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 14) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 16) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 15) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 17) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 18) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 19) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 20) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 22) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 21) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 24) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 23) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 25) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 26) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 27) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 28) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 30) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 29) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 31) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 32) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 34) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 33) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 36) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 35) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 38) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 37) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 40) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 39) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 41) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 42) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 44) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 43) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 45) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 46) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 47) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 48) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 49) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 50) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 51) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 52) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 53) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 54) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 56) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 55) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 57) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 58) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 60) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 59) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 61) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 62) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 63) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 64) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 66) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 65) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 68) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 67) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 69) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 70) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 72) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 71) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 74) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 73) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 75) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 76) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 77) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 78) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 80) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 79) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 82) [0m
+  [4;36;1mTask Load (0.6ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 81) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 84) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 83) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 86) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 85) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 88) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 87) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 90) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 89) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 91) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 92) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 94) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 93) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 96) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 95) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 98) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 97) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 99) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 100) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 102) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 101) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 103) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 104) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 105) [0m
+  [4;36;1mTask Load (0.6ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 106) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 107) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 108) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 110) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 109) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 111) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 112) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 113) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 114) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 116) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 115) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 118) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 117) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 119) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 120) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 121) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 122) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 123) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 124) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 125) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 126) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 128) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 127) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 129) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 130) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 132) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 131) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 134) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 133) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 135) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 136) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 138) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 137) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 139) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 140) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 142) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 141) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 144) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 143) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 145) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 146) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 148) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 147) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 150) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 149) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 152) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 151) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 153) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 154) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 156) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 155) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 158) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 157) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 159) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 160) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 161) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 162) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 164) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 163) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 166) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 165) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 168) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 167) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 170) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 169) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 172) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 171) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 174) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 173) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 176) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 175) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 178) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 177) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 180) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 179) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 182) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 181) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 184) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 183) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 186) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 185) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 188) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 187) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 189) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 190) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 192) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 191) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 194) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 193) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 195) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 196) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 197) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 198) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 200) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 199) [0m
+Completed in 1366ms (View: 1255, DB: 96) | 200 OK [http://localhost/task_logs/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TaskLogsController#index (for ::ffff:127.0.0.1 at 2009-09-24 14:31:51) [GET]
+  [4;35;1mTaskLog Load (0.8ms)[0m   [0mSELECT * FROM `task_logs` [0m
+Rendering template within layouts/task_logs
+Rendering task_logs/index
+  [4;36;1mTaskLog Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `task_logs`[0m
+  [4;35;1mTask Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `tasks`[0m
+  [4;36;1mTask Load (0.7ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 3) [0m
+  [4;35;1mTask Load (0.7ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 4) [0m
+  [4;36;1mTask Load (0.7ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 5) [0m
+  [4;35;1mTask Load (0.6ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 6) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 7) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 8) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 9) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 10) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 12) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 11) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 13) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 14) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 16) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 15) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 17) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 18) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 19) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 20) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 22) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 21) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 24) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 23) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 25) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 26) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 27) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 28) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 30) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 29) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 31) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 32) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 34) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 33) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 36) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 35) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 38) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 37) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 40) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 39) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 41) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 42) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 44) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 43) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 45) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 46) [0m
+  [4;36;1mTask Load (0.7ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 47) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 48) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 49) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 50) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 51) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 52) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 53) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 54) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 56) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 55) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 57) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 58) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 60) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 59) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 61) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 62) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 63) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 64) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 66) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 65) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 68) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 67) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 69) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 70) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 72) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 71) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 74) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 73) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 75) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 76) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 77) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 78) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 80) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 79) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 82) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 81) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 84) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 83) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 86) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 85) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 88) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 87) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 90) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 89) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 91) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 92) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 94) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 93) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 96) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 95) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 98) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 97) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 99) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 100) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 102) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 101) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 103) [0m
+  [4;35;1mTask Load (2.1ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 104) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 105) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 106) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 107) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 108) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 110) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 109) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 111) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 112) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 113) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 114) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 116) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 115) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 118) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 117) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 119) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 120) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 121) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 122) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 123) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 124) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 125) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 126) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 128) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 127) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 129) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 130) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 132) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 131) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 134) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 133) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 135) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 136) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 138) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 137) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 139) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 140) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 142) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 141) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 144) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 143) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 145) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 146) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 148) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 147) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 150) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 149) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 152) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 151) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 153) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 154) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 156) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 155) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 158) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 157) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 159) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 160) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 161) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 162) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 164) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 163) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 166) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 165) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 168) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 167) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 170) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 169) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 172) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 171) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 174) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 173) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 176) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 175) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 178) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 177) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 180) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 179) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 182) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 181) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 184) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 183) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 186) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 185) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 188) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 187) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 189) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 190) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 192) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 191) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 194) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 193) [0m
+  [4;36;1mTask Load (0.4ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 195) [0m
+  [4;35;1mTask Load (0.5ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 196) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 197) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 198) [0m
+  [4;36;1mTask Load (0.5ms)[0m   [0;1mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 200) [0m
+  [4;35;1mTask Load (0.4ms)[0m   [0mSELECT * FROM `tasks` WHERE (`tasks`.`id` = 199) [0m
+Completed in 361ms (View: 250, DB: 96) | 200 OK [http://localhost/task_logs/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for ::ffff:10.1.15.96 at 2009-09-24 15:00:14) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+Completed in 63ms (View: 2, DB: 1) | 200 OK [http://flexo/rails/info/properties]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing JobsController#index (for ::ffff:10.1.15.96 at 2009-09-24 15:00:35) [GET]
+  [4;35;1mJob Load (0.3ms)[0m   [0mSELECT * FROM `jobs` [0m
+Rendering template within layouts/jobs
+Rendering jobs/index
+  [4;36;1mJob Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `jobs`[0m
+Completed in 87ms (View: 73, DB: 1) | 200 OK [http://flexo/jobs]

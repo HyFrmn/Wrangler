@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  time: 1.5
+  returncode: 1
+  task: 
+
+two:
+  time: 1.5
+  returncode: 1
+  task: 

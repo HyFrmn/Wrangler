@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :task_logs
+
   map.resources :jobs
 
   map.resources :cattles

@@ -20,9 +20,10 @@ development:
   reconnect: false
   database: wrangler
   pool: 5
-  username: root
-  password:
+  username: wrangler
+  password: farm
   socket: /tmp/mysql.sock
+  host: bender
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
