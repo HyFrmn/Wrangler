@@ -1,16 +1,33 @@
 #!/usr/bin/env python
 
+import os
 import pickle
 
-from wrangler.queueable import Queueable
+from wrangler.db.core import *
 
-class Job(Queueable):
+class Job(Base):
+    __tablename__ = 'jobs'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(1024))
+    owner = Column(String(128))
+    status = Column(Integer, default=-1)
+    tasks = relation("Task", backref=backref('job'))
+
+    # Status Constant 
+    ERROR = -3
+    STOPPED = -2
+    PAUSED = -1
+    WAITING = 0
+    QUEUED = 1
+    RUNNING = 2
+    FINISHED = 3
+
     def __init__(self,
                  name = 'No Name',
                  env=None):
-        Queueable.__init__(self)
         self.name = name
         self.tasks = []
+        self.owner = os.environ['USER']
         if env:
             self.env = env
         else:

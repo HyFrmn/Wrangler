@@ -2,11 +2,21 @@
 
 import os
 
+
 from wrangler.config import config_base
+from wrangler.db.core import *
 
 config = config_base()
 
-class TaskLog(object):
+class TaskLog(Base):
+    __tablename__ = 'task_logs'
+    
+    id = Column(Integer, primary_key=True)
+    task_id = Column(Integer, ForeignKey('tasks.id'))
+    time = Column(Float)
+    returncode = Column(Integer)
+    cattle_id = Column(Integer, ForeignKey('cattles.id'))
+    cattle = relation('Cattle', backref=backref('logs'))
     logdir = os.path.expandvars(config.get('logging', 'directory'))
 
     def __init__(self, task, returncode, time, stdout, stderr, cattle_id):

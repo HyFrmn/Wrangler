@@ -8,6 +8,7 @@
     <th>Processor</th>
     <th>Ncpus</th>
     <th>Enabled</th>
+    <th>Running</th>
   </tr>
 
 <% @cattles.each do |cattle| %>
@@ -18,13 +19,10 @@
     <td><%=h cattle.processor %></td>
     <td><%=h cattle.ncpus %></td>
     <td><%=h cattle.enabled %></td>
+	<td><%=h cattle.running %></td>
     <td><%= link_to 'Show', cattle %></td>
-    <td><%= link_to 'Edit', edit_cattle_path(cattle) %></td>
-    <td><%= link_to 'Destroy', cattle, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New cattle', new_cattle_path %>

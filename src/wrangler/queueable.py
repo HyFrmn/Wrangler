@@ -1,6 +1,16 @@
 #!/usr/bin/env pythong
 
-class Queueable(object):
+from sqlalchemy import Table, Column, Integer, Float, String, MetaData
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+class Queueable(Base):
+    # Database Fields 
+    id = Column(Integer, primary_key=True)
+    status = Column(Integer)
+
+    # Status Constant 
     ERROR = -3
     STOPPED = -2
     PAUSED = -1

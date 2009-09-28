@@ -31,16 +31,23 @@ class CattleServer(WranglerServer):
 
     def full(self):
         self.num_thread_lock.acquire()
-        v = bool(self.running_tasks >= self.total_running_tasks)
+        db = Session()
+        db.add(self.cattle)
+        v = bool(self.cattle.running >= self.total_running_tasks)
+        db.commit()
+        db.close()
         self.num_thread_lock.release()
         return v
 
     def connect_cattle(self, hostname):
         db = Session()
+        print hostname
         found = db.query(Cattle).filter(Cattle.hostname==hostname).first()
         if found:
+            self.debug('Found cattle in database.')
             cattle = found
         else:
+            self.debug('No cattle found in database, creating new row.')
             cattle = Cattle()
             db.add(cattle)
         cattle.enabled = True
@@ -70,6 +77,7 @@ class CattleServer(WranglerServer):
             metrics['time'] = time.time()
             metrics['load_avg'] = info.load_avg()
             metrics['memory'] = info.memory()
+            metrics['running'] = self.running_tasks
             self.client.update_metrics(info.hostname(), metrics)
 
     def request_task(self):
@@ -83,7 +91,11 @@ class CattleServer(WranglerServer):
             db.close()
             if task:
                 self.num_thread_lock.acquire()
-                self.running_tasks += 1
+                db = Session()
+                db.add(self.cattle)
+                self.cattle.running += 1
+                db.commit()
+                db.close()
                 self.num_thread_lock.release()
                 thread.start_new_thread(self._monitor, (task,))
                 self._no_tasks = False
@@ -115,6 +127,10 @@ class CattleServer(WranglerServer):
 
         #Update Task
         self.num_thread_lock.acquire()
-        self.running_tasks -= 1
+        db = Session()
+        db.add(self.cattle)
+        self.cattle.running -= 1
+        db.commit()
+        db.close()
         self.num_thread_lock.release()
         return None

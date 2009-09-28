@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "task_style" %>
 <h1>Listing tasks</h1>
 
 <table>
@@ -9,7 +10,23 @@
   </tr>
 
 <% @tasks.each do |task| %>
+  <% if task.status = 0 %>
+  <tr class='finished'>
+  <% elsif task.status = 1 %>  
+  <tr class='queued'>
+  <% elsif task.status = 2 %>  
+  <tr class='running'>
+  <% elsif task.status = 3 %>  
+  <tr class='finished'>
+  <% elsif task.status = -1 %>  
+  <tr class='paused'>
+  <% elsif task.status = -2 %>  
+  <tr class='stopped'>
+  <% elsif task.status = -3 %>  
+  <tr class='errored'>
+  <% else %>
   <tr>
+  <% end %>
     <td><%=h task.priority %></td>
     <td><%=h task.command %></td>
     <td><%=h task.status %></td>

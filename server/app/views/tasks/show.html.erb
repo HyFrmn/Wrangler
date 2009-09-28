@@ -18,6 +18,20 @@
   <%=h @task.job.name %>
 </p>
 
-
+<p>
+  <b>Logs:</b>
+  <table>
+  <tr>
+	<th>Return Code</th>
+	<th>Time</th>
+  </tr>
+  <% @task.task_logs.each do |log| %>
+  <tr>
+	<td><%=h log.returncode %></td>
+	<td><%=h log.time %></td>
+  </tr>
+  </table>
+  <% end %>	
+<p>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

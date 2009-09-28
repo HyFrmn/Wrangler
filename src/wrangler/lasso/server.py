@@ -83,7 +83,7 @@ class LassoServer(WranglerServer):
             task.status = task.WAITING
         db.commit()
         jobid = job.id
-        #self.debug('Added job %s to queue with priority %d. [%d]' % (job.name, job.priority, job.id))
+        self.debug('Added job "%s" to queue. [%d]' % (job.name, job.id))
         db.close()
         return jobid
 
