@@ -1,0 +1,19 @@
+tr {
+	border: 0px;
+}
+
+tr.waiting { 
+	background-color: #FFF600;
+	}
+
+tr.queued { 
+	background-color: #00FFFB;
+	}
+
+tr.running { 
+	background-color: #00FF06;
+	}
+
+tr.finished { 
+	background-color: #010099;
+	}
