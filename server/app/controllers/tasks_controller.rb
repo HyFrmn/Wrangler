@@ -82,4 +82,10 @@ class TasksController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def list
+    @tasks = Job.find(params[:id]).tasks
+    
+    render :partial => "list"
+  end
 end

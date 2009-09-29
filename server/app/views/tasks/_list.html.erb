@@ -1,0 +1,38 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <tr>
+    <th>Priority</th>
+    <th>Command</th>
+    <th>Status</th>
+    <th>Job</th>
+    <th>Environment</th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <% if task.status == 0 %>
+  <tr class='waiting'>
+  <% elsif task.status == 1 %>  
+  <tr class='queued'>
+  <% elsif task.status == 2 %>  
+  <tr class='running'>
+  <% elsif task.status == 3 %>  
+  <tr class='finished'>
+  <% elsif task.status == -1 %>  
+  <tr class='paused'>
+  <% elsif task.status == -2 %>  
+  <tr class='stopped'>
+  <% elsif task.status == -3 %>  
+  <tr class='errored'>
+  <% else %>
+  <tr>
+  <% end %>
+    <td><%=h task.priority %></td>
+    <td><%=h task.command %></td>
+    <td><%=h task.status %></td>
+    <td><%=h task.job.name %></td>
+    <td><%=h task.env.class %></td>
+    <td><%= link_to 'Show', task %></td>
+  </tr>
+<% end %>
+</table>

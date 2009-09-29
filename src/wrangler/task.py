@@ -4,20 +4,24 @@ import os
 import sys
 import time
 import subprocess
-import cPickle
+import cPickle as pickle
+import simplejson as json
+import yaml
 
 from sqlalchemy.types import TypeDecorator
 
 from wrangler.db.core import *
 
+serializer = json
+
 class EnvironmentDecorator(TypeDecorator):
     impl = String
     def process_bind_param(self, value, engine):
         assert isinstance(value, dict)
-        return cPickle.dumps(value)
+        return yaml.dump(value)
 
     def process_result_value(self, value, engine):
-        return cPickle.loads(str(value))
+        return yaml.load(str(value))
 
     def copy(self):
         return EnvironmentDecorator(self.impl.length)
@@ -42,6 +46,7 @@ class Task(Base):
     parent  = Column(Integer, ForeignKey('tasks.id'))
     logs = relation('TaskLog', backref='task')
     status = Column(Integer, default=-1)
+    job = relation("Job", lazy=False)
 
     def __init__(self, command='', priority=500):
         self.command = command

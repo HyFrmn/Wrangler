@@ -11,7 +11,7 @@ class Job(Base):
     name = Column(String(1024))
     owner = Column(String(128))
     status = Column(Integer, default=-1)
-    tasks = relation("Task", backref=backref('job'))
+    tasks = relation("Task", lazy=False)
 
     # Status Constant 
     ERROR = -3

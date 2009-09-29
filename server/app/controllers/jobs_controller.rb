@@ -82,4 +82,10 @@ class JobsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def list
+    @jobs = Job.all
+    
+    render :partial => 'list'
+  end
 end

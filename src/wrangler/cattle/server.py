@@ -4,6 +4,7 @@ import thread
 
 from wrangler import *
 from wrangler.db.session import Session
+from wrangler.db.interface import *
 from wrangler.hardware import info
 from wrangler.network import WranglerServer
 from wrangler.lasso.client import LassoClient
@@ -123,6 +124,7 @@ class CattleServer(WranglerServer):
         db.add(task_log)
         db.commit()
         self.info('Finished task %d.' % task.id)
+        job = task.job
         db.close()
 
         #Update Task
@@ -133,4 +135,5 @@ class CattleServer(WranglerServer):
         db.commit()
         db.close()
         self.num_thread_lock.release()
+        update_job(job)
         return None

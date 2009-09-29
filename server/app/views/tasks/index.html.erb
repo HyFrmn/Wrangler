@@ -1,42 +1,6 @@
 <%= stylesheet_link_tag "task_style" %>
-<h1>Listing tasks</h1>
 
-<table>
-  <tr>
-    <th>Priority</th>
-    <th>Command</th>
-    <th>Status</th>
-    <th>Job</th>
-  </tr>
-
-<% @tasks.each do |task| %>
-  <% if task.status = 0 %>
-  <tr class='finished'>
-  <% elsif task.status = 1 %>  
-  <tr class='queued'>
-  <% elsif task.status = 2 %>  
-  <tr class='running'>
-  <% elsif task.status = 3 %>  
-  <tr class='finished'>
-  <% elsif task.status = -1 %>  
-  <tr class='paused'>
-  <% elsif task.status = -2 %>  
-  <tr class='stopped'>
-  <% elsif task.status = -3 %>  
-  <tr class='errored'>
-  <% else %>
-  <tr>
-  <% end %>
-    <td><%=h task.priority %></td>
-    <td><%=h task.command %></td>
-    <td><%=h task.status %></td>
-    <td><%=h task.job.name %></td>
-    <td><%= link_to 'Show', task %></td>
-    <% # <td><%= link_to 'Edit', edit_task_path(task) %></td> %>
-    <% # <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td> %>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => "tasks/list", :locals => { :tasks => @tasks } %>
 
 <br />
 
