@@ -1,0 +1,8 @@
+<tr class="<%= cycle("even", "odd") %>" class="<%=h task.status_string %>">
+	<td><%=h task.env_hash['WRANGLER_FRAME'] %></td>
+    <td><%=h task.priority %></td>
+    <td><%=h task.command %></td>
+    <td class="<%=h task.status_string %>"><%=h task.status_string.capitalize %></td>
+    <td><%=h task.job.name %></td>
+    <td><%= link_to 'Show', task %></td>
+</tr>
