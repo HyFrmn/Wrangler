@@ -18,10 +18,10 @@ class EnvironmentDecorator(TypeDecorator):
     impl = String
     def process_bind_param(self, value, engine):
         assert isinstance(value, dict)
-        return yaml.dump(value)
+        return json.dumps(value)
 
     def process_result_value(self, value, engine):
-        return yaml.load(str(value))
+        return json.loads(str(value))
 
     def copy(self):
         return EnvironmentDecorator(self.impl.length)

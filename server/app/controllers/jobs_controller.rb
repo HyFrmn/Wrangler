@@ -3,7 +3,6 @@ class JobsController < ApplicationController
   # GET /jobs.xml
   def index
     @jobs = Job.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @jobs }
@@ -14,7 +13,7 @@ class JobsController < ApplicationController
   # GET /jobs/1.xml
   def show
     @job = Job.find(params[:id])
-
+    @tasks = @job.tasks
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @job }

@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "task_style" %>
+
 <p>
   <b>Name:</b>
   <%=h @job.name %>
@@ -13,8 +15,12 @@
   <%=h @job.owner %>
 </p>
 
+<p>
+	<b>Progress:</b>
+	<%=h Task.count(:conditions => ["job_id = ? AND status = 3", @job.id]) %> / <%=h Task.count(:conditions => ["job_id = ?", @job.id]) %>
+</p>
 <div id="tasks">
-
+<%= render :partial => 'tasks/list' %>
 </div>
 
 <%= periodically_call_remote :update    => 'tasks',

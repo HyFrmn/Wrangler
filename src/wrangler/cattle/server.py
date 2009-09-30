@@ -32,11 +32,7 @@ class CattleServer(WranglerServer):
 
     def full(self):
         self.num_thread_lock.acquire()
-        db = Session()
-        db.add(self.cattle)
-        v = bool(self.cattle.running >= self.total_running_tasks)
-        db.commit()
-        db.close()
+        v = bool(self.running_tasks >= self.total_running_tasks)
         self.num_thread_lock.release()
         return v
 
@@ -92,11 +88,7 @@ class CattleServer(WranglerServer):
             db.close()
             if task:
                 self.num_thread_lock.acquire()
-                db = Session()
-                db.add(self.cattle)
-                self.cattle.running += 1
-                db.commit()
-                db.close()
+                self.running_tasks += 1
                 self.num_thread_lock.release()
                 thread.start_new_thread(self._monitor, (task,))
                 self._no_tasks = False
@@ -129,11 +121,7 @@ class CattleServer(WranglerServer):
 
         #Update Task
         self.num_thread_lock.acquire()
-        db = Session()
-        db.add(self.cattle)
-        self.cattle.running -= 1
-        db.commit()
-        db.close()
+        self.running_tasks -= 1
         self.num_thread_lock.release()
         update_job(job)
         return None
