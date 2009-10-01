@@ -106,22 +106,14 @@ class CattleServer(WranglerServer):
 
     def _monitor(self, task):
         self.debug('Executing task %d' % task.id)
+        task_log = create_task_log(task, self.cattle)
         returncode, delta_time, stdout, stderr = task.run()
-
         #Log task results. 
-        db = Session()
-        db.add(task)
-        task.status = task.FINISHED
-        task_log = TaskLog(task, returncode, delta_time, stdout, stderr, self.cattle_id)
-        db.add(task_log)
-        db.commit()
+        update_task_log(task_log, returncode, delta_time, stdout, stderr)
         self.info('Finished task %d.' % task.id)
-        job = task.job
-        db.close()
 
-        #Update Task
+        #Update Running Task Count
         self.num_thread_lock.acquire()
         self.running_tasks -= 1
         self.num_thread_lock.release()
-        update_job(job)
         return None

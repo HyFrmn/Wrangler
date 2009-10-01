@@ -21,4 +21,11 @@ class Job < ActiveRecord::Base
     return self[:status]
   end
 
+  def runtime
+    TaskLog.sum(:time, :joins => :task, :conditions => ['tasks.job_id = ?', self[:id]])
+  end
+
+  def averagetime
+    TaskLog.average(:time, :joins => :task, :conditions => ['tasks.job_id = ? and task_logs.time > 0', self[:id]])
+  end
 end

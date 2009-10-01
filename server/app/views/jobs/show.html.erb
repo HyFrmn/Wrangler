@@ -16,6 +16,10 @@
 </p>
 
 <p>
+  <b>Runtime:</b>
+  <%=h @job.averagetime %> (Average) / <%=h @job.runtime %> (Total)
+</p>
+<p>
 	<b>Progress:</b>
 	<%=h Task.count(:conditions => ["job_id = ? AND status = 3", @job.id]) %> / <%=h Task.count(:conditions => ["job_id = ?", @job.id]) %>
 </p>

@@ -48,6 +48,8 @@ class Task(Base):
     status = Column(Integer, default=-1)
     job = relation("Job", lazy=False)
 
+    running = False
+
     def __init__(self, command='', priority=500):
         self.command = command
         self.priority = priority
@@ -59,20 +61,25 @@ class Task(Base):
             environ[k] = str(v)
         try:
             start_time = time.time()
-            popen = subprocess.Popen(self.command,
+            self.popen = subprocess.Popen(self.command,
                                      env=environ,
                                      shell=True,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE)
         except OSError:
             return
-        returncode = popen.wait()
+
+        running = True
+        returncode = self.popen.wait()
         end_time = time.time()
         delta_time = end_time - start_time
-        output = popen.stdout.read()
-        error = popen.stderr.read()
+        output = self.popen.stdout.read()
+        error = self.popen.stderr.read()
         return (returncode, delta_time, output, error)
 
+    def kill(self):
+        if self.running:
+            self.popen.kill()
 
 def main():
     task = Task('echo $HOSTNAME')

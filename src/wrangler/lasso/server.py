@@ -8,6 +8,7 @@ from random import randint
 
 from sqlalchemy import desc
 
+import wrangler.db.interface as db
 from wrangler import *
 from wrangler.db.session import Session
 from wrangler.jobs import RenderJob
@@ -21,12 +22,6 @@ config = config_lasso()
 class LassoServer(WranglerServer):
     def _setup(self):
         WranglerServer._setup(self)
-
-        #Populate Queue
-#        for i in range(1, 20):
-#            priority = randint(200, 800)
-#            job = RenderJob('Job %d' % priority, priority=priority, command='echo $WRANGLER_FRAME; sleep 1')
-#            self.queue_job(cPickle.dumps(job))
 
         #Initialize
         self.stable = dict()
@@ -56,35 +51,16 @@ class LassoServer(WranglerServer):
 
     def next_task(self):
         """Return the next task in the queue."""
-        self.debug('Requesting next task from database.')
+        self.debug('Requesting next task from lasso.')
         self.next_task_lock.acquire()
-        db = Session()
-        task = db.query(Task).filter(Task.status==Task.WAITING).order_by(desc(Task.priority)).first()
-        if task:
-            taskid = task.id
-            task.status = Task.RUNNING
-            db.commit()
-            self.debug('Task %d was receieved from database.' % taskid)
-        else:
-            taskid = None
-            self.debug('No task found. The Queue is empty.')
-        db.close()
+        taskid = db.next_task()
         self.next_task_lock.release()
         return cPickle.dumps(taskid)
 
     def queue_job(self, job):
         """ Add job to the queue and return the job's id number."""
         job = cPickle.loads(job)
-        db = Session()
-        db.add(job)
-        self.debug('Adding job "%s" to queue.' % job.name)
-        job.status = Job.WAITING
-        for task in job.tasks:
-            task.status = task.WAITING
-        db.commit()
-        jobid = job.id
-        self.debug('Added job "%s" to queue. [%d]' % (job.name, job.id))
-        db.close()
+        jobid = db.queue_job(job)
         return jobid
 
     def update_metrics(self, hostname, data):
@@ -92,6 +68,7 @@ class LassoServer(WranglerServer):
         cattle = db.query(Cattle).filter(Cattle.hostname == hostname).first()
         time = data['time']
         load_avg = data['load_avg']
+        cattle.running = data['running']
         metrics = CattleMetrics(cattle.id, time, load_avg)
         db.add(metrics)
         db.commit()

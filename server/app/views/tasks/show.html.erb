@@ -21,19 +21,41 @@
 </p>
 
 <p>
+ <b>Environment:</b>
+ <table>
+ <thead>
+	<tr>
+	  <td>Variable</td>
+	  <td>Value</td>
+	</tr>
+ </thead>
+ <% @task.env_hash.each_pair do |key, value| %>
+ <tr> 
+   <td><%=h key %></td>
+   <td><%=h value %></td>
+ </tr>	
+ <% end %>
+ </table>
+</p>
+
+<p>
   <b>Logs:</b>
   <table>
   <tr>
 	<th>Return Code</th>
 	<th>Time</th>
+	<th>stdout</th>
+	<th>stderr</th>
   </tr>
   <% @task.task_logs.each do |log| %>
   <tr>
 	<td><%=h log.returncode %></td>
 	<td><%=h log.time %></td>
+	<td><%=h log.stdout %></td>
+	<td></td>
   </tr>
-  </table>
   <% end %>	
+  </table>
 <p>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

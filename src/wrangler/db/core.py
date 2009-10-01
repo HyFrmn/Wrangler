@@ -4,7 +4,7 @@ import cPickle as pickle
 
 
 import sqlalchemy
-from sqlalchemy import Table, Column, Integer, Float, String, MetaData
+from sqlalchemy import Table, Column, Integer, Float, String, MetaData, desc
 from sqlalchemy import ForeignKey, Boolean, create_engine, and_, select, func
 from sqlalchemy.orm import mapper, sessionmaker, relation, backref, synonym, column_property
 from sqlalchemy.types import TypeDecorator
@@ -26,4 +26,5 @@ __all__ = ['metadata',
            'Boolean',
            'relation',
            'backref',
-           'column_property' ]
+           'column_property',
+           'desc']

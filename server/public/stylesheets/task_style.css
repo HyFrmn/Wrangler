@@ -45,6 +45,12 @@ tr {
 	font-weight: bold;
 	}
 
+.error {
+	color: #C60200;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
 .odd {
 	background-color: #DFDFDF;
 }

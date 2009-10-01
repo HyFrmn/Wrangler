@@ -13,20 +13,20 @@ class TaskLog(Base):
     
     id = Column(Integer, primary_key=True)
     task_id = Column(Integer, ForeignKey('tasks.id'))
-    time = Column(Float)
-    returncode = Column(Integer)
+    time = Column(Float, default=-1)
+    returncode = Column(Integer, default=2)
     cattle_id = Column(Integer, ForeignKey('cattles.id'))
     cattle = relation('Cattle', backref=backref('logs'))
+    stdout = Column(String(256))
+    stderr = Column(String(256))
+    
     logdir = os.path.expandvars(config.get('logging', 'directory'))
 
-    def __init__(self, task, returncode, time, stdout, stderr, cattle_id):
+    def __init__(self, task, cattle):
         self.task_id = task.id
-        self.task = task
-        self.time = time
-        self.returncode = returncode
-        self.cattle_id = cattle_id
-        self._log_stdout(stdout)
-        self._log_stderr(stderr)
+        self.cattle_id = cattle.id
+        self.stdout = self._stdout_file_path()
+        self.stderr = self._stderr_file_path()
 
     def _log_stdout(self, output):
         filepath = self._stdout_file_path()
@@ -47,7 +47,7 @@ class TaskLog(Base):
         fd.close()
 
     def _stdout_file_path(self):
-        return os.path.join(self.logdir, str(self.task.job_id), str(self.task.id) + '_out.log')
+        return os.path.join(self.logdir, str(self.task_id) + '_out.log')
 
     def _stderr_file_path(self):
-        return os.path.join(self.logdir, str(self.task.job_id), str(self.task.id) + '_err.log')
+        return os.path.join(self.logdir, str(self.task_id) + '_err.log')
