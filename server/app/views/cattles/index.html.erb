@@ -1,28 +1,4 @@
-<h1>Listing cattles</h1>
-
-<table>
-  <tr>
-    <th>Hostname</th>
-    <th>Memory</th>
-    <th>System</th>
-    <th>Processor</th>
-    <th>Ncpus</th>
-    <th>Enabled</th>
-    <th>Running</th>
-  </tr>
-
-<% @cattles.each do |cattle| %>
-  <tr>
-    <td><%=h cattle.hostname %></td>
-    <td><%=h cattle.memory %></td>
-    <td><%=h cattle.system %></td>
-    <td><%=h cattle.processor %></td>
-    <td><%=h cattle.ncpus %></td>
-    <td><%=h cattle.enabled %></td>
-	<td><%=h cattle.running %></td>
-    <td><%= link_to 'Show', cattle %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<div id='cattle'></div>
+<%= periodically_call_remote :update     => 'cattle',
+							:url		=> { :controller => :cattles, :action => :list},
+							:frequency  => 5.0 %>

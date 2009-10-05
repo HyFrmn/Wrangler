@@ -7,6 +7,11 @@
   <title>Jobs: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag :defaults %>
+  <style type="text/css">
+	@import "javascripts/dijit/themes/soria/soria.css";
+	@import "javascripts/dojo/resources/dojo.css";
+  </style>
+  <%= javascript_include_tag 'dojo/dojo', :djconfig => "parseOnLoad: true, baseScriptUri:'/javascripts/dojo/'"%>
 </head>
 <body>
 

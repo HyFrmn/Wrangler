@@ -82,4 +82,10 @@ class CattlesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def list
+    @cattles = Cattle.all
+    
+    render :partial => 'list'
+  end
 end

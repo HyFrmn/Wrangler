@@ -1,0 +1,43 @@
+<h1>Wrangler</h1>
+
+<script type="text/javascript">
+    dojo.require("dijit.layout.TabContainer");
+    dojo.require("dijit.layout.ContentPane");
+    dojo.require("dijit.layout.LayoutContainer");
+    dojo.require("dijit.layout.BorderContainer");
+    dojo.require("dijit.layout.AccordionPane");
+    dojo.require("dijit.layout.AccordionContainer");
+    dojo.require("dijit.Toolbar");
+	dojo.require("dojox.grid.Grid");
+	dojo.require("dojox.data.HtmlTableStore");
+</script>
+
+	<div dojoType="dijit.layout.TabContainer" class="soria" id="mainDiv">
+		<div dojoType="dijit.layout.BorderContainer" title="Jobs" selected="true" liveSplitters="true" gutters="false" design="sidebar">
+			<div dojoType="dijit.layout.ContentPane" splitter="true" reigon="top" minSize="20" role="region">
+				<div id="jobs">
+					<%= render :controller => 'jobs', :action => 'list' %>
+				</div>
+
+				<%= periodically_call_remote :update    => 'jobs',
+				                             :url       => { :controller => :jobs, :action => :list},
+				                             :frequency => 2.0 %>
+		    </div>
+		    <div dojoType="dijit.layout.ContentPane" reigon="center" role="region" minSize="20" aria-live="assertive" aria-atomic="true">
+				<div id="tasks">
+					Waiting to load tasks...
+				</div>
+
+				<%= periodically_call_remote :update    => 'tasks',
+				                             :url       => { :controller => :tasks, :action => :list, :id => 1 },
+				                             :frequency => 2.0 %>
+			</div>
+		</div>
+	    <div dojoType="dijit.layout.ContentPane" title="Cattle">
+			<div id='cattle'>
+			</div>
+			<%= periodically_call_remote :update     => 'cattle',
+										:url		=> { :controller => :cattles, :action => :list},
+										:frequency  => 5.0 %>
+	    </div>
+	</div>

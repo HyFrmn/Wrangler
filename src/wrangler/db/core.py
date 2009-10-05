@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import os
-import cPickle as pickle
+import simplejson as json
 
 
 import sqlalchemy
-from sqlalchemy import Table, Column, Integer, Float, String, MetaData, desc
+from sqlalchemy import Table, Column, Integer, Float, String, MetaData, desc, DateTime
 from sqlalchemy import ForeignKey, Boolean, create_engine, and_, select, func
 from sqlalchemy.orm import mapper, sessionmaker, relation, backref, synonym, column_property
 from sqlalchemy.types import TypeDecorator
@@ -27,4 +27,18 @@ __all__ = ['metadata',
            'relation',
            'backref',
            'column_property',
-           'desc']
+           'desc',
+           'DateTime',
+           'DictionaryDecorator']
+
+class DictionaryDecorator(TypeDecorator):
+    impl = String
+    def process_bind_param(self, value, engine):
+        assert isinstance(value, dict)
+        return json.dumps(value)
+
+    def process_result_value(self, value, engine):
+        return json.loads(str(value))
+
+    def copy(self):
+        return DictionaryDecorator(self.impl.length)

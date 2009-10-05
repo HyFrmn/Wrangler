@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import datetime
 import logging
 import cPickle
 log = logging.getLogger('wrangler')
@@ -11,6 +12,7 @@ from wrangler.db.session import Session
 __all__ = ['next_task',
            'update_job',
            'queue_job',
+           'update_metrics',
            'create_task_log',
            'update_task_log']
 
@@ -92,3 +94,14 @@ def update_task_log(task_log, returncode, delta_time, stdout, stderr):
     db.expunge(job)
     db.close()
     update_job(job)
+
+def update_metrics(hostname, data):
+    db = Session()
+    cattle = db.query(Cattle).filter(Cattle.hostname == hostname).first()
+    time = datetime.datetime.now()
+    load_avg = data['load_avg']
+    cattle.running = data['running']
+    metrics = CattleMetrics(cattle.id, time, load_avg)
+    db.add(metrics)
+    db.commit()
+    db.close()

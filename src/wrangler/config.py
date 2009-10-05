@@ -2,6 +2,7 @@
 
 import os
 import logging
+import logging.config
 import ConfigParser
 
 class ConfigureError(Exception):pass
@@ -17,24 +18,26 @@ def check_environment():
         raise ConfigurationError, "'farm.cfg' was not found in [%s]" % farm_cfg
     return home
 
-def config_logging():
+home = check_environment()
+
+def config_logging(home=home):
+    logging.config.fileConfig(os.path.join(home, 'farm.cfg'))
     log = logging.getLogger('wrangler')
     return log
 
-def config_base():
+def config_base(home=home):
     config = ConfigParser.SafeConfigParser()
-    config.read(os.path.join(WRANGLER_HOME, 'farm.cfg'))
+    config.read(os.path.join(home, 'farm.cfg'))
     return config
 
-def config_lasso():
-    config.read(os.path.join(WRANGLER_HOME, 'lasso.cfg'))
+def config_lasso(home=home):
+    config.read(os.path.join(home, 'lasso.cfg'))
     return config
 
-def config_cattle():
+def config_cattle(home=home):
     config = config_base()
-    config.read(os.path.join(WRANGLER_HOME, 'cattle.cfg'))
+    config.read(os.path.join(home, 'cattle.cfg'))
     return config
 
-log = config_logging()
-WRANGLER_HOME = check_environment()
-config = config_base()
+log = config_logging(home)
+config = config_base(home)

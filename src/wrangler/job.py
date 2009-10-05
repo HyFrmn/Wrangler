@@ -12,6 +12,10 @@ class Job(Base):
     owner = Column(String(128))
     status = Column(Integer, default=-1)
     tasks = relation("Task", lazy=False)
+    created = Column(DateTime)
+    started = Column(DateTime)
+    finished = Column(DateTime)
+    description = Column(String(2048))
 
     # Status Constant 
     ERROR = -3

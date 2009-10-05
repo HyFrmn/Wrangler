@@ -12,9 +12,9 @@ class WranglerClient(object):
     def __init__(self, hostname=None, port=None):
         self.config = config_base()
         if not hostname:
-            hostname = self.config.get('master', 'hostname')
+            hostname = self.config.get('lasso', 'hostname')
         if not port:
-            port = self.config.getint('master', 'port')
+            port = self.config.getint('lasso', 'port')
         log.debug('Starting client to %s:%d' % (hostname, port))
         self.client = ServerProxy('http://%s:%s' % (hostname, port), allow_none=True)
         

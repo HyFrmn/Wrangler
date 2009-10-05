@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
+import os
 import optparse
 
-import wrangler
-import wrangler.db.core
 from wrangler.lasso.client import LassoClient
 
 def main():
@@ -30,15 +29,20 @@ def main():
                       help = "The job's priority. [0 - 1000]",
                       default = 500,
                       type=int)
+    
     client = LassoClient()
     opts, args = parser.parse_args()
     if opts.verbose:
         print 'Creating Job'
-    job = wrangler.RenderJob(command=opts.command,
-                             start=opts.start,
-                             end=opts.end,
-                             priority=opts.priority,
-                             name=opts.name)
+    job_data = {}
+    job_data['generator'] = 'RenderJob'
+    job_data['command'] = opts.command
+    job_data['start'] = opts.start
+    job_data['end'] = opts.end
+    job_data['priority'] = opts.priority
+    job_data['owner'] = os.environ['USER']
+    job_data['name'] = opts.name
+    
     if opts.verbose:
         print("""Adding Job:
 Name:     %s
@@ -46,8 +50,9 @@ Command:  %s
 Start:    %d
 End:      %d
 Priority: %d""" % (opts.name, opts.command, opts.start, opts.end, opts.priority))
-    client.queue_job(job)
-    print 'Job was added to queue.'
+    id = client.queue_job(job_data)
+    
+    print 'Job [%d] was added to queue.' % id
 
 if __name__ == '__main__':
     main()

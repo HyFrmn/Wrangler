@@ -20,13 +20,14 @@ class TaskLog(Base):
     stdout = Column(String(256))
     stderr = Column(String(256))
     
-    logdir = os.path.expandvars(config.get('logging', 'directory'))
+    logdir = os.path.expandvars(config.get('logging', 'task-dir'))
 
     def __init__(self, task, cattle):
         self.task_id = task.id
         self.cattle_id = cattle.id
         self.stdout = self._stdout_file_path()
         self.stderr = self._stderr_file_path()
+
 
     def _log_stdout(self, output):
         filepath = self._stdout_file_path()

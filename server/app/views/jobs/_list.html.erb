@@ -1,8 +1,9 @@
 <h1>Listing jobs</h1>
 
-<table>
+<table id="job_list">
   <thead>
     <tr>
+	  <th>Id</th>
       <th>Name</th>
       <th>Progress</th>
       <th>Status</th>
@@ -11,6 +12,7 @@
   </thead>
 <% @jobs.each do |job| %>
   <tr class="<%= cycle("even", "odd") %>">
+	<td><%=h job.id %></td>
     <td><%=h job.name %></td>
     <td><%=h Task.count(:conditions => ["job_id = ? AND status = 3", job.id]) %> / <%=h Task.count(:conditions => ["job_id = ?", job.id]) %></td>
     <td class="<%=h job.status_string %>"><%=h job.status_string.capitalize %></td>

@@ -86,6 +86,10 @@ class TasksController < ApplicationController
   def list
     @tasks = Job.find(params[:id]).tasks
     
-    render :partial => "list"
+    respond_to do |format|
+      format.html { render :partial => "list" }
+      format.xml  { render :xml => @tasks }
+      format.json { render :json => @tasks}
+    end
   end
 end

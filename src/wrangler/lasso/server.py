@@ -14,40 +14,28 @@ from wrangler.db.session import Session
 from wrangler.jobs import RenderJob
 from wrangler.config import config_lasso
 from wrangler.network import WranglerServer
-
+import wrangler.generator as generator 
 
 
 config = config_lasso()
 
 class LassoServer(WranglerServer):
+    def __init__(self):
+        config = config_lasso()
+        hostname = config.get('lasso', 'hostname')
+        port = config.getint('lasso', 'port')
+        WranglerServer.__init__(self, hostname, port)
+
     def _setup(self):
         WranglerServer._setup(self)
 
         #Initialize
-        self.stable = dict()
+        self.heard = dict()
         self.next_task_lock = thread.allocate_lock()
 
         #Register API Functions
         self.server.register_function(self.next_task, "next_task")
         self.server.register_function(self.queue_job, "queue_job")
-        self.server.register_function(self.update_metrics, "update_metrics")
-        self.server.register_function(self.connect_cattle, "connect_cattle")
-
-    def connect_cattle(self, hostname):
-        db = Session()
-        found = db.query(Cattle).filter(Cattle.hostname==hostname).first()
-        if found:
-            cattle = found
-        else:
-            db.add(cattle)
-        cattle.enabled = True
-        db.commit()
-        db.close()
-        self.debug('%s was added to the heard.' % hostname)
-        return hostname
-
-    def disconnect_cattle(self, hostname):
-        pass
 
     def next_task(self):
         """Return the next task in the queue."""
@@ -55,22 +43,11 @@ class LassoServer(WranglerServer):
         self.next_task_lock.acquire()
         taskid = db.next_task()
         self.next_task_lock.release()
-        return cPickle.dumps(taskid)
+        return taskid
 
-    def queue_job(self, job):
+    def queue_job(self, job_data):
         """ Add job to the queue and return the job's id number."""
-        job = cPickle.loads(job)
+        gen = job_data.pop('generator')
+        job = generator.__dict__[gen](**job_data)
         jobid = db.queue_job(job)
         return jobid
-
-    def update_metrics(self, hostname, data):
-        db = Session()
-        cattle = db.query(Cattle).filter(Cattle.hostname == hostname).first()
-        time = data['time']
-        load_avg = data['load_avg']
-        cattle.running = data['running']
-        metrics = CattleMetrics(cattle.id, time, load_avg)
-        db.add(metrics)
-        db.commit()
-        db.close()
-        return 0

@@ -9,6 +9,7 @@ class Cattle(Base):
     
     id = Column(Integer, primary_key=True)
     hostname = Column(String(64))
+    ip = Column(String(15))
     memory = Column(Float)
     system = Column(String(128))
     processor = Column(String(128))
@@ -32,8 +33,7 @@ class CattleMetrics(Base):
     id = Column(Integer, primary_key=True)
     cattle_id = Column(Integer, ForeignKey('cattles.id'))
     load_avg = Column(Float)
-    running = Column(Integer)
-    time = Column(Float)
+    time = Column(DateTime)
 
     def __init__(self, hostid, time, load_avg, running_tasks=-1):
         self.cattle_id = hostid

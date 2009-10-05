@@ -15,7 +15,3 @@ __all__ = ['Job',
            'RenderJob',
            'Cattle',
            'CattleMetrics']
-
-log = logging.getLogger('wrangler')
-log.setLevel(logging.DEBUG)
-log.addHandler(logging.StreamHandler())

@@ -1,11 +1,17 @@
 <h1>New job</h1>
 
+   <script>
+     dojo.require("dijit.Dialog");
+     dojo.require("dojo.parser");
+   </script>
+
+
 <% form_for(@job) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><%= link_to "Dialog", "#", :onclick => "dijit.byId('dialog1').show();" %>
   </p>
   <p>
     <%= f.label :status %><br />
@@ -19,5 +25,10 @@
     <%= f.submit 'Create' %>
   </p>
 <% end %>
+
+<div dojoType="dijit.Dialog" id="dialog1" title="First Dialog">
+<p>Tip You can put everything you like in that field!</p>
+</div>
+
 
 <%= link_to 'Back', jobs_path %>
