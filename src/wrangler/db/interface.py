@@ -27,7 +27,7 @@ def next_task():
         db.commit()
         log.debug('Task %d was receieved from database.' % taskid)
     else:
-        taskid = None
+        taskid = -1
         log.debug('No task found. The Queue is empty.')
     db.close()
     return taskid

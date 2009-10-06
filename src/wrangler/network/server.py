@@ -10,40 +10,40 @@ from thread import start_new_thread as start
 
 from wrangler.config import config_base
 from wrangler.network.asyncxmlrpcserver import AsyncXMLRPCServer
-log = logging.getLogger('wrangler.server')
 
-class WranglerServer(object):
-    def __init__(self, host, port):
+class WranglerServer(object,):
+    def __init__(self, host, port, wrangler_config='wrangler.server'):
         self.config = config_base()
         self.hostname = host
         self.port = port
         self.server = None
         self.client = None
         self._timeouts = dict()
+        self._log = logging.getLogger(wrangler_config)
 
     #Logging Messages
     def log(self, level, msg):
-        log.log(level, msg)
+        self._log.log(level, msg)
         return True
     
     def debug(self, msg):
-        log.debug(msg)
+        self._log.debug(msg)
         return True
 
     def info(self, msg):
-        log.info(msg)
+        self._log.info(msg)
         return True
     
     def warning(self, msg):
-        log.warning(msg)
+        self._log.warning(msg)
         return True
     
     def error(self, msg):
-        log.error(msg)
+        self._log.error(msg)
         return True
 
     def critical(self, msg):
-        log.critical(msg)
+        self._log.critical(msg)
         return True
 
     def _setup(self):
@@ -74,7 +74,7 @@ class WranglerServer(object):
                     self.error('Socket Error: %s' % msg)
         except KeyboardInterrupt:
             pass
-        log.info('Server stopped.')
+        self.info('Server stopped.')
         self.shutdown()
 
     def _handle_main(self):
@@ -90,7 +90,7 @@ class WranglerServer(object):
                     self.error('XML RPC Error: %s' % msg.faultString)
         except KeyboardInterrupt:
             pass
-        log.info('Server stopped.')
+        self.log.info('Server stopped.')
         self.shutdown()
         self._disconnect()
         
@@ -111,7 +111,7 @@ class WranglerServer(object):
                                                   outs,
                                                   ers)
         except Exception, msg:
-            log.error(msg)
+            self.log.error(msg)
             return
         for sock in inputs:
             if sock == self.server:

@@ -12,12 +12,12 @@ class TaskLog < ActiveRecord::Base
 	belongs_to :task
 	
 	def stdout
-	  filepath = ENV['WRANGLER_HOME'] + '/logs/' + self[:task_id].to_s + '_out.log'
+	  filepath = self[:stdout]
 	  return get_file_as_string(filepath)
 	end
 
 	def stderr
-	  filepath = ENV['WRANGLER_HOME'] + '/logs/' + self[:task_id].to_s + '_err.log'
+	  filepath = self[:stderr]
 	  return get_file_as_string(filepath)
 	end
 end

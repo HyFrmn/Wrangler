@@ -2,8 +2,11 @@
 
 import os
 import logging
+import logging.handlers
 import logging.config
 import ConfigParser
+
+from hardware import info
 
 class ConfigureError(Exception):pass
 
@@ -21,8 +24,16 @@ def check_environment():
 home = check_environment()
 
 def config_logging(home=home):
-    logging.config.fileConfig(os.path.join(home, 'farm.cfg'))
+    #logging.config.fileConfig(os.path.join(home, 'farm.cfg'))
     log = logging.getLogger('wrangler')
+    log.setLevel(logging.ERROR)
+    
+    config = config_base()
+    log_dir = config.get('logging', 'server-dir')
+    file_path = os.path.join(log_dir, info.hostname() + '.log')
+    file_path = os.path.expandvars(file_path)
+    handler = logging.FileHandler(file_path)
+    log.addHandler(handler)
     return log
 
 def config_base(home=home):

@@ -81,7 +81,7 @@ class CattleServer(WranglerServer):
     def request_task(self):
         self.debug('Requesting task from server.')
         taskid = self.client.next_task()
-        if taskid:
+        if taskid > 0:
             self.debug('Task %d was recieved from server.' % taskid)
             db = Session()
             task = db.query(Task).filter_by(id=taskid).first()
