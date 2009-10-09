@@ -14,7 +14,7 @@
   <tr class="<%= cycle("even", "odd") %>">
 	<td><%=h job.id %></td>
     <td><%=h job.name %></td>
-    <td><%=h Task.count(:conditions => ["job_id = ? AND status = 3", job.id]) %> / <%=h Task.count(:conditions => ["job_id = ?", job.id]) %></td>
+    <td><%=h number_to_percentage(Task.count(:conditions => ["job_id = ? AND status = 3", job.id]) / Task.count(:conditions => ["job_id = ?", job.id]) * 100) %></td>
     <td class="<%=h job.status_string %>"><%=h job.status_string.capitalize %></td>
     <td><%=h job.owner %></td>
     <td><%= link_to 'Show', job %></td>

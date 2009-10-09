@@ -1,4 +1,6 @@
-<div id='cattle'></div>
+<div id='cattle'>
+	<%= render :partial => 'cattles/list' %>
+</div>
 <%= periodically_call_remote :update     => 'cattle',
 							:url		=> { :controller => :cattles, :action => :list},
 							:frequency  => 5.0 %>

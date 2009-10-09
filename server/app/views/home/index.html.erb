@@ -1,43 +1,37 @@
-<h1>Wrangler</h1>
-
-<script type="text/javascript">
-    dojo.require("dijit.layout.TabContainer");
-    dojo.require("dijit.layout.ContentPane");
-    dojo.require("dijit.layout.LayoutContainer");
-    dojo.require("dijit.layout.BorderContainer");
-    dojo.require("dijit.layout.AccordionPane");
-    dojo.require("dijit.layout.AccordionContainer");
-    dojo.require("dijit.Toolbar");
-	dojo.require("dojox.grid.Grid");
-	dojo.require("dojox.data.HtmlTableStore");
-</script>
-
-	<div dojoType="dijit.layout.TabContainer" class="soria" id="mainDiv">
-		<div dojoType="dijit.layout.BorderContainer" title="Jobs" selected="true" liveSplitters="true" gutters="false" design="sidebar">
-			<div dojoType="dijit.layout.ContentPane" splitter="true" reigon="top" minSize="20" role="region">
-				<div id="jobs">
-					<%= render :controller => 'jobs', :action => 'list' %>
-				</div>
-
-				<%= periodically_call_remote :update    => 'jobs',
-				                             :url       => { :controller => :jobs, :action => :list},
-				                             :frequency => 2.0 %>
-		    </div>
-		    <div dojoType="dijit.layout.ContentPane" reigon="center" role="region" minSize="20" aria-live="assertive" aria-atomic="true">
-				<div id="tasks">
-					Waiting to load tasks...
-				</div>
-
-				<%= periodically_call_remote :update    => 'tasks',
-				                             :url       => { :controller => :tasks, :action => :list, :id => 1 },
-				                             :frequency => 2.0 %>
-			</div>
-		</div>
-	    <div dojoType="dijit.layout.ContentPane" title="Cattle">
-			<div id='cattle'>
-			</div>
-			<%= periodically_call_remote :update     => 'cattle',
-										:url		=> { :controller => :cattles, :action => :list},
-										:frequency  => 5.0 %>
-	    </div>
-	</div>
+<div id="mainlayout" dojoType="dijit.layout.BorderContainer" liveSplitters="false">
+        <div id="title" region="top" dojoType="dijit.layout.ContentPane">
+                <h1>Page Title</h1>
+                <div id="logout"><a href="logout">Log Out</a></div>
+        </div>
+        <div id="main" dojoType="dijit.layout.BorderContainer" liveSplitters="true" design="sidebar" region="center" persist="true">
+                <div id="sectionheader" dojoType="dijit.layout.BorderContainer" region="top">
+                        <div dojoType="dijit.layout.ContentPane" id="sectionheadertext" region="center">
+                                <h2>Content Pane Title</h2>
+                        </div>
+                        <div dojoType="dijit.layout.ContentPane" id="searchpanel" region="trailing">
+                                <input type="text" id="searchbox" name="q" value="Search" />
+                        </div>
+                </div>
+               
+                <div dojoType="dijit.layout.AccordionContainer" minSize="20" id="navigation" region="leading" splitter="true">
+                        <div dojoType="dijit.layout.AccordionPane" title="Section 1">
+                                hello world
+                        </div>
+                        <div dojoType="dijit.layout.AccordionPane" title="Section 2">
+                                hello world
+                        </div>
+                        <div dojoType="dijit.layout.AccordionPane" title="Section 3">
+                                Hello world
+                        </div>
+                        <div dojoType="dijit.layout.AccordionPane" title="Section 4">
+                                Hello world
+                        </div>
+                </div>
+               
+                <div dojoType="dijit.layout.ContentPane" id="content" region="center">
+                        <h2>Content Pane</h2>
+                </div>
+               
+        </div>
+        <div id="legal" dojoType="dijit.layout.ContentPane" region="bottom">Legal Information</div>
+</div>

@@ -44,6 +44,7 @@
   <tr>
 	<th>Return Code</th>
 	<th>Time</th>
+	<th>Cattle</th>
 	<th>stdout</th>
 	<th>stderr</th>
   </tr>
@@ -51,8 +52,9 @@
   <tr>
 	<td><%=h log.returncode %></td>
 	<td><%=h log.time %></td>
-	<td><%=h log.stdout %></td>
-	<td><%=h log.stderr %></td>
+	<td><%=h log.cattle.hostname %>
+	<td><%= simple_format(log.stdout) %></td>
+	<td><%= simple_format(log.stderr) %></td>
   </tr>
   <% end %>	
   </table>

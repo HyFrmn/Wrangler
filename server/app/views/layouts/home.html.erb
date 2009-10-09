@@ -13,8 +13,19 @@
 	@import "stylesheets/style.css"
   </style>
   <%= javascript_include_tag 'dojo/dojo', :djconfig => "parseOnLoad: true, baseScriptUri:'/javascripts/dojo/'"%>
+	<script type="text/javascript">
+    dojo.require("dijit.layout.TabContainer");
+    dojo.require("dijit.layout.ContentPane");
+    dojo.require("dijit.layout.LayoutContainer");
+    dojo.require("dijit.layout.BorderContainer");
+    dojo.require("dijit.layout.AccordionPane");
+    dojo.require("dijit.layout.AccordionContainer");
+    dojo.require("dijit.Toolbar");
+	dojo.require("dojox.grid.Grid");
+	dojo.require("dojox.data.HtmlTableStore");
+	</script>
 </head>
-<body>
+<body class='soria'>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
