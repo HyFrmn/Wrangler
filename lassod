@@ -1,0 +1,67 @@
+#!/bin/bash
+
+if [ -z $WRANGLER_HOME ]; then
+	echo "\$WRANGLER_HOME must be set."
+	exit 1
+fi
+
+if [ -z $WRANGLER_SRC ]; then
+	echo "\$WRANGLER_SRC must be set."
+	exit 1
+fi
+
+if [ -z $TMPDIR ]; then
+	export TMPDIR=/tmp
+	exit 1
+fi
+
+PIDFILE=$TMPDIR/lasso.pid
+
+function start_func {
+	if [ -f $PIDFILE ]; then
+		echo "Lasso is already running, (or pid file $PIDFILE exists)"
+		exit 1
+	fi
+	echo "Starting cattle."
+	./lasso.py &
+	echo $! > $PIDFILE
+}
+
+function stop_func {
+	if [ ! -f $PIDFILE ]; then
+		echo "Lasso is not running (or pid file $PIDFILE does not exist)"
+		exit 1
+	fi
+
+	echo "Stopping cattle."
+	kill `cat $PIDFILE`
+	rm $PIDFILE
+}
+
+cd $WRANGLER_SRC
+export PYTHONPATH=$PYTHONPATH:$WRANGLER_SRC
+
+case $1 in 
+	start)
+		start_func	
+		exit 1
+	;;
+	
+	stop)
+		stop_func
+		exit 1
+	;;
+	
+	restart)
+		echo "Restarting cattle."
+		stop_func
+		start_func
+		exit 1
+	;;
+
+	*)
+		echo "Usage:  cattled {start|stop|restart}"
+		exit 1
+	;;
+esac	
+
