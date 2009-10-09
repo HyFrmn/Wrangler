@@ -25,6 +25,7 @@ def next_task():
         taskid = task.id
         task.status = Task.RUNNING
         db.commit()
+        _update_job(task.job)
         log.debug('Task %d was receieved from database.' % taskid)
     else:
         taskid = -1
@@ -35,6 +36,11 @@ def next_task():
 def update_job(job):
     db = Session()
     db.add(job)
+    _update_job(job)
+    db.commit()
+    db.close()
+
+def _update_job(job):
     status_list = []
     for task in job.tasks:
         status_list.append(task.status)
@@ -42,12 +48,13 @@ def update_job(job):
         job.status = job.ERROR
     elif all(map(lambda x: x==task.FINISHED, status_list)):
         job.status = job.FINISHED
+        if not job.finished:
+            job.finished = datetime.datetime.now()
     elif any(map(lambda x: x==task.RUNNING, status_list)):
         job.status = job.RUNNING
-    status = job.status
-    db.commit()
-    db.close()
-    return status
+        if not job.started:
+            job.started = datetime.datetime.now()
+    return job.status
 
 def queue_job(job):
     db = Session()

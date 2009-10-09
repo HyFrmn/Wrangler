@@ -7,6 +7,16 @@ from wrangler.job import Job
 from wrangler.task import Task
 from wrangler.config import config_base
 
+def update_env(env):
+    run_env = os.environ.copy()
+    env_mask = config_base().get('jobs', 'env-mask').split(':')
+    for mask in env_mask:
+        try:
+            del env[mask]
+        except KeyError:
+            pass
+    run_env.update(env)
+    return run_env
 
 def RenderJob(name='No Name',
               command = 'printf "Frame: %4s %s\n" $WRANGLER_FRAME $WRANGLER_PADFRAME',
@@ -22,15 +32,11 @@ def RenderJob(name='No Name',
 
     if not env:
         env = {}
+    env = update_env(env)
     if not owner:
         owner = os.environ['USER']
     env.update(os.environ)
-    env_mask = config.get('jobs', 'env-mask').split(':')
-    for mask in env_mask:
-        try:
-            del env[mask]
-        except KeyError:
-            pass
+    
     job = Job(name, env=env)
     job.owner = owner
     for i in range(start, end + 1, step):
@@ -46,7 +52,6 @@ def RenderJob(name='No Name',
 def main():
     job = RenderJob()
     json = job.dump()
-    #print json
     obj = Job.Load(json)
     print type(obj)
 

@@ -42,6 +42,7 @@ def main():
     job_data['priority'] = opts.priority
     job_data['owner'] = os.environ['USER']
     job_data['name'] = opts.name
+    job_data['env'] = os.environ.copy()
     
     if opts.verbose:
         print("""Adding Job:

@@ -24,7 +24,7 @@ class LassoServer(WranglerServer):
         config = config_lasso()
         hostname = config.get('lasso', 'hostname')
         port = config.getint('lasso', 'port')
-        WranglerServer.__init__(self, hostname, port)
+        WranglerServer.__init__(self, hostname, port, 'wrangler.lasso')
 
     def _setup(self):
         WranglerServer._setup(self)

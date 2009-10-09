@@ -11,15 +11,15 @@ from thread import start_new_thread as start
 from wrangler.config import config_base
 from wrangler.network.asyncxmlrpcserver import AsyncXMLRPCServer
 
-class WranglerServer(object,):
-    def __init__(self, host, port, wrangler_config='wrangler.server'):
+class WranglerServer(object):
+    def __init__(self, host, port, log='wrangler.server'):
         self.config = config_base()
         self.hostname = host
         self.port = port
         self.server = None
         self.client = None
         self._timeouts = dict()
-        self._log = logging.getLogger(wrangler_config)
+        self._log = logging.getLogger(log)
 
     #Logging Messages
     def log(self, level, msg):

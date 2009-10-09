@@ -27,10 +27,19 @@ def config_logging(home=home):
     #logging.config.fileConfig(os.path.join(home, 'farm.cfg'))
     log = logging.getLogger('wrangler')
     log.setLevel(logging.ERROR)
-    
     config = config_base()
     log_dir = config.get('logging', 'server-dir')
+    
+    #Setup Cattle Log
+    cattle_log = logging.getLogger('wrangler.cattle')
     file_path = os.path.join(log_dir, info.hostname() + '.log')
+    file_path = os.path.expandvars(file_path)
+    handler = logging.FileHandler(file_path)
+    log.addHandler(handler)
+    
+    #Setup Lasso Log
+    cattle_log = logging.getLogger('wrangler.lasso')
+    file_path = os.path.join(log_dir, 'lasso.log')
     file_path = os.path.expandvars(file_path)
     handler = logging.FileHandler(file_path)
     log.addHandler(handler)
