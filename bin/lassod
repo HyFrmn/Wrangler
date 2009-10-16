@@ -33,7 +33,7 @@ function stop_func {
 	fi
 
 	echo "Stopping lasso."
-	kill `cat $PIDFILE`
+	kill -SIGINT `cat $PIDFILE`
 	rm $PIDFILE
 }
 

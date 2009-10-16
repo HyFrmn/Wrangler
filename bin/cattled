@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ -z $WRANGLER_HOME ]; then
 	echo "\$WRANGLER_HOME must be set."
 	exit 1
@@ -34,7 +33,7 @@ function stop_func {
 	fi
 
 	echo "Stopping cattle."
-	kill `cat $PIDFILE`
+	kill -SIGINT `cat $PIDFILE`
 	rm $PIDFILE
 }
 

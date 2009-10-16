@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import logging
 import logging.handlers
 import logging.config
@@ -26,23 +27,30 @@ home = check_environment()
 def config_logging(home=home):
     #logging.config.fileConfig(os.path.join(home, 'farm.cfg'))
     log = logging.getLogger('wrangler')
-    log.setLevel(logging.ERROR)
+    log.propagate = False
+    log.setLevel(logging.FATAL)
     config = config_base()
     log_dir = config.get('logging', 'server-dir')
+    handler = logging.StreamHandler(sys.stdout)
+    log.addHandler(handler)
     
     #Setup Cattle Log
     cattle_log = logging.getLogger('wrangler.cattle')
+    cattle_log.setLevel(logging.INFO)
+    cattle_log.propagate = False
     file_path = os.path.join(log_dir, info.hostname() + '.log')
     file_path = os.path.expandvars(file_path)
     handler = logging.FileHandler(file_path)
-    log.addHandler(handler)
+    cattle_log.addHandler(handler)
     
     #Setup Lasso Log
-    cattle_log = logging.getLogger('wrangler.lasso')
+    lasso_log = logging.getLogger('wrangler.lasso')
+    lasso_log.setLevel(logging.INFO)
+    lasso_log.propagate = False
     file_path = os.path.join(log_dir, 'lasso.log')
     file_path = os.path.expandvars(file_path)
     handler = logging.FileHandler(file_path)
-    log.addHandler(handler)
+    lasso_log.addHandler(handler)
     return log
 
 def config_base(home=home):

@@ -3,6 +3,7 @@
 import time
 import socket
 import select
+import signal
 import logging
 import xmlrpclib
 
@@ -12,7 +13,7 @@ from wrangler.config import config_base
 from wrangler.network.asyncxmlrpcserver import AsyncXMLRPCServer
 
 class WranglerServer(object):
-    def __init__(self, host, port, log='wrangler.server'):
+    def __init__(self, host, port, log='wrangler.lasso'):
         self.config = config_base()
         self.hostname = host
         self.port = port
@@ -59,6 +60,7 @@ class WranglerServer(object):
         self._handles = [self._handle_main]
 
     def _run(self):
+        signal.signal(signal.SIGINT, self.shutdown_handler)
         self._setup()
         start(self._serve, ())
         self._main()
@@ -130,7 +132,11 @@ class WranglerServer(object):
             return True
         else:
             return False
+    def shutdown_handler(self, signum, frame):
+        print signum
+        self.shutdown()
 
     def shutdown(self):
+        self.info('Server is shutting down.')
         self._running = False
         return self._running
