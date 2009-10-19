@@ -7,25 +7,17 @@
   <title>Wrangler: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag :defaults %>
+<!-- Combo-handled YUI CSS files: -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css&2.8.0r4/build/resize/assets/skins/sam/resize.css&2.8.0r4/build/layout/assets/skins/sam/layout.css">
+<!-- Combo-handled YUI JS files: -->
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js&2.8.0r4/build/animation/animation-min.js&2.8.0r4/build/dragdrop/dragdrop-min.js&2.8.0r4/build/element/element-min.js&2.8.0r4/build/resize/resize-min.js&2.8.0r4/build/layout/layout-min.js"></script>
+
+
   <style type="text/css">
-	@import "javascripts/dijit/themes/soria/soria.css";
-	@import "javascripts/dojo/resources/dojo.css";
 	@import "stylesheets/style.css"
   </style>
-  <%= javascript_include_tag 'dojo/dojo', :djconfig => "parseOnLoad: true, baseScriptUri:'/javascripts/dojo/'"%>
-	<script type="text/javascript">
-    dojo.require("dijit.layout.TabContainer");
-    dojo.require("dijit.layout.ContentPane");
-    dojo.require("dijit.layout.LayoutContainer");
-    dojo.require("dijit.layout.BorderContainer");
-    dojo.require("dijit.layout.AccordionPane");
-    dojo.require("dijit.layout.AccordionContainer");
-    dojo.require("dijit.Toolbar");
-	dojo.require("dojox.grid.Grid");
-	dojo.require("dojox.data.HtmlTableStore");
-	</script>
-</head>
-<body class='soria'>
+  </head>
+<body class=" yui-skin-sam">
 
 <p style="color: green"><%= flash[:notice] %></p>
 

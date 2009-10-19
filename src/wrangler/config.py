@@ -25,12 +25,13 @@ def check_environment():
 home = check_environment()
 
 def config_logging(home=home):
-    #logging.config.fileConfig(os.path.join(home, 'farm.cfg'))
     log = logging.getLogger('wrangler')
     log.propagate = False
     log.setLevel(logging.FATAL)
     config = config_base()
-    log_dir = config.get('logging', 'server-dir')
+    log_dir = os.path.expandvars(config.get('logging', 'server-dir'))
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
     handler = logging.StreamHandler(sys.stdout)
     log.addHandler(handler)
     

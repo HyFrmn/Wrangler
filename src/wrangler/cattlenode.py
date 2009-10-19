@@ -33,6 +33,9 @@ class CattleMetrics(Base):
     id = Column(Integer, primary_key=True)
     cattle_id = Column(Integer, ForeignKey('cattles.id'))
     load_avg = Column(Float)
+    swap = Column(Integer)
+    memory = Column(Integer)
+    tmp = Column(Integer)
     time = Column(DateTime)
 
     def __init__(self, hostid, time, load_avg, running_tasks=-1):

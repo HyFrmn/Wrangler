@@ -21,7 +21,7 @@ function start_func {
 		exit 1
 	fi
 	echo "Starting cattle."
-	src/cattle.py &
+	$WRANGLER_SRC/cattle.py &
 	echo $! > $PIDFILE
 	echo "Cattle started."
 }
@@ -36,8 +36,6 @@ function stop_func {
 	kill -SIGINT `cat $PIDFILE`
 	rm $PIDFILE
 }
-
-cd $WRANGLER_SRC
 
 case $1 in 
 	start)

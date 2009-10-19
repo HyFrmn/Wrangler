@@ -133,7 +133,6 @@ class WranglerServer(object):
         else:
             return False
     def shutdown_handler(self, signum, frame):
-        print signum
         self.shutdown()
 
     def shutdown(self):

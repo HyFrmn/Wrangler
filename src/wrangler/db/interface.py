@@ -12,15 +12,19 @@ from wrangler.db.session import Session
 __all__ = ['next_task',
            'update_job',
            'queue_job',
+           'update_queue',
+           'update_task',
            'update_metrics',
            'create_task_log',
-           'update_task_log']
+           'update_task_log',
+           'connect_cattle',
+           'disconnect_cattle']
 
 def next_task():
     """Return the next task in the queue."""
     log.debug('Requesting next task from database.')
     db = Session()
-    task = db.query(Task).filter(Task.status==Task.WAITING).order_by(desc(Task.priority)).first()
+    task = db.query(Task).filter(Task.status==Task.QUEUED).order_by(desc(Task.priority)).first()
     if task:
         taskid = task.id
         task.status = Task.RUNNING
@@ -32,6 +36,29 @@ def next_task():
         log.debug('No task found. The Queue is empty.')
     db.close()
     return taskid
+
+def update_queue():
+    log.debug('Updating tasks in queue.')
+    db = Session()
+    tasks = db.query(Task).filter(Task.status==Task.WAITING).order_by(desc(Task.priority)).limit(100)
+    for task in tasks:
+        _update_task(task)
+    db.commit()
+    db.close()
+
+def update_task(task):
+    db = Session()
+    db.add(task)
+    _update_task(task)
+    db.commit()
+    db.close()
+
+def _update_task(task):
+    if task.status == task.WAITING:
+        if task.parent:
+            if task.parent.status != task.FINISHED:
+                return
+        task.status = task.QUEUED
 
 def update_job(job):
     db = Session()
@@ -112,3 +139,28 @@ def update_metrics(hostname, data):
     db.add(metrics)
     db.commit()
     db.close()
+
+def connect_cattle(hostname):
+    db = Session()
+    found = db.query(Cattle).filter(Cattle.hostname==hostname).first()
+    if found:
+        log.debug('Found cattle in database.')
+        cattle = found
+    else:
+        log.debug('No cattle found in database, creating new row.')
+        cattle = Cattle()
+        db.add(cattle)
+    cattle.enabled = True
+    db.commit()
+    db.expunge(cattle)
+    db.close()
+    log.debug('%s was added to the heard.' % hostname)
+    return cattle
+
+def disconnect_cattle(hostname):
+    db = Session()
+    cattle = db.query(Cattle).filter(Cattle.hostname==hostname).first()
+    cattle.enabled = False
+    db.commit()
+    db.close()
+    log.debug('%s was removed from the heard' % hostname)

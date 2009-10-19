@@ -22,7 +22,7 @@ function start_func {
 		exit 1
 	fi
 	echo "Starting lasso."
-	src/lasso.py &
+	$WRANGLER_SRC/lasso.py &
 	echo $! > $PIDFILE
 }
 
@@ -37,7 +37,6 @@ function stop_func {
 	rm $PIDFILE
 }
 
-cd $WRANGLER_SRC
 export PYTHONPATH=$PYTHONPATH:$WRANGLER_SRC
 
 case $1 in 

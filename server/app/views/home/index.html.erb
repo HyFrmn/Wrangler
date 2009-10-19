@@ -1,37 +1,39 @@
-<div id="mainlayout" dojoType="dijit.layout.BorderContainer" liveSplitters="false">
-        <div id="title" region="top" dojoType="dijit.layout.ContentPane">
-                <h1>Page Title</h1>
-                <div id="logout"><a href="logout">Log Out</a></div>
-        </div>
-        <div id="main" dojoType="dijit.layout.BorderContainer" liveSplitters="true" design="sidebar" region="center" persist="true">
-                <div id="sectionheader" dojoType="dijit.layout.BorderContainer" region="top">
-                        <div dojoType="dijit.layout.ContentPane" id="sectionheadertext" region="center">
-                                <h2>Content Pane Title</h2>
-                        </div>
-                        <div dojoType="dijit.layout.ContentPane" id="searchpanel" region="trailing">
-                                <input type="text" id="searchbox" name="q" value="Search" />
-                        </div>
-                </div>
-               
-                <div dojoType="dijit.layout.AccordionContainer" minSize="20" id="navigation" region="leading" splitter="true">
-                        <div dojoType="dijit.layout.AccordionPane" title="Section 1">
-                                hello world
-                        </div>
-                        <div dojoType="dijit.layout.AccordionPane" title="Section 2">
-                                hello world
-                        </div>
-                        <div dojoType="dijit.layout.AccordionPane" title="Section 3">
-                                Hello world
-                        </div>
-                        <div dojoType="dijit.layout.AccordionPane" title="Section 4">
-                                Hello world
-                        </div>
-                </div>
-               
-                <div dojoType="dijit.layout.ContentPane" id="content" region="center">
-                        <h2>Content Pane</h2>
-                </div>
-               
-        </div>
-        <div id="legal" dojoType="dijit.layout.ContentPane" region="bottom">Legal Information</div>
+<div id="banner"><h1>Lasso</h1></div>
+<div id="menu" class="yuimenu">
+    <ul>
+        <li class="yuimenuitem"><a href="#" class="yuimenuitemlabel">Queue</a></li>
+        <li class="yuimenuitem"><a href="#" class="yuimenuitemlable">Cattle</a></li>
+    </ul>
 </div>
+<div id="main">
+</div>
+
+
+<script>
+
+(function() {
+    var Dom = YAHOO.util.Dom,
+        Event = YAHOO.util.Event;
+
+    Event.onDOMReady(function() {
+        var layout = new YAHOO.widget.Layout({
+            units: [
+                { position: 'top', height: 150, body: 'banner', gutter: '5px', collapse: false, resize: false },
+                { position: 'left', width: 200, resize: true, body: 'menu', gutter: '5px', collapse: false },
+                { position: 'center', body: 'main', gutter: '5px' }
+            ]
+        });
+        layout.on('render', function() {
+            layout.getUnitByPosition('left').on('close', function() {
+                closeLeft();
+            });
+        });
+        layout.render();
+
+	var oMenu = new YAHOO.widget.Menu("menu", { fixedcenter: true }); 
+
+	oMenu.render();
+    });
+})();
+</script>
+
