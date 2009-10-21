@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-
-import pickle
-
 from wrangler.config import config_base
 from wrangler.network import WranglerClient
 from wrangler.hardware import info
@@ -12,4 +9,5 @@ class CattleClient(WranglerClient):
         config = config_base()
         port = config.getint('cattle', 'port')
         hostname = info.hostname()
+        print 'Connecting to %s:%d' % (hostname, port)
         WranglerClient.__init__(self, hostname, port)

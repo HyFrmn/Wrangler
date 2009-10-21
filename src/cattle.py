@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from wrangler.cattle import CattleServer
 from wrangler.hardware import info
+from wrangler.cattle.server import CattleServer
 
 def main():
-    server = CattleServer(info.hostname(), 6789, 'wrangler.cattle')
+    server = CattleServer()
     server._run()
 
 if __name__ == '__main__':
