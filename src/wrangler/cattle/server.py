@@ -91,8 +91,14 @@ class CattleServer(WranglerServer):
         db.add(task.log)
         task_data = {}
         task_data['command'] = task.run_command
-        task_data['gid'] = pwd.getpwnam(task.job.owner)[3]
-        task_data['uid'] = pwd.getpwnam(task.job.owner)[2]
+        tries = 0
+        while tries < 3:
+            try:
+                task_data['gid'] = pwd.getpwnam(task.job.owner)[3]
+                task_data['uid'] = pwd.getpwnam(task.job.owner)[2]
+                break
+            except KeyError:
+                tries += 1
         task_data['stdout_file_path'] = task.log._stdout_file_path()
         task_data['stderr_file_path'] = task.log._stderr_file_path()
         db.close()
@@ -102,8 +108,10 @@ class CattleServer(WranglerServer):
         db = Session()
         probe = TaskProbe()
         db.add(probe)
+        probe.task_id = task_id
         probe.memory = probes['memory']
         probe.pcpu = probes['pcpu']
+        probe.pid = probes['pid']
         probe.probes = probes
         db.commit()
         probe_id = probe.id

@@ -80,6 +80,7 @@ class ProcessMonitor(object):
                 probes = {}
                 probes['memory'] = memory(proc.pid)
                 probes['pcpu'] = cpu_usage(proc.pid)
+                probes['pid'] = proc.pid
                 self.client.monitor_probe(self.task_id, probes)
             time.sleep(0.3333)
         self.run_time = time.time() - start_time
