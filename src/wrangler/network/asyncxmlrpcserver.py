@@ -35,4 +35,5 @@ class CustomThreadingMixIn:
             t.setDaemon(1)
         t.start()
 
-class AsyncXMLRPCServer(SocketServer.ThreadingMixIn, SimpleXMLRPCServer): pass
+#class AsyncXMLRPCServer(SocketServer.ThreadingMixIn, SimpleXMLRPCServer): pass
+class AsyncXMLRPCServer(SimpleXMLRPCServer): pass

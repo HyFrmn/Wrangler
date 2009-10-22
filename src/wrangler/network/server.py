@@ -59,6 +59,7 @@ class WranglerServer(object):
         self.server.register_function(self.warning, 'warning')
         self.server.register_function(self.error, 'error')
         self.server.register_function(self.critical, 'critical')
+        self.server.register_function(self.configure, 'configure')
         self._running = True
         self._handles = [self._handle_main]
 
@@ -120,7 +121,7 @@ class WranglerServer(object):
             return
         for sock in inputs:
             if sock == self.server:
-                start(self.server.handle_request, ())
+                self.server.handle_request()
         self.log(5, 'Stopping server handler.')
 
     def _register_timeout(self, key, length):
