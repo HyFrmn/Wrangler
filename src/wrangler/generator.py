@@ -8,7 +8,7 @@ from wrangler.task import Task
 from wrangler.config import config_base
 
 def update_env(env):
-    run_env = os.environ.copy()
+    run_env = {}#os.environ.copy()
     env_mask = config_base().get('jobs', 'env-mask').split(':')
     for mask in env_mask:
         try:
@@ -36,7 +36,6 @@ def RenderJob(name='No Name',
     env = update_env(env)
     if not owner:
         owner = os.environ['USER']
-    env.update(os.environ)
     job = Job(name, env=env)
     job.owner = owner
     for i in range(start, end + 1, step):
