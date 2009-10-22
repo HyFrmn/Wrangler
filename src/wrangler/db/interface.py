@@ -108,13 +108,11 @@ def create_task_log(task, cattle):
     db.close()
     return task_log
 
-def update_task_log(task_log, returncode, delta_time, stdout, stderr):
+def update_task_log(task_log, returncode, delta_time):
     db = Session()
     db.add(task_log)
     task_log.time = delta_time
     task_log.returncode = returncode
-    task_log._log_stdout(stdout)
-    task_log._log_stderr(stderr)
     task = task_log.task
     if task_log.returncode == 0:
         task.status = Task.FINISHED
@@ -122,6 +120,11 @@ def update_task_log(task_log, returncode, delta_time, stdout, stderr):
     else:
         task.status = Task.ERROR
         log.debug('Task %d errored out.' % task.id)
+    task.run_count += 1
+    print returncode, task.run_count
+    if returncode == 1 and task.run_count < 3:
+        print 'Requeueing task %d' % task.id 
+        task.status = task.WAITING
     job = task.job
     db.commit()
     db.expunge(task)

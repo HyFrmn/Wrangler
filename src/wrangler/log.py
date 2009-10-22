@@ -28,25 +28,6 @@ class TaskLog(Base):
         self.stdout = self._stdout_file_path()
         self.stderr = self._stderr_file_path()
 
-
-    def _log_stdout(self, output):
-        filepath = self._stdout_file_path()
-        dirpath = os.path.dirname(filepath)
-        if not os.path.exists(dirpath):
-            os.makedirs(dirpath)
-        fd = open(filepath, 'w')
-        fd.write(output)
-        fd.close()
-
-    def _log_stderr(self, output):
-        filepath = self._stderr_file_path()
-        dirpath = os.path.dirname(filepath)
-        if not os.path.exists(dirpath):
-            os.makedirs(dirpath)
-        fd = open(filepath, 'w')
-        fd.write(output)
-        fd.close()
-
     def _stdout_file_path(self):
         return os.path.join(self.logdir, str(self.task_id) + '_out.log')
 

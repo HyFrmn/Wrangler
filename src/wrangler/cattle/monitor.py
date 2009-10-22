@@ -35,6 +35,8 @@ class ProcessMonitor(object):
         self.connect()
         self.monitor()
         self.disconnect()
+        self.return_code = 2
+        self.run_time = -1
 
     def connect(self):
         task_data = self.client.monitor_connect(self.task_id)
@@ -45,7 +47,7 @@ class ProcessMonitor(object):
         self.stderr_file_path = task_data['stderr_file_path']
 
     def disconnect(self):
-        self.client.monitor_disconnect(self.task_id)
+        self.client.monitor_disconnect(self.task_id, self.run_time, self.return_code)
 
     def monitor(self):
         #Set uid
@@ -62,6 +64,7 @@ class ProcessMonitor(object):
             print "ERROR: Could not set user id."
             sys.exit(1)
 
+        #Setup user environment
         try:
             os.environ['USER'] = pwd.getpwuid(self.uid)[0]
         except KeyError:
@@ -70,13 +73,18 @@ class ProcessMonitor(object):
 
         stdout_fd = open(self.stdout_file_path, 'w')
         stderr_fd = open(self.stderr_file_path, 'w')
-
+        start_time = time.time()
         proc = Popen(self.command, shell=True, stdout=stdout_fd, stderr=stderr_fd)
         while proc.poll() is None:
             if timeout():
-                client.info(memory(proc.pid))
-                client.info(cpu_usage(proc.pid))
-        print "Process %d is complete" % proc.pid
+                probes = {}
+                probes['memory'] = memory(proc.pid)
+                probes['pcpu'] = cpu_usage(proc.pid)
+                self.client.monitor_probe(self.task_id, probes)
+            time.sleep(0.3333)
+        self.run_time = time.time() - start_time
+        self.return_code = proc.returncode
+        print "Process %d is complete" % proc.pid, self.run_time, self.return_code
         stdout_fd.close()
         stderr_fd.close()
 

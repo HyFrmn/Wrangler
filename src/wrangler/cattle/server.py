@@ -44,6 +44,7 @@ class CattleServer(WranglerServer):
         #Register XMLRPC calls
         self.server.register_function(self.monitor_connect, 'monitor_connect')
         self.server.register_function(self.monitor_disconnect, 'monitor_disconnect')
+        self.server.register_function(self.monitor_probe, 'monitor_probe')
 
         #Connect to lasso.
         self.cattle = connect_cattle(self.hostname)
@@ -80,7 +81,7 @@ class CattleServer(WranglerServer):
             self._no_tasks = True
 
     def monitor_connect(self, task_id):
-        print 'Monitor for task %d has connected.' % task_id
+        self.debug('Monitor for task %d has connected.' % task_id)
         db = Session()
         task = self.running_tasks[task_id]
         db.add(task)
@@ -94,10 +95,22 @@ class CattleServer(WranglerServer):
         db.close()
         return task_data
 
+    def monitor_probe(self, task_id, probes):
+        db = Session()
+        probe = TaskProbe()
+        db.add(probe)
+        probe.memory = probes['memory']
+        probe.pcpu = probes['pcpu']
+        probe.probes = probes
+        db.commit()
+        probe_id = probe.id
+        db.expunge(probe)
+        db.close()
+        return probe_id
 
-    def monitor_disconnect(self, task_id):
-        print 'Monitor for task %d had disconnected.' % task_id
-        self._post_task(self.running_tasks[task_id])
+    def monitor_disconnect(self, task_id, run_time, return_code):
+        self.debug('Monitor for task %d had disconnected.' % task_id)
+        self._post_task(self.running_tasks[task_id], run_time, return_code)
         self._clean_up_task(self.running_tasks[task_id])
         return task_id
 
@@ -163,15 +176,13 @@ class CattleServer(WranglerServer):
                                 shell = True)
         except OSError, msg:
             self.error(msg)
-            update_task_log(task.log, -1, -1,
-                'WRANGLER ERROR: Task did not start.',
-                'WRANGLER ERROR: Task did not start.')
+            update_task_log(task.log, -1, -1)
             return False
         return True
 
-    def _post_task(self, task):
+    def _post_task(self, task, run_time, return_code):
         self.debug('Postprocessing task %d' % task.id)
-        update_task_log(task.log, 0, -1, 'Not Implemented', 'Not Implemented')
+        update_task_log(task.log, return_code, run_time)
 
     def _clean_up_task(self, task):
         self.debug('Cleaning up task %d' % task.id)

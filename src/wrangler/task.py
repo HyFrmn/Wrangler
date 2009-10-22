@@ -31,6 +31,7 @@ class Task(Base):
     meta = Column(DictionaryDecorator(16384), default={})
     parent  = Column(Integer, ForeignKey('tasks.id'))
     status = Column(Integer, default=-1)
+    run_count = Column(Integer)
 
     # Relations 
     job = relation("Job", lazy=False)
@@ -41,6 +42,17 @@ class Task(Base):
         self.priority = priority
         self.env = dict()
         self.meta = dict()
+        self.run_count = 0
+
+class TaskProbe(Base):
+    __tablename__ = 'task_probes'
+
+    # Table Fields
+    id = Column(Integer, primary_key=True)
+    task_id = Column(Integer, ForeignKey('jobs.id'))
+    memory = Column(Integer)
+    pcpu = Column(Float)
+    probes = Column(DictionaryDecorator(16384))
 
 def main():
     task = Task('echo $HOSTNAME')
