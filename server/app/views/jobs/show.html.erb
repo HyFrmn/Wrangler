@@ -16,8 +16,12 @@
 </p>
 
 <p>
-  <b>Runtime:</b>
-  <%=h @job.averagetime %> (Average) / <%=h @job.runtime %> (Total)
+  <b>Times:</b>
+  <ul>
+  <li>Average: <%=h distance_of_time_in_words(@job.averagetime) %></li>
+  <li>Total:   <%=h distance_of_time_in_words(@job.runtime) %></li>
+  <li>Remaining: <%=h distance_of_time_in_words(@job.estimate) %></li>
+  </ul>
 </p>
 <p>
 	<b>Progress:</b>
