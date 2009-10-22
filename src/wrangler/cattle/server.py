@@ -5,7 +5,7 @@ import thread
 import subprocess
 
 from wrangler import *
-from wrangler.config import config_base
+from wrangler.config import config_cattle
 from wrangler.network import WranglerServer
 from wrangler.hardware import info
 from wrangler.db.session import Session
@@ -15,9 +15,9 @@ from wrangler.lasso.client import LassoClient
 
 class CattleServer(WranglerServer):
     def __init__(self):
+        self.configure()
         hostname = info.hostname()
-        config = config_base()
-        port = config.getint('cattle', 'port')
+        port = seflf.config.getint('cattle', 'port')
         WranglerServer.__init__(self, hostname, port, 'wrangler.cattle')
 
     def _setup(self):
@@ -48,6 +48,9 @@ class CattleServer(WranglerServer):
 
         #Connect to lasso.
         self.cattle = connect_cattle(self.hostname)
+
+    def configure(self):
+        self.config = config_cattle()
 
     def full(self):
         self.num_thread_lock.acquire()

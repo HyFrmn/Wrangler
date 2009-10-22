@@ -14,13 +14,16 @@ from wrangler.network.asyncxmlrpcserver import AsyncXMLRPCServer
 
 class WranglerServer(object):
     def __init__(self, host, port, log='wrangler.lasso'):
-        self.config = config_base()
+        self.configure()
         self.hostname = host
         self.port = port
         self.server = None
         self.client = None
         self._timeouts = dict()
         self._log = logging.getLogger(log)
+
+    def configure(self):
+        self.config = config_base()
 
     #Logging Messages
     def log(self, level, msg):
