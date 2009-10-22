@@ -9,5 +9,4 @@ class CattleClient(WranglerClient):
         config = config_base()
         port = config.getint('cattle', 'port')
         hostname = info.hostname()
-        print 'Connecting to %s:%d' % (hostname, port)
         WranglerClient.__init__(self, hostname, port)

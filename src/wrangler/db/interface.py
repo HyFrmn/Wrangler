@@ -121,9 +121,8 @@ def update_task_log(task_log, returncode, delta_time):
         task.status = Task.ERROR
         log.debug('Task %d errored out.' % task.id)
     task.run_count += 1
-    print returncode, task.run_count
     if returncode == 1 and task.run_count < 3:
-        print 'Requeueing task %d' % task.id 
+        log.info('Requeueing task %d' % task.id) 
         task.status = task.WAITING
     job = task.job
     db.commit()

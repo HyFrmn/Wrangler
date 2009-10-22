@@ -56,7 +56,6 @@ class LassoServer(WranglerServer):
     def _setup(self):
         WranglerServer._setup(self)
         self._register_timeout('update-queue', 20.0)
-        self._register_timeout('thread-count', 5.0)
 
         #Register API Functions
         self.server.register_function(self.next_task, "next_task")
@@ -93,5 +92,3 @@ class LassoServer(WranglerServer):
         if self.queue_dirty:
             db.update_queue()
             self.queue_dirty = False
-        if self._timeout('thread-count'):
-            print threading.activeCount()

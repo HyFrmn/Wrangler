@@ -54,14 +54,14 @@ class ProcessMonitor(object):
         try:
             os.setgid(self.gid)
         except OSError:
-            print "ERROR: Could not set group id."
+            print "ERROR: Could not set group id [%d] for task %d." % (self.gid, self.task_id)
             sys.exit(1)
 
         #Set gid
         try:
             os.setuid(self.uid)
         except OSError:
-            print "ERROR: Could not set user id."
+            print "ERROR: Could not set user id [ %d] for task %d." % (self.uid, self.task_id)
             sys.exit(1)
 
         #Setup user environment
@@ -84,7 +84,6 @@ class ProcessMonitor(object):
             time.sleep(0.3333)
         self.run_time = time.time() - start_time
         self.return_code = proc.returncode
-        print "Process %d is complete" % proc.pid, self.run_time, self.return_code
         stdout_fd.close()
         stderr_fd.close()
 
