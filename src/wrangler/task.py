@@ -52,6 +52,7 @@ class TaskProbe(Base):
     task_id = Column(Integer, ForeignKey('jobs.id'))
     memory = Column(Integer)
     pcpu = Column(Float)
+    pid = Column(Integer)
     probes = Column(DictionaryDecorator(16384))
 
 def main():
