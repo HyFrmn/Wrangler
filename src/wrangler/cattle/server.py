@@ -17,7 +17,7 @@ class CattleServer(WranglerServer):
     def __init__(self):
         self.configure()
         hostname = info.hostname()
-        port = seflf.config.getint('cattle', 'port')
+        port = self.config.getint('cattle', 'port')
         WranglerServer.__init__(self, hostname, port, 'wrangler.cattle')
 
     def _setup(self):
