@@ -5,8 +5,10 @@ from wrangler.network import WranglerClient
 from wrangler.hardware import info
 
 class CattleClient(WranglerClient):
-    def __init__(self):
+    def __init__(self, hostname=None, port=None):
         config = config_base()
-        port = config.getint('cattle', 'port')
-        hostname = info.hostname()
+        if not port:
+            port = config.getint('cattle', 'port')
+        if not hostname:
+            hostname = info.hostname()
         WranglerClient.__init__(self, hostname, port)
