@@ -6,9 +6,14 @@ import sys
 from wrangler.cattle.client import CattleClient
 from wrangler.lasso.client import LassoClient
 
+__all__ = ['sleep',
+           'wake',
+           'task_list',
+           'queue_list']
+
 def main():
     if len(sys.argv) < 2:
-        print 'Usage: wrangle [cmd] <options>'
+        help()
         sys.exit(1)
 
     args = sys.argv[1:]
@@ -18,9 +23,39 @@ def main():
         globals()[cmd](*args)
 
 def sleep(*args):
+    """Put target cattle to sleep. Usage: wrangler sleep [cattle1] [cattle2] ... [cattleN]"""
     for hostname in args:
         client = CattleClient(hostname)
         client.sleep()
+
+def wake(*args):
+    """Wake target cattle up. Usage: wrangler wake [cattle1] [cattle2] ... [cattleN]"""
+    for hostname in args:
+        client = CattleClient(hostname)
+        client.wake_up()
+
+def task_list(*args):
+    """Print a list of tasks that a given cattle is currently chewing on."""
+    hostname = args.pop(0)
+
+def queue_list(*args):
+    """Print the list of tasks currently in the lasso's queue."""
+    pass
+
+def help():
+    print 'Usage: wrangle [cmd] <options>'
+    print '-' * 40
+    # Two empty lines for formatting.
+    print 
+    print
+    print 'Command List'
+    print '-' * 40
+    for func in __all__:
+        print '%12s - %s' % (func, globals()[func].__doc__)
+    
+    # Two empty lines for formatting. 
+    print 
+    print
 
 if __name__ == '__main__':
     main()
