@@ -63,6 +63,8 @@ class LassoServer(WranglerServer):
         self.server.register_function(self.queue_job, "queue_job")
         self.server.register_function(self.pulse, "pulse")
 
+        self.normalize_queue()
+
 
     def pulse(self, hostname):
         if hostname not in self.heard.keys():
@@ -86,6 +88,17 @@ class LassoServer(WranglerServer):
         jobid = db.queue_job(job)
         self.queue_dirty = True
         return jobid
+
+    def normalize_queue(self):
+        self.debug("Normalizing queue.")
+        self.next_task_lock.acquire()
+        db = Session()
+        tasks = db.query(Task).filter(Task.status==Task.QUEUED).all()
+        for task in tasks:
+            task.status = Task.WAITING
+        db.commit()
+        db.close()
+        self.next_task_lock.release()
 
     def update_queue(self):
         self.debug("Updating queue.")
