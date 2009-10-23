@@ -36,7 +36,22 @@ def wake(*args):
 
 def task_list(*args):
     """Print a list of tasks that a given cattle is currently chewing on."""
-    hostname = args.pop(0)
+    hostname = args[0]
+    client = CattleClient(hostname)
+    for task in client.task_list():
+        print task
+
+def state(*args):
+    for hostname in args:
+        client = CattleClient(hostname)
+        state = client.state()
+        if state == 0:
+            state_desc = 'Sleeping'
+        elif state == 1:
+            state_desc = 'Awake'
+        else:
+            state_desc = 'Unknown'
+        print '%16s - %s' % (hostname, state_desc)
 
 def queue_list(*args):
     """Print the list of tasks currently in the lasso's queue."""

@@ -31,7 +31,7 @@ class CattleServer(WranglerServer):
         self.running_tasks = {}
         self.max_tasks = self.config.getint('cattle', 'max-tasks')
 
-        self.state = self.AWAKE
+        self._state = self.AWAKE
 
         #Setup Handlers
         self._handles.append(self._handle_metrics)
@@ -53,6 +53,8 @@ class CattleServer(WranglerServer):
         self.server.register_function(self.monitor_probe, 'monitor_probe')
         self.server.register_function(self.sleep, 'sleep')
         self.server.register_function(self.wake_up, 'wake_up')
+        self.server.register_function(self.task_list, 'task_list')
+        self.server.register_function(self.state, 'state')
 
         #Connect to lasso.
         self.cattle = connect_cattle(self.hostname)
@@ -71,16 +73,22 @@ class CattleServer(WranglerServer):
         disconnect_cattle(self.hostname)
 
     def sleep(self):
-        if self.state == self.AWAKE:
-            self.state = self.ASLEEP
+        if self._state == self.AWAKE:
+            self._state = self.ASLEEP
             sleep_cattle(self.hostname)
-        return self.state
+        return self._state
 
     def wake_up(self):
-        if self.state == self.ASLEEP:
-            self.state = self.AWAKE
+        if self._state == self.ASLEEP:
+            self._state = self.AWAKE
             wake_cattle(self.hostname)
-        return self.state
+        return self._state
+
+    def task_list(self):
+        return map(str, self.running_tasks.keys())
+
+    def state(self):
+        return self._state
 
     def request_task(self):
         self.debug('Requesting task from server.')
@@ -165,7 +173,7 @@ class CattleServer(WranglerServer):
             update_metrics(info.hostname(), metrics)
 
     def _handle_main(self):
-        if self.state == self.ASLEEP:
+        if self._state == self.ASLEEP:
             return
         if not self.full():
             if self._no_tasks:
