@@ -10,14 +10,14 @@ from random import randint
 
 from sqlalchemy import desc
 
+import wrangler.generator as generator
 import wrangler.db.interface as db
 from wrangler import *
 from wrangler.db.session import Session
 from wrangler.jobs import RenderJob
+from wrangler.queue import *
 from wrangler.config import config_lasso
 from wrangler.network import WranglerServer
-import wrangler.generator as generator 
-
 
 config = config_lasso()
 
@@ -49,6 +49,7 @@ class LassoServer(WranglerServer):
         self.heard = dict()
         self.queue_dirty = True
         self.next_task_lock = thread.allocate_lock()
+        self.queue = PriorityQueue()
 
     def configure(self):
         self.config = config_lasso()
@@ -71,10 +72,10 @@ class LassoServer(WranglerServer):
 
 
     def next_task(self):
-        """Return the next task in the queue."""
+        """Return the next task (id) in the queue."""
         self.debug('Requesting next task from lasso.')
         self.next_task_lock.acquire()
-        taskid = db.next_task()
+        taskid = self.queue.next_task()
         self.next_task_lock.release()
         return taskid
 
@@ -86,9 +87,25 @@ class LassoServer(WranglerServer):
         self.queue_dirty = True
         return jobid
 
+    def update_queue(self):
+        self.debug("Updating queue.")
+        self.next_task_lock.acquire()
+        db = Session()
+        tasks = db.query(Task).filter(Task.status==Task.WAITING).order_by(desc(Task.priority)).limit(100)
+        for task in tasks:
+            if task.status == task.WAITING:
+                if task.parent:
+                    if task.parent.status != task.FINISHED:
+                        return
+                task.status = task.QUEUED
+                self.queue.queue_task(task.id, task.priority + task.adjustment)
+        db.commit()
+        db.close()
+        self.next_task_lock.release()
+
     def _handle_main(self):
         if self._timeout('update-queue'):
             self.queue_dirty = True
         if self.queue_dirty:
-            db.update_queue()
+            self.update_queue()
             self.queue_dirty = False

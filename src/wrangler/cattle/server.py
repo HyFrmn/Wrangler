@@ -14,6 +14,9 @@ from wrangler.lasso.client import LassoClient
 
 
 class CattleServer(WranglerServer):
+    ASLEEP = 0
+    AWAKE = 1
+    
     def __init__(self):
         self.configure()
         hostname = info.hostname()
@@ -26,6 +29,8 @@ class CattleServer(WranglerServer):
         self.client = LassoClient()
         self.running_tasks = {}
         self.max_tasks = self.config.getint('cattle', 'max-tasks')
+
+        self.state = self.AWAKE
 
         #Setup Handlers
         self._handles.append(self._handle_metrics)
@@ -140,18 +145,6 @@ class CattleServer(WranglerServer):
             metrics['memory'] = info.memory()
             metrics['running'] = len(self.running_tasks)
             update_metrics(info.hostname(), metrics)
-
-    def _handle_monitor(self):
-        for id, task in self.running_tasks.copy().items():
-            if task:
-                poll = task.proc.poll()
-                if poll is not None:
-                    self.debug('Finished task %d' % id)
-                    self._post_task(task)
-                    self._clean_up_task(task)
-                else:
-                    if self._timeout('task-id-%d' % task.id):
-                        pass
 
     def _handle_main(self):
         if not self.full():
