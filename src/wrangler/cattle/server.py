@@ -2,6 +2,7 @@ import os
 import pwd
 import time
 import thread
+import datetime
 import subprocess
 
 from wrangler import *
@@ -110,6 +111,7 @@ class CattleServer(WranglerServer):
         return task_data
 
     def monitor_probe(self, task_id, probes):
+        task = self.running_tasks[task_id]
         db = Session()
         probe = TaskProbe()
         db.add(probe)
@@ -117,6 +119,8 @@ class CattleServer(WranglerServer):
         probe.memory = probes['memory']
         probe.pcpu = probes['pcpu']
         probe.pid = probes['pid']
+        #probe.cattle_id = task.log.cattle_id
+        probe.time = datetime.datetime.now()
         probe.probes = probes
         db.commit()
         probe_id = probe.id

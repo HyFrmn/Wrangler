@@ -50,9 +50,12 @@ class TaskProbe(Base):
     # Table Fields
     id = Column(Integer, primary_key=True)
     task_id = Column(Integer, ForeignKey('jobs.id'))
+    cattle_id = Column(Integer, ForeignKey('cattles.id'))
+    task_log_id = Column(Integer, ForeignKey('task_logs.id'))
     memory = Column(Integer)
     pcpu = Column(Float)
     pid = Column(Integer)
+    time = Column(DateTime)
     probes = Column(DictionaryDecorator(16384))
 
 def main():

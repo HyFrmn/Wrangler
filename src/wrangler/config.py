@@ -27,7 +27,7 @@ home = check_environment()
 def config_logging(home=home):
     log = logging.getLogger('wrangler')
     log.propagate = False
-    log.setLevel(logging.FATAL)
+    log.setLevel(logging.DEBUG)
     config = config_base()
     log_dir = os.path.expandvars(config.get('logging', 'server-dir'))
     if not os.path.exists(log_dir):

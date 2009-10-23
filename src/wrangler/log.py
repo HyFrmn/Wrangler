@@ -19,7 +19,7 @@ class TaskLog(Base):
     cattle = relation('Cattle', backref=backref('logs'))
     stdout = Column(String(256))
     stderr = Column(String(256))
-    
+
     logdir = os.path.expandvars(config.get('logging', 'task-dir'))
 
     def __init__(self, task, cattle):

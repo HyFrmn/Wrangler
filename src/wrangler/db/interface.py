@@ -105,6 +105,7 @@ def create_task_log(task, cattle):
     db.commit()
     log.debug('Create run log for task %d' % task.id)
     db.expunge(task_log)
+    db.expunge(cattle)
     db.close()
     return task_log
 
