@@ -18,7 +18,9 @@ __all__ = ['next_task',
            'create_task_log',
            'update_task_log',
            'connect_cattle',
-           'disconnect_cattle']
+           'disconnect_cattle',
+           'wake_cattle',
+           'sleep_cattle']
 
 def next_task():
     """Return the next task in the queue."""
@@ -167,3 +169,19 @@ def disconnect_cattle(hostname):
     db.commit()
     db.close()
     log.debug('%s was removed from the heard' % hostname)
+
+def wake_cattle(hostname):
+    db = Session()
+    cattle = db.query(Cattle).filter(Cattle.hostname==hostname).first()
+    cattle.awake = True
+    db.commit()
+    db.close()
+    log.debug('%s is now awake.' % hostname)
+
+def sleep_cattle(hostname):
+    db = Session()
+    cattle = db.query(Cattle).filter(Cattle.hostname==hostname).first()
+    cattle.awake = False
+    db.commit()
+    db.close()
+    log.debug('%s is now asleep.' % hostname)

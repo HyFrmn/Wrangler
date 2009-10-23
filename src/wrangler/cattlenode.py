@@ -17,6 +17,7 @@ class Cattle(Base):
     enabled = Column(Boolean)
     running = Column(Integer, default=0)
     metrics = relation("CattleMetrics")
+    awake = Column(Boolean)
 
     def __init__(self):
         self.hostname = info.hostname()
@@ -26,6 +27,7 @@ class Cattle(Base):
         self.ncpus = info.ncpu()
         self.load_avg = info.load_avg()
         self.enabled = False
+        self.awake = False
 
 
 class CattleMetrics(Base):

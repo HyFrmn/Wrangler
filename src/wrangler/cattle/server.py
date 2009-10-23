@@ -51,6 +51,8 @@ class CattleServer(WranglerServer):
         self.server.register_function(self.monitor_connect, 'monitor_connect')
         self.server.register_function(self.monitor_disconnect, 'monitor_disconnect')
         self.server.register_function(self.monitor_probe, 'monitor_probe')
+        self.server.register_function(self.sleep, 'sleep')
+        self.server.register_function(self.wake_up, 'wake_up')
 
         #Connect to lasso.
         self.cattle = connect_cattle(self.hostname)
@@ -67,6 +69,18 @@ class CattleServer(WranglerServer):
     def shutdown(self):
         WranglerServer.shutdown(self)
         disconnect_cattle(self.hostname)
+
+    def sleep(self):
+        if self.state == self.AWAKE:
+            self.state = self.ASLEEP
+            sleep_cattle(self.hostname)
+        return self.state
+
+    def wake_up(self):
+        if self.state == self.ASLEEP:
+            self.state = self.AWAKE
+            wake_cattle(self.hostname)
+        return self.state
 
     def request_task(self):
         self.debug('Requesting task from server.')
@@ -151,6 +165,8 @@ class CattleServer(WranglerServer):
             update_metrics(info.hostname(), metrics)
 
     def _handle_main(self):
+        if self.state == self.ASLEEP:
+            return
         if not self.full():
             if self._no_tasks:
                 if self._timeout('task-request'):
