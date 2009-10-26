@@ -9,6 +9,8 @@ import ConfigParser
 
 from hardware import info
 
+_base_dir = os.path.dirname(__file__) 
+
 class ConfigureError(Exception):pass
 
 def check_environment():
@@ -56,6 +58,7 @@ def config_logging(home=home):
 
 def config_base(home=home):
     config = ConfigParser.SafeConfigParser()
+    config.read(os.path.join(_base_dir, 'defaults.cfg'))
     config.read(os.path.join(home, 'farm.cfg'))
     return config
 
