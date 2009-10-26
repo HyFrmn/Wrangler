@@ -22,6 +22,9 @@ def main():
 
     if cmd in globals().keys():
         globals()[cmd](*args)
+    else:
+        help()
+        sys.exit(1)
 
 def sleep(*args):
     """Put target cattle to sleep. Usage: wrangler sleep [cattle1] [cattle2] ... [cattleN]"""
