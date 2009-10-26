@@ -10,14 +10,14 @@ from random import randint
 
 from sqlalchemy import desc
 
-import wrangler.generator as generator
+import wrangler.generators as generator
 import wrangler.db.interface as db
 from wrangler import *
 from wrangler.db.session import Session
-from wrangler.jobs import RenderJob
 from wrangler.queue import *
 from wrangler.config import config_lasso
 from wrangler.network import WranglerServer
+from wrangler.cattled.client import CattleClient
 
 config = config_lasso()
 
@@ -62,9 +62,9 @@ class LassoServer(WranglerServer):
         self.server.register_function(self.next_task, "next_task")
         self.server.register_function(self.queue_job, "queue_job")
         self.server.register_function(self.pulse, "pulse")
+        self.server.register_function(self.kill_task, 'kill_task')
 
         self.normalize_queue()
-
 
     def pulse(self, hostname):
         if hostname not in self.heard.keys():
@@ -72,6 +72,14 @@ class LassoServer(WranglerServer):
             self.heard[hostname] = CattleRuntime()
         return self.heard[hostname].pulse()
 
+    def kill_task(self, task_id):
+        db = Session()
+        task = db.query(Task).filter(Task.id==task_id).first()
+        if task.running:
+            cattle = db.query(Cattle).filter(Cattle.id==task.running).first()
+            client = CattleClient(cattle.hostname)
+            return client.kill_task(task_id)
+        return False
 
     def next_task(self):
         """Return the next task (id) in the queue."""

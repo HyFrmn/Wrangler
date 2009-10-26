@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from wrangler.lasso.server import LassoServer
 from wrangler.hardware import info
+from wrangler.cattled.server import CattleServer
 
 def main():
-    server = LassoServer()
+    server = CattleServer()
     server._run()
 
 if __name__ == '__main__':

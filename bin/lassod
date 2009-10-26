@@ -22,7 +22,7 @@ function start_func {
 		exit 1
 	fi
 	echo "Starting lasso."
-	$WRANGLER_SRC/src/lasso.py &
+	$WRANGLER_SRC/src/wrangler/bin/lassod.py &
 	echo $! > $PIDFILE
 }
 

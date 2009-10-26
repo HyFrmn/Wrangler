@@ -106,6 +106,7 @@ def create_task_log(task, cattle):
     db.add(task_log)
     db.commit()
     task.status = task.RUNNING
+    task.running = cattle.id
     log.debug('Created run log for task %d' % task.id)
     db.expunge(task_log)
     db.expunge(cattle)
@@ -118,6 +119,7 @@ def update_task_log(task_log, returncode, delta_time):
     task_log.time = delta_time
     task_log.returncode = returncode
     task = task_log.task
+    task.running = 0
     if task_log.returncode == 0:
         task.status = Task.FINISHED
         log.debug('Finished task %d' % task.id)

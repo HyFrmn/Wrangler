@@ -21,7 +21,7 @@ function start_func {
 		exit 1
 	fi
 	echo "Starting cattle."
-	$WRANGLER_SRC/src/cattle.py &
+	$WRANGLER_SRC/src/wrangler/bin/cattled.py &
 	echo $! > $PIDFILE
 	echo "Cattle started."
 }

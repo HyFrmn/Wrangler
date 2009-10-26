@@ -7,7 +7,7 @@ import time
 from subprocess import Popen, PIPE
 
 from wrangler.hardware import info
-from wrangler.cattle.client import CattleClient
+from wrangler.cattled.client import CattleClient
 
 _timeout = time.time()
 def timeout():

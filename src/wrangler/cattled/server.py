@@ -12,7 +12,7 @@ from wrangler.network import WranglerServer
 from wrangler.hardware import info
 from wrangler.db.session import Session
 from wrangler.db.interface import *
-from wrangler.lasso.client import LassoClient
+from wrangler.lassod.client import LassoClient
 
 
 class CattleServer(WranglerServer):

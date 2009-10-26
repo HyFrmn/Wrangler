@@ -3,8 +3,8 @@
 import os
 import sys
 
-from wrangler.cattle.client import CattleClient
-from wrangler.lasso.client import LassoClient
+from wrangler.cattled.client import CattleClient
+from wrangler.lassod.client import LassoClient
 
 __all__ = ['sleep',
            'wake',
@@ -56,7 +56,12 @@ def state(*args):
         print '%16s - %s' % (hostname, state_desc)
 
 def kill(*args):
-    pass
+    for task_id in map(int, args):
+        client = LassoClient()
+        if client.kill_task(task_id):
+            print 'Killed task [%d]' % task_id
+        else:
+            print 'Did not kill task [%d]' % task_id
 
 def queue_list(*args):
     """Print the list of tasks currently in the lasso's queue."""

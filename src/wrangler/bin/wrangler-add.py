@@ -3,7 +3,7 @@
 import os
 import optparse
 
-from wrangler.lasso.client import LassoClient
+from wrangler.lassod.client import LassoClient
 
 def main():
     parser = optparse.OptionParser()
