@@ -8,6 +8,7 @@ from wrangler.lasso.client import LassoClient
 
 __all__ = ['sleep',
            'wake',
+           'state',
            'task_list',
            'queue_list']
 
@@ -42,6 +43,7 @@ def task_list(*args):
         print task
 
 def state(*args):
+    """Return the current state of the cattle."""
     for hostname in args:
         client = CattleClient(hostname)
         state = client.state()
