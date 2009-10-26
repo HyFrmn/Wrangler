@@ -32,6 +32,7 @@ class Task(Base):
     parent  = Column(Integer, ForeignKey('tasks.id'))
     status = Column(Integer, default=-1)
     run_count = Column(Integer)
+    running = Column(Integer, ForeignKey('cattles.id'))
 
     # Relations 
     job = relation("Job", lazy=False)
@@ -43,6 +44,7 @@ class Task(Base):
         self.env = dict()
         self.meta = dict()
         self.run_count = 0
+        self.running = 0
 
 class TaskProbe(Base):
     __tablename__ = 'task_probes'

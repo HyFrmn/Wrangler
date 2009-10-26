@@ -55,6 +55,9 @@ def state(*args):
             state_desc = 'Unknown'
         print '%16s - %s' % (hostname, state_desc)
 
+def kill(*args):
+    pass
+
 def queue_list(*args):
     """Print the list of tasks currently in the lasso's queue."""
     pass

@@ -2,6 +2,7 @@ import os
 import pwd
 import time
 import thread
+import signal
 import datetime
 import subprocess
 
@@ -51,6 +52,8 @@ class CattleServer(WranglerServer):
         self.server.register_function(self.monitor_connect, 'monitor_connect')
         self.server.register_function(self.monitor_disconnect, 'monitor_disconnect')
         self.server.register_function(self.monitor_probe, 'monitor_probe')
+        self.server.register_function(self.monitor_start, 'monitor_start')
+        self.server.register_function(self.kill_task, 'kill_task')
         self.server.register_function(self.sleep, 'sleep')
         self.server.register_function(self.wake_up, 'wake_up')
         self.server.register_function(self.task_list, 'task_list')
@@ -132,6 +135,14 @@ class CattleServer(WranglerServer):
         db.close()
         return task_data
 
+    def monitor_start(self, task_id, pid):
+        self.debug('Task %d started process %d' % (task_id, pid))
+        self.num_thread_lock.acquire()
+        task = self.running_tasks[task_id]
+        task.pid = pid
+        self.num_thread_lock.release()
+        return pid
+
     def monitor_probe(self, task_id, probes):
         task = self.running_tasks[task_id]
         db = Session()
@@ -149,6 +160,21 @@ class CattleServer(WranglerServer):
         db.expunge(probe)
         db.close()
         return probe_id
+
+    def kill_task(self, task_id):
+        try:
+            task = self.running_tasks[task_id]
+        except KeyError:
+            return False
+        try:
+            pid = task.pid
+        except AttributeError:
+            return False
+        try:
+            os.kill(pid,signal.SIGTERM)
+        except OSError:
+            os.kill(pid, signal.SIGKILL)
+        return True
 
     def monitor_disconnect(self, task_id, run_time, return_code):
         self.debug('Monitor for task %d had disconnected.' % task_id)

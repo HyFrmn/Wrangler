@@ -75,6 +75,7 @@ class ProcessMonitor(object):
         stderr_fd = open(self.stderr_file_path, 'w')
         start_time = time.time()
         proc = Popen(self.command, shell=True, stdout=stdout_fd, stderr=stderr_fd)
+        self.client.monitor_start(self.task_id, proc.pid)
         while proc.poll() is None:
             if timeout():
                 probes = {}
