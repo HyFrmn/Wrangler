@@ -32,7 +32,7 @@ class CattleServer(WranglerServer):
         self.running_tasks = {}
         self.max_tasks = self.config.getint('cattle', 'max-tasks')
 
-        self._state = self.AWAKE
+        self._state = self.ASLEEP
 
         #Setup Handlers
         self._handles.append(self._handle_metrics)
@@ -61,6 +61,7 @@ class CattleServer(WranglerServer):
 
         #Connect to lasso.
         self.cattle = connect_cattle(self.hostname)
+        self.wake_up()
 
     def configure(self):
         self.config = config_cattle()
