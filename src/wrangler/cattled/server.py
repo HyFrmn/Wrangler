@@ -148,6 +148,7 @@ class CattleServer(WranglerServer):
         db = Session()
         probe = TaskProbe()
         db.add(probe)
+        cattle = self.cattle
         probe.task_id = task_id
         probe.memory = probes['memory']
         probe.pcpu = probes['pcpu']
@@ -155,6 +156,8 @@ class CattleServer(WranglerServer):
         #probe.cattle_id = task.log.cattle_id
         probe.time = datetime.datetime.now()
         probe.probes = probes
+        probe.cattle_id = cattle.id
+        probe.task_log_id = task.log.id
         db.commit()
         probe_id = probe.id
         db.expunge(probe)
