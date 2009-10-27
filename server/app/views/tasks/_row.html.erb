@@ -5,4 +5,7 @@
     <td class="<%=h task.status_string %>"><%=h task.status_string.capitalize %></td>
     <td><%=h task.job.name %></td>
     <td><%= link_to 'Show', task %></td>
+    <% if task.running > 0 %>
+        <td>Kill</td>
+    <% end %>
 </tr>

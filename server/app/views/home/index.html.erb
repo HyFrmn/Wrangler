@@ -1,39 +1,82 @@
-<div id="banner"><h1>Lasso</h1></div>
-<div id="menu" class="yuimenu">
-    <ul>
-        <li class="yuimenuitem"><a href="#" class="yuimenuitemlabel">Queue</a></li>
-        <li class="yuimenuitem"><a href="#" class="yuimenuitemlable">Cattle</a></li>
-    </ul>
-</div>
-<div id="main">
-</div>
+<div id="job_table"></div>
+<div id="cattle_table"></div>
+<div id="heard_table"></div>
+    
 
+<script type="text/javascript">
 
-<script>
+YAHOO.util.Event.addListener(window, "load", function() {
+    YAHOO.example.Basic = function() {
+		this.statusFormatter = function(elLiner, oRecord, oColumn, oData){
+			if (oRecord.getData("status") == -3) {
+				elLiner.innerHTML = "Errored";
+			} else if(oRecord.getData("status") == -2) {
+				elLiner.innerHTML = "Stopped";
+			} else if(oRecord.getData("status") == -1) {
+				elLiner.innerHTML = "Paused";
+			} else if(oRecord.getData("status") == 0) {
+				elLiner.innerHTML = "Waiting";
+			} else if(oRecord.getData("status") == 1) {
+				elLiner.innerHTML = "Queued";
+			} else if(oRecord.getData("status") == 2) {
+				elLiner.innerHTML = "Running";
+			} else if(oRecord.getData("status") == 3) {
+				elLiner.innerHTML = "Finished";
+			} else {
+				elLiner.innerHTML = oRecord.getData("Unknown");
+			}	
+		};
 
-(function() {
-    var Dom = YAHOO.util.Dom,
-        Event = YAHOO.util.Event;
+        var cattleTableDefs = [
+            {key:"id", sortable:true, resizeable:true},
+            {key:"hostname", sortable:true, resizeable:true},
+            {key:"enabled", resizeable:true},
+            {key:"awake", resizeable:true},
+            {key:"running", resizeable:true},
+            {key:"system", resizeable:true},
+            {key:"memory", resizeable:true},
+            {key:"ncpus", resizeable:true},
+            {key:"processor", resizeable:true}
+        ];
 
-    Event.onDOMReady(function() {
-        var layout = new YAHOO.widget.Layout({
-            units: [
-                { position: 'top', height: 150, body: 'banner', gutter: '5px', collapse: false, resize: false },
-                { position: 'left', width: 200, resize: true, body: 'menu', gutter: '5px', collapse: false },
-                { position: 'center', body: 'main', gutter: '5px' }
-            ]
-        });
-        layout.on('render', function() {
-            layout.getUnitByPosition('left').on('close', function() {
-                closeLeft();
-            });
-        });
-        layout.render();
+        var cattleDataSource = new YAHOO.util.DataSource('cattles.json');
+        cattleDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+        cattleDataSource.connXhrMode = "queueRequests";
+        cattleDataSource.responseSchema = {
+            fields: ["id", "hostname", "enabled", "awake", "running", "system", "memory", "ncpus", "processor"]	
+        };
 
-	var oMenu = new YAHOO.widget.Menu("menu", { fixedcenter: true }); 
+        var cattleDataTable = new YAHOO.widget.DataTable("cattle_table", cattleTableDefs, cattleDataSource, {caption:"Cattle"})
 
-	oMenu.render();
-    });
-})();
+        var jobTableDefs = [
+            {key:"id", sortable:true, resizeable:true},
+            {key:"name", resizeable:true},
+            {key:"status", sortable:true, resizeable:true, formatter:this.statusFormatter},
+            {key:"owner", resizeable:true},
+        ];
+
+        var jobDataSource = new YAHOO.util.DataSource('jobs.json');
+        jobDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+        jobDataSource.connXhrMode = "queueRequests";
+        jobDataSource.responseSchema = {
+            fields: ["id", "name", "status", "owner"]
+        };
+
+        var jobDataTable = new YAHOO.widget.DataTable("job_table",
+                jobTableDefs, jobDataSource, {caption:"DataTable Caption"});
+
+        var myTabView = new YAHOO.widget.TabView("container");
+        myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
+        myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()});
+
+        return {
+            oJDS: jobDataSource,
+            oJDT: jobDataTable,
+			oCDT: cattleDataTable,
+			oCDS: cattleDataSource,
+            oTV: myTabView
+      };
+    }();
+});
+
 </script>
-
