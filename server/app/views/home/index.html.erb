@@ -1,6 +1,22 @@
-<div id="job_table"></div>
-<div id="cattle_table"></div>
-<div id="heard_table"></div>
+<div id="tvcontainer" class="yui-navset">
+    <ul class="yui-nav">
+        <li class="selected"><a href="#tab1"><em>Start Tab</em></a></li>
+        <li><a href="#tab2"><em>DataTable Tab</em></a></li>
+        <li><a href="#tab3"><em>Another Tab</em></a></li>
+
+    </ul>            
+    <div class="yui-content">
+
+        <div id="job_layout">
+            <p>Welcome! There is a DataTable in the second Tab.</p>
+            <div id="job_table"></div>
+            <div id="task_table"></div>
+        </div>
+        <div id="cattle_table"></div>
+        <div id="queue_layout"><p>This is a place holder for the queue.</p></div>
+    </div>
+</div>
+
     
 
 <script type="text/javascript">
@@ -46,7 +62,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
             fields: ["id", "hostname", "enabled", "awake", "running", "system", "memory", "ncpus", "processor"]	
         };
 
-        var cattleDataTable = new YAHOO.widget.DataTable("cattle_table", cattleTableDefs, cattleDataSource, {caption:"Cattle"})
+        var cattleDataTable = new YAHOO.widget.DataTable("cattle_table", cattleTableDefs, cattleDataSource, {width: "100%"})
 
         var jobTableDefs = [
             {key:"id", sortable:true, resizeable:true},
@@ -63,17 +79,35 @@ YAHOO.util.Event.addListener(window, "load", function() {
         };
 
         var jobDataTable = new YAHOO.widget.DataTable("job_table",
-                jobTableDefs, jobDataSource, {caption:"DataTable Caption"});
+                jobTableDefs, jobDataSource, {width: "100%"});
 
-        var myTabView = new YAHOO.widget.TabView("container");
-        myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
-        myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()});
+        var taskTableDefs = [
+            {key:"id", sortable:true, resizeable:true},
+            {key:"job_id", resizeable:true},
+            {key:"status", sortable:true, resizeable:true, formatter:this.statusFormatter},
+            {key:"parent", resizeable:true},
+            {key:"command", resizeable:true},
+        ];
+
+        var taskDataSource = new YAHOO.util.DataSource('tasks/list/1.json');
+        taskDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+        taskDataSource.connXhrMode = "queueRequests";
+        taskDataSource.responseSchema = {
+            fields: ["id", "job_id", "status", "parent", "command"]
+        };
+
+        var taskDataTable = new YAHOO.widget.DataTable("task_table",
+                taskTableDefs, taskDataSource, {width: "100%"});
+
+        var myTabView = new YAHOO.widget.TabView("tvcontainer"); 
+	     //myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
+	     //myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()}); 
 
         return {
-            oJDS: jobDataSource,
-            oJDT: jobDataTable,
-			oCDT: cattleDataTable,
-			oCDS: cattleDataSource,
+            //oJDS: jobDataSource,
+            //oJDT: jobDataTable,
+            //oCDT: cattleDataTable,
+            //oCDS: cattleDataSource,
             oTV: myTabView
       };
     }();
