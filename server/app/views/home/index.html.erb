@@ -1,8 +1,8 @@
 <div id="tvcontainer" class="yui-navset">
     <ul class="yui-nav">
-        <li class="selected"><a href="#tab1"><em>Start Tab</em></a></li>
-        <li><a href="#tab2"><em>DataTable Tab</em></a></li>
-        <li><a href="#tab3"><em>Another Tab</em></a></li>
+        <li class="selected"><a href="#tab1"><em>Jobs</em></a></li>
+        <li><a href="#tab2"><em>Cattle</em></a></li>
+        <li><a href="#tab3"><em>Queue</em></a></li>
 
     </ul>            
     <div class="yui-content">
@@ -20,6 +20,34 @@
     
 
 <script type="text/javascript">
+
+/* requery method
+http://satyam.com.ar/yui/2.6.0/requery.html
+*/
+
+YAHOO.widget.DataTable.prototype.requery = function(newRequest) {
+	var ds = this.getDataSource();
+	if (ds instanceof YAHOO.util.LocalDataSource) {
+		ds.liveData = newRequest;
+		ds.sendRequest("",
+			{
+				success: this.onDataReturnInitializeTable,
+				failure: this.onDataReturnInitializeTable,
+				scope: this
+			}
+		);
+	} else {
+		ds.sendRequest(
+			(newRequest === undefined?this.get('initialRequest'):newRequest),
+			{
+				success: this.onDataReturnInitializeTable,
+				failure: this.onDataReturnInitializeTable,
+				scope: this
+			}
+		);
+	}
+};
+
 
 YAHOO.util.Event.addListener(window, "load", function() {
     YAHOO.example.Basic = function() {
@@ -43,6 +71,9 @@ YAHOO.util.Event.addListener(window, "load", function() {
 			}	
 		};
 
+        /*
+        Cattle Data View
+        */
         var cattleTableDefs = [
             {key:"id", sortable:true, resizeable:true},
             {key:"hostname", sortable:true, resizeable:true},
@@ -62,7 +93,37 @@ YAHOO.util.Event.addListener(window, "load", function() {
             fields: ["id", "hostname", "enabled", "awake", "running", "system", "memory", "ncpus", "processor"]	
         };
 
-        var cattleDataTable = new YAHOO.widget.DataTable("cattle_table", cattleTableDefs, cattleDataSource, {width: "100%"})
+        var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource, {width: "100%"})
+
+        var onCattleContextMenuClick = function(p_sType, p_aArgs, p_myDataTable){
+            var task = p_aArgs[1];
+            if(task){
+               //Get the TR (table row) element that trigger event.
+               var elRow = this.contextEventTarget;
+               elRow = p_myDataTable.getTrEl(elRow);
+               
+               if (elRow) {
+                   switch(task.index) {
+                       case 0:  //Put cattle to sleep.
+                           var oRecord = p_myDataTable.getRecord(elRow);
+                           hostname = oRecord.getData("hostname");
+                           alert ("Putting cattle " + hostname + " to sleep."); 
+                   }
+               }
+            }
+        }
+
+        var cattleTableContextMenu = new YAHOO.widget.ContextMenu("cattleContextMenu", {trigger: cattleDataTable.getTbodyEl()});
+        cattleTableContextMenu.addItem("Sleep");
+        cattleTableContextMenu.render("cattle_table");
+        cattleTableContextMenu.clickEvent.subscribe(onCattleContextMenuClick, cattleDataTable);
+
+        /*
+        
+        Job / Task - View
+        
+        */
+
 
         var jobTableDefs = [
             {key:"id", sortable:true, resizeable:true},
@@ -78,8 +139,9 @@ YAHOO.util.Event.addListener(window, "load", function() {
             fields: ["id", "name", "status", "owner"]
         };
 
-        var jobDataTable = new YAHOO.widget.DataTable("job_table",
-                jobTableDefs, jobDataSource, {width: "100%"});
+        var jobDataTable = new YAHOO.widget.ScrollingDataTable("job_table",
+                jobTableDefs, jobDataSource, {width: "100%", selectionMode: "single", caption: "Jobs"});
+
 
         var taskTableDefs = [
             {key:"id", sortable:true, resizeable:true},
@@ -89,19 +151,57 @@ YAHOO.util.Event.addListener(window, "load", function() {
             {key:"command", resizeable:true},
         ];
 
-        var taskDataSource = new YAHOO.util.DataSource('tasks/list/1.json');
+
+        var taskDataSource = new YAHOO.util.DataSource('tasks/list/');
         taskDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
         taskDataSource.connXhrMode = "queueRequests";
         taskDataSource.responseSchema = {
             fields: ["id", "job_id", "status", "parent", "command"]
         };
 
-        var taskDataTable = new YAHOO.widget.DataTable("task_table",
-                taskTableDefs, taskDataSource, {width: "100%"});
+        var taskDataTable = new YAHOO.widget.ScrollingDataTable("task_table",
+                taskTableDefs, taskDataSource, {width: "100%", caption: "Tasks", height: "10em"});
+
+
+        var jobPollingCallback = {
+            success: jobDataTable.onDataReturnInitializeTable,
+            failure: function(){
+                YAHOO.log("Polling failure for new jobs.", "error");
+            },
+            scope: jobDataTable
+        }
+        
+        var jobSelectedCallback = {
+            success: taskDataTable.onDataReturnInitializeTable,
+            failure: function(){
+                YAHOO.log("Could not access task list.", "error");
+            },
+            scope: taskDataTable
+        
+        }        
+        
+        var jobClickCallback = function(oArgs, target) {
+            jobDataTable.onEventSelectRow(oArgs, target);
+            var elTarget = oArgs.target;
+            var oRecord = this.getRecord(elTarget);
+            var id = oRecord.getData("id");
+            taskDataTable.requery(id + '.json')
+        }
+
+        
+        jobDataTable.subscribe("rowMouseoverEvent", jobDataTable.onEventHighlightRow);
+        jobDataTable.subscribe("rowMouseoutEvent", jobDataTable.onEventUnhighlightRow);
+        jobDataTable.subscribe("rowClickEvent", jobClickCallback);        
+        
+        jobDataSource.setInterval(2000, null, jobPollingCallback);
 
         var myTabView = new YAHOO.widget.TabView("tvcontainer"); 
 	     //myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
 	     //myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()}); 
+
+
+        // Initialize views 
+        taskDataTable.requery('1.json');
 
         return {
             //oJDS: jobDataSource,
