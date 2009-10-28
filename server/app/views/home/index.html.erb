@@ -67,9 +67,66 @@ YAHOO.util.Event.addListener(window, "load", function() {
 			} else if(oRecord.getData("status") == 3) {
 				elLiner.innerHTML = "Finished";
 			} else {
-				elLiner.innerHTML = oRecord.getData("Unknown");
+				elLiner.innerHTML = "Unknown";
 			}	
 		};
+
+      var cattleStateFormatter = function(elLiner, oRecord, oColumn, oData){
+          elLiner.innerHTML = oData;
+          if (oData == 0){
+              elLiner.innerHTML = 'Asleep';
+          } else if (oData == 1){
+              elLiner.innerHTML = 'Awake';
+	      } else {
+              elLiner.innerHTML = 'Unknown';
+	      }         	
+      };
+
+      var cattleRowFormatter = function(elTr, oRecord) {
+	  	  var state = oRecord.getData('awake');
+          if (state == 0){
+              YAHOO.util.Dom.addClass(elTr, 'disabled');
+          } else {
+		  	  YAHOO.util.Dom.removeClass(elTr, 'disabled')
+		  }
+          return true;
+      };
+
+	  var sleepCallback =
+		{
+		  success:function(o){
+			  true
+		  },
+		  failure:function(o){
+		      alert("XMLRPC called failed.")
+		  }
+		};
+
+      var cattleStateSubmitter = function(fnCallback, oNewValue){
+	  	var oRecord = this.getRecord();
+		var hostname = oRecord.getData('hostname');
+		if (oNewValue == 0){
+			var sUrl = 'lasso/sleep/' + hostname
+		} else {
+			var sUrl = 'lasso/wake/' + hostname
+		}
+		
+		var request = YAHOO.util.Connect.asyncRequest('GET', sUrl,
+		{
+			success: function(o){
+			    fnCallback(true, oNewValue);
+				
+			},
+			failure: function(o){
+				alert(o.statusText);
+				fnCallback(false, oNewValue);
+			},
+			scope: this
+		} 
+		)
+				
+	  };
+
 
 		mySimpleDialog = new YAHOO.widget.SimpleDialog("dlg", { 
 			width: "20em", 
@@ -112,7 +169,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
             {key:"id", sortable:true, resizeable:true},
             {key:"hostname", sortable:true, resizeable:true},
             {key:"enabled", resizeable:true},
-            {key:"awake", resizeable:true},
+            {key:"awake", formatter:cattleStateFormatter, editor: new YAHOO.widget.DropdownCellEditor({asyncSubmitter: cattleStateSubmitter, dropdownOptions:[{label: "Asleep", value:0}, {label:"Awake", value:1}]})},
             {key:"running", resizeable:true},
             {key:"system", resizeable:true},
             {key:"memory", resizeable:true},
@@ -120,26 +177,26 @@ YAHOO.util.Event.addListener(window, "load", function() {
             {key:"processor", resizeable:true}
         ];
 
-        var cattleDataSource = new YAHOO.util.DataSource('cattles.json');
+        var cattleDataSource = new YAHOO.util.DataSource("cattles.json");
         cattleDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
         cattleDataSource.connXhrMode = "queueRequests";
         cattleDataSource.responseSchema = {
             fields: ["id", "hostname", "enabled", "awake", "running", "system", "memory", "ncpus", "processor"]	
         };
 
-        var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource)
+        var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource, {formatRow: cattleRowFormatter})
 
-		var sleepCallback =
-		{
-		  success:function(o){
-			  cattleDataTable.requery()
-		  },
-		  failure:function(o){
-		      alert("XMLRPC called failed.")
-		  }
-		};
+        var highlightEditableCell = function(oArgs){
+            var elCell = oArgs.target;
+            if(YAHOO.util.DOM.hasClass(elCell, "yui-dt-editable")){
+                this.highlightCell(elCell);
+            }
+        };
+        cattleDataTable.subscribe("cellMouseoverEvent", highlightEditableCell);
+        cattleDataTable.subscribe("cellMouseoutEvent", cattleDataTable.onEventUnhighlightCell);
+        cattleDataTable.subscribe("cellClickEvent", cattleDataTable.onEventShowCellEditor);
 
-
+/*
         var onCattleContextMenuClick = function(p_sType, p_aArgs, p_myDataTable){
             var task = p_aArgs[1];
             if(task){
@@ -152,18 +209,19 @@ YAHOO.util.Event.addListener(window, "load", function() {
                        case 0:  //Put cattle to sleep.
                            var oRecord = p_myDataTable.getRecord(elRow);
                            hostname = oRecord.getData("hostname");
-                           var sUrl = 'lasso/sleep/?hostname=' + hostname
+                           var sUrl = 'lasso/sleep/' + hostname
 						   var request = YAHOO.util.Connect.asyncRequest('GET', sUrl, sleepCallback); 
                    }
                }
             }
         }
 
+
         var cattleTableContextMenu = new YAHOO.widget.ContextMenu("cattleContextMenu", {trigger: cattleDataTable.getTbodyEl()});
         cattleTableContextMenu.addItem("Sleep");
         cattleTableContextMenu.render("cattle_table");
         cattleTableContextMenu.clickEvent.subscribe(onCattleContextMenuClick, cattleDataTable);
-
+*/
         /*
         
         Job / Task - View
@@ -192,7 +250,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
         };
 
         var jobDataTable = new YAHOO.widget.ScrollingDataTable("job_table",
-                jobTableDefs, jobDataSource, { selectionMode: "single", caption: "Jobs"});
+                jobTableDefs, jobDataSource, { selectionMode: "single", caption: "Jobs", height: "16em"});
 
 
         var taskTableDefs = [
@@ -215,7 +273,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
         };
 
         var taskDataTable = new YAHOO.widget.ScrollingDataTable("task_table",
-                taskTableDefs, taskDataSource);
+                taskTableDefs, taskDataSource, {height: "16em"});
 
 
         var jobPollingCallback = {
@@ -248,7 +306,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
         jobDataTable.subscribe("rowMouseoutEvent", jobDataTable.onEventUnhighlightRow);
         jobDataTable.subscribe("rowClickEvent", jobClickCallback);        
         
-        jobDataSource.setInterval(5000, null, jobPollingCallback);
+        jobDataSource.setInterval(15000, null, jobPollingCallback);
 
         var myTabView = new YAHOO.widget.TabView("tvcontainer"); 
 	    myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
