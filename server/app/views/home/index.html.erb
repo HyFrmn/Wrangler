@@ -71,6 +71,40 @@ YAHOO.util.Event.addListener(window, "load", function() {
 			}	
 		};
 
+		mySimpleDialog = new YAHOO.widget.SimpleDialog("dlg", { 
+			width: "20em", 
+			effect:{effect:YAHOO.widget.ContainerEffect.FADE,
+			        duration:0.25}, 
+			fixedcenter:true,
+			modal:true,
+		    visible:false,
+			draggable:false });
+		mySimpleDialog.setHeader("Warning!");
+		mySimpleDialog.setBody("Are you sure you want to delete this cattle to sleep?");
+		mySimpleDialog.cfg.setProperty("icon",YAHOO.widget.SimpleDialog.ICON_WARN);
+
+		var handleYes = function() {
+		 //user confirms the deletion of this item;
+		 //this method would perform that deletion;
+		 //when ready, hide the SimpleDialog:
+		 this.hide();
+		}
+		var handleNo = function() {
+		 //user cancels item deletion; this method
+		 //would handle the cancellation of the
+		 //process.
+		 //when ready, hide the SimpleDialog:
+		 this.hide();
+		}
+		var myButtons = [ { text:"Yes", 
+							handler:handleYes },
+						  { text:"Cancel", 
+						  	handler:handleNo,
+							isDefault:true } ];
+		mySimpleDialog.cfg.queueProperty("buttons", myButtons);
+
+		mySimpleDialog.render(document.body);
+
         /*
         Cattle Data View
         */
@@ -93,7 +127,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
             fields: ["id", "hostname", "enabled", "awake", "running", "system", "memory", "ncpus", "processor"]	
         };
 
-        var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource, {width: "100%"})
+        var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource)
 
         var onCattleContextMenuClick = function(p_sType, p_aArgs, p_myDataTable){
             var task = p_aArgs[1];
@@ -107,7 +141,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
                        case 0:  //Put cattle to sleep.
                            var oRecord = p_myDataTable.getRecord(elRow);
                            hostname = oRecord.getData("hostname");
-                           alert ("Putting cattle " + hostname + " to sleep."); 
+                           mySimpleDialog.show(); 
                    }
                }
             }
@@ -126,29 +160,38 @@ YAHOO.util.Event.addListener(window, "load", function() {
 
 
         var jobTableDefs = [
-            {key:"id", sortable:true, resizeable:true},
+            {key:"id", sortable:true, width:"32"},
             {key:"name", resizeable:true},
             {key:"status", sortable:true, resizeable:true, formatter:this.statusFormatter},
             {key:"owner", resizeable:true},
+            {key:"progress"},
+            {key:"waiting"},
+            {key:"queued"},
+            {key:"running"},
+            {key:"finished"},
+            {key:"estimate"}
         ];
 
         var jobDataSource = new YAHOO.util.DataSource('jobs.json');
         jobDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
         jobDataSource.connXhrMode = "queueRequests";
         jobDataSource.responseSchema = {
-            fields: ["id", "name", "status", "owner"]
+            fields: ["id", "name", "status", "owner", "progress", "finished", "queued", "running", "waiting", "estimate"]
         };
 
         var jobDataTable = new YAHOO.widget.ScrollingDataTable("job_table",
-                jobTableDefs, jobDataSource, {width: "100%", selectionMode: "single", caption: "Jobs"});
+                jobTableDefs, jobDataSource, { selectionMode: "single", caption: "Jobs"});
 
 
         var taskTableDefs = [
-            {key:"id", sortable:true, resizeable:true},
+            {key:"id", sortable:true, resizeable:false},
             {key:"job_id", resizeable:true},
             {key:"status", sortable:true, resizeable:true, formatter:this.statusFormatter},
             {key:"parent", resizeable:true},
             {key:"command", resizeable:true},
+            {key:"priority", resizeable:true},
+            {key:"run_count", resizeable:true},
+           
         ];
 
 
@@ -156,11 +199,11 @@ YAHOO.util.Event.addListener(window, "load", function() {
         taskDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
         taskDataSource.connXhrMode = "queueRequests";
         taskDataSource.responseSchema = {
-            fields: ["id", "job_id", "status", "parent", "command"]
+            fields: ["id", "job_id", "status", "parent", "command", "priority", "run_count"]
         };
 
         var taskDataTable = new YAHOO.widget.ScrollingDataTable("task_table",
-                taskTableDefs, taskDataSource, {width: "100%", caption: "Tasks", height: "10em"});
+                taskTableDefs, taskDataSource);
 
 
         var jobPollingCallback = {
@@ -193,11 +236,11 @@ YAHOO.util.Event.addListener(window, "load", function() {
         jobDataTable.subscribe("rowMouseoutEvent", jobDataTable.onEventUnhighlightRow);
         jobDataTable.subscribe("rowClickEvent", jobClickCallback);        
         
-        jobDataSource.setInterval(2000, null, jobPollingCallback);
+        jobDataSource.setInterval(5000, null, jobPollingCallback);
 
         var myTabView = new YAHOO.widget.TabView("tvcontainer"); 
-	     //myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
-	     //myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()}); 
+	    myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
+	    myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()}); 
 
 
         // Initialize views 

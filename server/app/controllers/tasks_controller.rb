@@ -89,7 +89,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { render :partial => "list" }
       format.xml  { render :xml => @tasks }
-      format.json { render :json => @tasks}
+      format.json { render :json => @tasks.to_json(:except => :env)}
     end
   end
 end

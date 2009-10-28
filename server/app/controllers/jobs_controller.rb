@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @jobs }
-      format.json { render :json => @jobs }
+      format.json { render :json => @jobs.to_json(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime] ) }
     end
   end
 

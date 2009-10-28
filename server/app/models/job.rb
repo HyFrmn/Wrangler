@@ -37,8 +37,16 @@ class Job < ActiveRecord::Base
     Task.count(:conditions => ["job_id = ? AND status = 3", self[:id]]).to_f
   end
 
+  def running
+    Task.count(:conditions => ["job_id = ? AND status = 2", self[:id]]).to_f
+  end
+
   def queued
     Task.count(:conditions => ["job_id = ? AND status = 1", self[:id]]).to_f
+  end
+
+  def waiting
+    Task.count(:conditions => ["job_id = ? AND status = 0", self[:id]]).to_f
   end
 
   def estimate
