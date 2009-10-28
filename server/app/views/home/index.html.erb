@@ -83,7 +83,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
       };
 
       var cattleRowFormatter = function(elTr, oRecord) {
-	  	  var state = oRecord.getData('awake');
+	  	  var state = oRecord.getData('state');
           if (state == 0){
               YAHOO.util.Dom.addClass(elTr, 'disabled');
           } else {
@@ -169,7 +169,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
             {key:"id", sortable:true, resizeable:true},
             {key:"hostname", sortable:true, resizeable:true},
             {key:"enabled", resizeable:true},
-            {key:"awake", formatter:cattleStateFormatter, editor: new YAHOO.widget.DropdownCellEditor({asyncSubmitter: cattleStateSubmitter, dropdownOptions:[{label: "Asleep", value:0}, {label:"Awake", value:1}]})},
+            {key:"state", formatter:cattleStateFormatter, editor: new YAHOO.widget.DropdownCellEditor({asyncSubmitter: cattleStateSubmitter, dropdownOptions:[{label: "Asleep", value:0}, {label:"Awake", value:1}]})},
             {key:"running", resizeable:true},
             {key:"system", resizeable:true},
             {key:"memory", resizeable:true},
@@ -181,7 +181,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
         cattleDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
         cattleDataSource.connXhrMode = "queueRequests";
         cattleDataSource.responseSchema = {
-            fields: ["id", "hostname", "enabled", "awake", "running", "system", "memory", "ncpus", "processor"]	
+            fields: ["id", "hostname", "enabled", "state", "running", "system", "memory", "ncpus", "processor"]	
         };
 
         var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource, {formatRow: cattleRowFormatter})
