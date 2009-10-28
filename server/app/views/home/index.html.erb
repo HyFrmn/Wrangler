@@ -129,6 +129,17 @@ YAHOO.util.Event.addListener(window, "load", function() {
 
         var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource)
 
+		var sleepCallback =
+		{
+		  success:function(o){
+			  cattleDataTable.requery()
+		  },
+		  failure:function(o){
+		      alert("XMLRPC called failed.")
+		  }
+		};
+
+
         var onCattleContextMenuClick = function(p_sType, p_aArgs, p_myDataTable){
             var task = p_aArgs[1];
             if(task){
@@ -141,7 +152,8 @@ YAHOO.util.Event.addListener(window, "load", function() {
                        case 0:  //Put cattle to sleep.
                            var oRecord = p_myDataTable.getRecord(elRow);
                            hostname = oRecord.getData("hostname");
-                           mySimpleDialog.show(); 
+                           var sUrl = 'lasso/sleep/?hostname=' + hostname
+						   var request = YAHOO.util.Connect.asyncRequest('GET', sUrl, sleepCallback); 
                    }
                }
             }
