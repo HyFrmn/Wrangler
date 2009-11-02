@@ -40,7 +40,7 @@ class CattleServer(WranglerServer):
         #self._handles.append(self._handle_monitor)
 
         #Setup Timeouts
-        self._register_timeout('metrics', self.config.getfloat('metrics', 'frequency'))
+        self._register_timeout('metrics', self.config.getfloat('cattle', 'metric-frequency'))
         self._register_timeout('task-request', self.config.getfloat('cattle', 'idle'))
         self._register_timeout('pulse', 15.0)
         self._no_tasks = False
