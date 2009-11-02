@@ -19,7 +19,12 @@ _api_ = ['cattle_sleep',
          'task_stop',
          'task_queue',
          'task_pause',
-         'lasso_submit_job']
+         'lasso_submit_job',
+         'help',
+         'help_task',
+         'help_cattle',
+         'help_job',
+         'help_lasso']
 
 def cattle_sleep(lassod, *hostnames):
     output = []
@@ -173,3 +178,28 @@ def task_pause(lassod, *ids):
     db.commit()
     db.close()
     return output
+
+def help(item=None):
+    output = ''
+    if item:
+        funcs = [globals()[func] for func in _api_ if not func.startswith(str(item))]
+    else:
+        funcs = _api_
+    for func in funcs:
+        output += str(func.__name__) + '\n'
+        output += '=' * 32 + '\n'
+        output += str(func.__doc__) + '\n'
+        output += '\n' * 3
+    return output
+
+def help_task():
+    return help('task')
+
+def help_job():
+    return help('job')
+
+def help_cattle():
+    return help('cattle')
+
+def help_lasso():
+    return help('lasso')
