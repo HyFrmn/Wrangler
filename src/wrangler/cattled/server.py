@@ -55,13 +55,13 @@ class CattleServer(WranglerServer):
         self.server.register_function(self.monitor_start, 'monitor_start')
         self.server.register_function(self.kill_task, 'kill_task')
         self.server.register_function(self.sleep, 'sleep')
-        self.server.register_function(self.wake_up, 'wake_up')
+        self.server.register_function(self.wake, 'wake')
         self.server.register_function(self.task_list, 'task_list')
         self.server.register_function(self.state, 'state')
 
         #Connect to lasso.
         self.cattle = connect_cattle(self.hostname)
-        self.wake_up()
+        self.wake()
 
     def configure(self):
         self.config = config_cattle()
@@ -82,7 +82,7 @@ class CattleServer(WranglerServer):
             sleep_cattle(self.hostname)
         return self._state
 
-    def wake_up(self):
+    def wake(self):
         if self._state == self.ASLEEP:
             self._state = self.AWAKE
             wake_cattle(self.hostname)
@@ -96,7 +96,7 @@ class CattleServer(WranglerServer):
 
     def request_task(self):
         self.debug('Requesting task from server.')
-        taskid = self.client.next_task()
+        taskid = self.client.next_task(self.hostname)
         if taskid > 0:
             self.debug('Task %d was recieved from server.' % taskid)
             db = Session()

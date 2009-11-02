@@ -12,6 +12,7 @@ from sqlalchemy import desc
 
 import wrangler.generators as generator
 import wrangler.db.interface as db
+import wrangler.lassod.interface
 from wrangler import *
 from wrangler.db.session import Session
 from wrangler.queue import *
@@ -19,7 +20,10 @@ from wrangler.config import config_lasso
 from wrangler.network import WranglerServer
 from wrangler.cattled.client import CattleClient
 
+
 config = config_lasso()
+
+
 
 class CattleRuntime(object):
     """Holds runtime information about cattle."""
@@ -60,9 +64,13 @@ class LassoServer(WranglerServer):
 
         #Register API Functions
         self.server.register_function(self.next_task, "next_task")
-        self.server.register_function(self.queue_job, "queue_job")
         self.server.register_function(self.pulse, "pulse")
-        self.server.register_function(self.kill_task, 'kill_task')
+
+        #Register Interface Functions
+        for func_name in wrangler.lassod.interface._api_:
+            func = wrangler.lassod.interface.__dict__[func_name]
+            if callable(func):
+                self.server.register_function(self._decorate_interface(func), func_name)
 
         self.normalize_queue()
 
@@ -72,30 +80,13 @@ class LassoServer(WranglerServer):
             self.heard[hostname] = CattleRuntime()
         return self.heard[hostname].pulse()
 
-    def kill_task(self, task_id):
-        db = Session()
-        task = db.query(Task).filter(Task.id==task_id).first()
-        if task.running:
-            cattle = db.query(Cattle).filter(Cattle.id==task.running).first()
-            client = CattleClient(cattle.hostname)
-            return client.kill_task(task_id)
-        return False
-
-    def next_task(self):
+    def next_task(self, hostname):
         """Return the next task (id) in the queue."""
         self.debug('Requesting next task from lasso.')
         self.next_task_lock.acquire()
         taskid = self.queue.next_task()
         self.next_task_lock.release()
         return taskid
-
-    def queue_job(self, job_data):
-        """Add job to the queue and return the job's id number."""
-        gen = job_data.pop('generator')
-        job = generator.__dict__[gen](**job_data)
-        jobid = db.queue_job(job)
-        self.queue_dirty = True
-        return jobid
 
     def normalize_queue(self):
         self.debug("Normalizing queue.")
@@ -123,6 +114,11 @@ class LassoServer(WranglerServer):
         db.commit()
         db.close()
         self.next_task_lock.release()
+
+    def _decorate_interface(self, func):
+        def decorated(*args):
+            return func(self, *args)
+        return decorated
 
     def _handle_main(self):
         if self._timeout('update-queue'):

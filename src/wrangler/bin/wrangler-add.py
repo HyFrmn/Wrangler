@@ -51,7 +51,7 @@ Command:  %s
 Start:    %d
 End:      %d
 Priority: %d""" % (opts.name, opts.command, opts.start, opts.end, opts.priority))
-    id = client.queue_job(job_data)
+    id = client.lasso_submit_job(job_data)
     
     print 'Job [%d] was added to queue.' % id
 

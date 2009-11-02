@@ -11,7 +11,7 @@ from wrangler.db.session import Session
 
 __all__ = ['next_task',
            'update_job',
-           'queue_job',
+           'create_job',
            'update_queue',
            'update_task',
            'update_metrics',
@@ -85,7 +85,7 @@ def _update_job(job):
             job.started = datetime.datetime.now()
     return job.status
 
-def queue_job(job):
+def create_job(job):
     db = Session()
     db.add(job)
     log.debug('Adding job "%s" to queue.' % job.name)
