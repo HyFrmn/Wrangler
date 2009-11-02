@@ -120,6 +120,7 @@ def lasso_submit_job(lassod, job_data):
     return jobid
 
 def task_kill(lassod, *ids):
+    "Kill task by id number."
     db = Session()
     output = list()
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
@@ -128,11 +129,11 @@ def task_kill(lassod, *ids):
             cattle = db.query(Cattle).filter(Cattle.id==task.running).first()
             client = CattleClient(cattle.hostname)
             client.kill_task(task.id)
-            return output.append(True)
+            output.append(True)
         else:
-            return output.append(False)
+            output.append(False)
     db.close()
-    return output
+    return True
 
 def task_stop(lassod, *ids):
     db = Session()
