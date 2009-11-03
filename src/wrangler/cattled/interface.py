@@ -17,7 +17,7 @@ class Cattle(Base):
     enabled = Column(Boolean)
     running = Column(Integer, default=0)
     metrics = relation("CattleMetrics")
-    awake = Column(Boolean)
+    state = Column(Integer)
 
     def __init__(self):
         self.hostname = info.hostname()

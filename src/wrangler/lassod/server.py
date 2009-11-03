@@ -118,6 +118,7 @@ class LassoServer(WranglerServer):
     def _decorate_interface(self, func):
         def decorated(*args):
             return func(self, *args)
+        decorated.__doc__ = func.__doc__
         return decorated
 
     def _handle_main(self):
