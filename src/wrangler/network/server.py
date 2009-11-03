@@ -27,26 +27,32 @@ class WranglerServer(object):
 
     #Logging Messages
     def log(self, level, msg):
+        """Log message at level."""
         self._log.log(level, msg)
         return True
     
     def debug(self, msg):
+        """Log debug message, msg."""
         self._log.debug(msg)
         return True
 
     def info(self, msg):
+        """Log info message, msg."""
         self._log.info(msg)
         return True
     
     def warning(self, msg):
+        """Log warning message, msg."""
         self._log.warning(msg)
         return True
     
     def error(self, msg):
+        """Log error message, msg."""
         self._log.error(msg)
         return True
 
     def critical(self, msg):
+        """Log critical message, msg."""
         self._log.critical(msg)
         return True
 
@@ -59,7 +65,7 @@ class WranglerServer(object):
         self.server.register_function(self.warning, 'warning')
         self.server.register_function(self.error, 'error')
         self.server.register_function(self.critical, 'critical')
-        self.server.register_function(self.configure, 'configure')
+        #self.server.register_function(self.configure, 'configure')
         self._running = True
         self._handles = [self._handle_main]
 
