@@ -5,6 +5,7 @@ import logging
 import SocketServer
 from threading import Thread
 from SimpleXMLRPCServer import SimpleXMLRPCServer
+from DocXMLRPCServer import DocXMLRPCServer
 
 log = logging.getLogger('wrangler')
 
@@ -35,5 +36,5 @@ class CustomThreadingMixIn:
             t.setDaemon(1)
         t.start()
 
-class AsyncXMLRPCServer(SocketServer.ThreadingMixIn, SimpleXMLRPCServer): pass
+class AsyncXMLRPCServer(SocketServer.ThreadingMixIn, DocXMLRPCServer): pass
 #class AsyncXMLRPCServer(SimpleXMLRPCServer): pass
