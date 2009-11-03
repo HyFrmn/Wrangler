@@ -176,7 +176,7 @@ def disconnect_cattle(hostname):
 def wake_cattle(hostname):
     db = Session()
     cattle = db.query(Cattle).filter(Cattle.hostname==hostname).first()
-    cattle.awake = True
+    cattle.state = 1
     db.commit()
     db.close()
     log.debug('%s is now awake.' % hostname)
@@ -184,7 +184,7 @@ def wake_cattle(hostname):
 def sleep_cattle(hostname):
     db = Session()
     cattle = db.query(Cattle).filter(Cattle.hostname==hostname).first()
-    cattle.awake = False
+    cattle.state = 0
     db.commit()
     db.close()
     log.debug('%s is now asleep.' % hostname)
