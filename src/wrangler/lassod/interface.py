@@ -15,10 +15,14 @@ _api_ = ['cattle_sleep',
          'job_stop',
          'job_pause',
          'job_queue',
+         'job_rename',
+         'job_priority',
+         'job_adjust_priority',
          'task_kill',
          'task_stop',
          'task_queue',
          'task_pause',
+         'task_priority',
          'lasso_submit_job',
          'help',
          'help_task',
@@ -27,6 +31,7 @@ _api_ = ['cattle_sleep',
          'help_lasso']
 
 def cattle_sleep(lassod, *hostnames):
+    """Put specified cattle to sleep."""
     output = []
     for host in hostnames:
         client = CattleClient(host)
@@ -35,6 +40,7 @@ def cattle_sleep(lassod, *hostnames):
 
 
 def cattle_wake(lassod, *hostnames):
+    """Wake up specified cattle."""
     output = []
     for host in hostnames:
         client = CattleClient(host)
@@ -42,15 +48,19 @@ def cattle_wake(lassod, *hostnames):
     return output
 
 def cattle_state(lassod, *hostnames):
+    """Get the state of specified cattle."""
     output = []
     for host in hostnames:
         client = CattleClient(host)
         output.append(client.state())
     return output
 
-def cattle_dump(lassod, *hostnames):pass
+def cattle_dump(lassod, *hostnames):
+    """Kill ALL tasks currently running on specified cattle."""
 
-def cattle_configure(lassod, *hostnames):pass
+
+def cattle_configure(lassod, *hostnames):
+    """Reconfiugre specified cattle."""
 
 def _job_update(job):
     status_list = []
@@ -69,6 +79,8 @@ def _job_update(job):
     return job.status
 
 def job_stop(lassod, *ids):
+    """Stop the specifed job, and currently running tasks of job. Mark all unfinished
+    tasks as stopped."""
     db = Session()
     output = list()
     for job in db.query(Job).filter(Job.id.in_(ids)):
@@ -81,6 +93,7 @@ def job_stop(lassod, *ids):
     return True
 
 def job_pause(lassod, *ids):
+    """Pause all unfinished tasks associated with specifed jobs."""
     db = Session()
     output = list()
     for job in db.query(Job).filter(Job.id.in_(ids)):
@@ -93,6 +106,7 @@ def job_pause(lassod, *ids):
     return True
 
 def job_queue(lassod, *ids):
+    """Queue all unfinished tasks associated with specified jobs."""
     db = Session()
     output = list()
     for job in db.query(Job).filter(Job.id.in_(ids)):
@@ -104,8 +118,17 @@ def job_queue(lassod, *ids):
     db.close()
     return True
 
+def job_rename(lassod, id, name):
+    """Rename specified job."""
+
+def job_priority(lassod, id, priority):
+    """Change the priority of all tasks associated with job."""
+
+def job_adjust_priority(lassod, id, adjustment):
+    """Adjust the priority of all task associated with job."""
+
 def lasso_configure(lassod):
-    pass
+    """Reconfigure lasso daemon."""
 
 def lasso_submit_job(lassod, job_data):
     """Add job to the queue and return the job's id number."""
@@ -125,7 +148,7 @@ def lasso_submit_job(lassod, job_data):
     return jobid
 
 def task_kill(lassod, *ids):
-    "Kill task by id number."
+    """Kill task by id number."""
     db = Session()
     output = list()
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
@@ -141,6 +164,7 @@ def task_kill(lassod, *ids):
     return True
 
 def task_stop(lassod, *ids):
+    """Stop specified tasks. (Kill task if currently running)"""
     db = Session()
     output = []
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
@@ -154,6 +178,7 @@ def task_stop(lassod, *ids):
     return output
 
 def task_queue(lassod, *ids):
+    """Queue specifed tasks."""
     db = Session()
     output = list()
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
@@ -167,6 +192,7 @@ def task_queue(lassod, *ids):
     return output
 
 def task_pause(lassod, *ids):
+    """Pause specified tasks."""
     db = Session()
     output = list()
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
@@ -178,6 +204,9 @@ def task_pause(lassod, *ids):
     db.commit()
     db.close()
     return output
+
+def task_priority(lassod, *ids):
+    """Set the priority of the specified tasks."""
 
 def help(item=None):
     output = ''
