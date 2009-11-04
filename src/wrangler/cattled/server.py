@@ -199,7 +199,7 @@ class CattleServer(WranglerServer):
             metrics['time'] = time.time()
             metrics['load_avg'] = info.load_avg()
             metrics['memory'] = info.memory()
-            metrics['running'] = len(self.running_tasks)
+            metrics['running'] = self.running_tasks.keys()
             update_metrics(info.hostname(), metrics)
 
     def _handle_main(self):

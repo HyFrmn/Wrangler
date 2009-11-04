@@ -97,6 +97,7 @@ class LassoServer(WranglerServer):
             task.status = Task.WAITING
         db.commit()
         db.close()
+        self.queue = PriorityQueue()
         self.next_task_lock.release()
 
     def update_queue(self):

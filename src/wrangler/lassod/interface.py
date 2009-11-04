@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 
+import re
+import datetime
 import logging
 log = logging.getLogger('wrangler.lasso')
 
 import wrangler.db.interface as db
 import wrangler.generators as generator
 from wrangler import *
+from wrangler.db.core import *
 from wrangler.db.session import Session
 from wrangler.cattled.client import CattleClient
 
 _api_ = ['cattle_sleep',
          'cattle_wake',
          'cattle_state',
+         'cattle_status',
          'job_stop',
          'job_pause',
          'job_queue',
@@ -31,7 +35,7 @@ _api_ = ['cattle_sleep',
          'help_lasso']
 
 def cattle_sleep(lassod, *hostnames):
-    """Put specified cattle to sleep."""
+    """Put the specified cattle to sleep. Return cattle state as a list."""
     output = []
     for host in hostnames:
         client = CattleClient(host)
@@ -40,7 +44,7 @@ def cattle_sleep(lassod, *hostnames):
 
 
 def cattle_wake(lassod, *hostnames):
-    """Wake up specified cattle."""
+    """Wake up specified cattle. Return cattle state as a list."""
     output = []
     for host in hostnames:
         client = CattleClient(host)
@@ -48,19 +52,42 @@ def cattle_wake(lassod, *hostnames):
     return output
 
 def cattle_state(lassod, *hostnames):
-    """Get the state of specified cattle."""
+    """Get the state of specified cattle. Return cattle state as a list."""
     output = []
     for host in hostnames:
         client = CattleClient(host)
         output.append(client.state())
     return output
 
+def cattle_status(lassod, *hostnames):
+    """Get the status of the specified cattle. Return cattle state as a list of
+    dictionaries containing a runtime report of cattle."""
+    db = Session()
+    output = []
+    cattles = db.query(Cattle).filter(Cattle.hostname.in_(hostnames)).all()
+    for cattle in cattles:
+        metric = db.query(CattleMetrics).filter(CattleMetrics.cattle_id==cattle.id)
+        metric = metric.order_by(desc(CattleMetrics.time)).first()
+        report = dict()
+        for key in CattleMetrics.keys:
+            attr = getattr(metric, key)
+            if attr is not None:
+                if key == 'running':
+                    report[key] = [int(task.id) for task in attr]
+                else:
+                    report[key] = str(attr)
+        output.append(report)
+    db.close()
+    return output
+
 def cattle_dump(lassod, *hostnames):
-    """Kill ALL tasks currently running on specified cattle."""
+    """Kill ALL tasks currently running on specified cattle. Return a list of 
+    lists containing task id of tasks that were killed."""
 
 
 def cattle_configure(lassod, *hostnames):
-    """Reconfiugre specified cattle."""
+    """Reconfigure specified cattle. Return a list of hostnames."""
+    return hostnames
 
 def _job_update(job):
     status_list = []
@@ -79,18 +106,28 @@ def _job_update(job):
     return job.status
 
 def job_stop(lassod, *ids):
-    """Stop the specifed job, and currently running tasks of job. Mark all unfinished
-    tasks as stopped."""
+    """Stop the speciefed job, and currently running tasks of job. Mark all unfinished
+    tasks as stopped. Return a list of killed tasks."""
     db = Session()
-    output = list()
+    tasks = list()
+    output = []
     for job in db.query(Job).filter(Job.id.in_(ids)):
         for task in job.tasks:
-            task.status = task.STOPPED
+            if task.status == task.WAITING or task.status == task.QUEUED:
+                task.status = task.STOPPED
+                print task.id, 'has been set to stop.'
+            if task.status == task.RUNNING:
+                cattle_id = task.running
+                cattle = db.query(Cattle).filter(Cattle.id==cattle_id).first()
+                client = CattleClient(cattle.hostname)
+                if client.kill_task(task.id):
+                    output.append(task.id)
+                    print task.id, 'has been killed.'
         _job_update(job)
     lassod.queue_dirty = True
     db.commit()
     db.close()
-    return True
+    return output
 
 def job_pause(lassod, *ids):
     """Pause all unfinished tasks associated with specifed jobs."""
@@ -106,17 +143,22 @@ def job_pause(lassod, *ids):
     return True
 
 def job_queue(lassod, *ids):
-    """Queue all unfinished tasks associated with specified jobs."""
+    """Queue all unfinished tasks associated with specified jobs. Return a list 
+    of tasks that are waiting."""
+    lassod.normalize_queue()
     db = Session()
     output = list()
     for job in db.query(Job).filter(Job.id.in_(ids)):
         for task in job.tasks:
-            task.status = task.WAITING
+            if task.status == task.PAUSED and task.status == task.STOPPED:
+                task.status = task.WAITING
+                output.append(task.id)
         _job_update(job)
     lassod.queue_dirty = True
+    lassod.update_queue()
     db.commit()
     db.close()
-    return True
+    return output
 
 def job_rename(lassod, id, name):
     """Rename specified job."""
@@ -198,7 +240,7 @@ def task_kill(lassod, *ids):
         else:
             output.append(False)
     db.close()
-    return False
+    return output
 
 def task_stop(lassod, *ids):
     """Stop specified tasks. (Kill task if currently running)"""
@@ -248,12 +290,13 @@ def task_priority(lassod, *ids):
     """Set the priority of the specified tasks."""
     return False
 
-def help(item=None):
+def help(lassod, regex=None):
     output = ''
-    if item:
-        funcs = [globals()[func] for func in _api_ if not func.startswith(str(item))]
+    if regex:
+        regex = re.compile(regex)
+        funcs = [globals()[func] for func in _api_ if regex.match(func)]
     else:
-        funcs = _api_
+        funcs = [globals()[func] for func in _api_]
     for func in funcs:
         output += str(func.__name__) + '\n'
         output += '=' * 32 + '\n'
@@ -261,14 +304,14 @@ def help(item=None):
         output += '\n' * 3
     return output
 
-def help_task():
-    return help('task')
+def help_task(lassod):
+    return help(lassod, 'task')
 
-def help_job():
-    return help('job')
+def help_job(lassod):
+    return help(lassod, 'job')
 
-def help_cattle():
-    return help('cattle')
+def help_cattle(lassod):
+    return help(lassod, 'cattle')
 
-def help_lasso():
-    return help('lasso')
+def help_lasso(lassod):
+    return help(lassod, 'lasso')

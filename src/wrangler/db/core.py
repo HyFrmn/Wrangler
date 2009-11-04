@@ -4,7 +4,7 @@ import simplejson as json
 
 
 import sqlalchemy
-from sqlalchemy import Table, Column, Integer, Float, String, MetaData, desc, DateTime
+from sqlalchemy import Table, Column, Integer, Float, String, MetaData, desc, DateTime, asc
 from sqlalchemy import ForeignKey, Boolean, create_engine, and_, select, func
 from sqlalchemy.orm import mapper, sessionmaker, relation, backref, synonym, column_property
 from sqlalchemy.types import TypeDecorator
@@ -24,10 +24,12 @@ __all__ = ['metadata',
            'String',
            'ForeignKey',
            'Boolean',
+           'Table',
            'relation',
            'backref',
            'column_property',
            'desc',
+           'asc',
            'DateTime',
            'DictionaryDecorator']
 

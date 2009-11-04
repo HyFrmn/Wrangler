@@ -16,7 +16,7 @@ class Cattle(Base):
     ncpus = Column(Integer)
     enabled = Column(Boolean)
     running = Column(Integer, default=0)
-    metrics = relation("CattleMetrics")
+    metrics = relation("CattleMetrics", backref="cattle")
     state = Column(Integer)
 
     def __init__(self):
@@ -29,6 +29,9 @@ class Cattle(Base):
         self.enabled = False
         self.awake = False
 
+tasks_metrics_table = Table('tasks_metrics', Base.metadata, 
+                            Column('tasks_id', Integer, ForeignKey('tasks.id')),
+                            Column('metrics_id', Integer, ForeignKey('metrics.id')))
 
 class CattleMetrics(Base):
     __tablename__ = 'metrics'
@@ -39,6 +42,10 @@ class CattleMetrics(Base):
     memory = Column(Integer)
     tmp = Column(Integer)
     time = Column(DateTime)
+
+    running = relation("Task", secondary=tasks_metrics_table)
+
+    keys = ['cattle_id', 'load_avg', 'swap', 'memory', 'tmp', 'time', 'running']
 
     def __init__(self, hostid, time, load_avg, running_tasks=-1):
         self.cattle_id = hostid

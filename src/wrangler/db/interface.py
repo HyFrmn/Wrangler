@@ -142,8 +142,9 @@ def update_metrics(hostname, data):
     cattle = db.query(Cattle).filter(Cattle.hostname == hostname).first()
     time = datetime.datetime.now()
     load_avg = data['load_avg']
-    cattle.running = data['running']
+    cattle.running = len(data['running'])
     metrics = CattleMetrics(cattle.id, time, load_avg)
+    metrics.running = db.query(Task).filter(Task.id.in_(data['running'])).all()
     db.add(metrics)
     db.commit()
     db.close()

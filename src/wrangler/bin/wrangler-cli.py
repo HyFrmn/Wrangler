@@ -26,7 +26,7 @@ def main():
     try:
         args = sys.argv[1:]
         item = args.pop(0)
-        if item == 'help':
+        if item == 'help' and len(args) == 0:
             cmd_help()
             sys.exit(1)
         cmd = args.pop(0)
