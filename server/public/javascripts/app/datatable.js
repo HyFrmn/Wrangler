@@ -22,7 +22,7 @@ var DataTable = Class.create();
 DataTable.prototype = {
 	initialize: function(element, def, options){
 		this.element = element;
-		this.options = options;
+
 		this.options = Object.extend({
 			data: false,
 			url: false,
@@ -31,6 +31,10 @@ DataTable.prototype = {
 			search: false,
 			headerClass: 'data-table-header',
 		}, options || {});
+		
+        this.ajaxParams = {
+            page: 1,
+		}
 		this.parseDefs(def);
 		this.container = $(element);
 		this.createTable();
@@ -60,7 +64,8 @@ DataTable.prototype = {
 				this.data = transport.responseJSON;
 				callback();
 			}.bind(this),
-			onFailure : function(){ alert(this.msgs.errorURL); }
+			onFailure : function(){ alert(this.msgs.errorURL);},
+			parameters : this.ajaxParams
 		});
 	},
 	createCache : function(){
@@ -124,5 +129,17 @@ DataTable.prototype = {
 			this.createRows();
 			callback();
 			}.bind(this));
-	}
+	},
+    nextPage : function(callback){
+        this.ajaxParams.page += 1;
+        this.updateTable(this.options.url, callback);
+    },
+    prevPage : function(callback){
+        this.ajaxParams.page -= 1;
+        if (this.ajaxParams.page < 1){
+            this.ajaxParams.page = 1;
+        }
+        this.updateTable(this.options.url, callback);
+    }	
+	
 }

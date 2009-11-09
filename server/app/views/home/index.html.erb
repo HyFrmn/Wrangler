@@ -1,8 +1,16 @@
+<a href="#" onclick="jobDataTable.prevPage()">Prev</a>
+<a href="#" onclick="jobDataTable.nextPage()">Next</a>
 <div id="jobs">
 </div>    
 
+<div id="chart" style="width: 50%">
+
+</div>
+
 <div id="tasks">
 </div>
+
+
 
 <script type="text/javascript">
 function selectJobCallback(event){
@@ -62,5 +70,13 @@ new Proto.Menu({
   selector: '#jobs', 
   className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
   menuItems: jobMenuItems // array of menu items
+})
+
+new Proto.Chart($('chart'),[
+    {data: [[0, 0], [1, 0], [2, 8], [3, 21], [4, 0], [5, 0], [6, 42], [7, 63], [8, 32], [9, 81], [10, 90], [11, 99], [12, 36], [13, 169]], label: "Data 1"}   
+],
+{
+    bars: {show: true},
+    xaxis: {min: -1, max: 15, tickSize: 1}
 })
 </script>

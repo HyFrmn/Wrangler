@@ -88,11 +88,12 @@ class JobsController < ApplicationController
   
   def list
     items_per_page = 10
+    page = params[:page] ? params[:page].to_i : 1
     
     conditions = "" unless params[:filter].nil?
     
     @total = Job.count(:conditions => conditions)
-    @jobs = Job.find(:all, :order => "id desc", :conditions => conditions, :limit => items_per_page)
+    @jobs = Job.find(:all, :order => "id desc", :conditions => conditions,  :offset => ((page - 1) * items_per_page), :limit => items_per_page)
     respond_to do |format|
         format.html { render :partial => 'list' }
         format.xml { render :xml => @jobs.to_xml(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime, :priority] )  }
@@ -112,10 +113,8 @@ class JobsController < ApplicationController
   end
   
   def priority
+    puts params
     id = params[:job_id].to_i
-    if id = 0 
-      id = params[:id]
-    end
     priority = params[:job_priority]
     server = XMLRPC::Client.new(AppConfig.lasso_host, "/RPC2", AppConfig.lasso_port)
     result = server.call("job_priority", id, priority)
