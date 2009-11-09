@@ -88,7 +88,6 @@ DataTable.prototype = {
 		this.table.appendChild(thead);
 	},
 	createRows : function(){
-		console.log(this);
 		even = false;
 		this.data.each(function(data){
 			tr = this.createRow(data);
