@@ -21,8 +21,58 @@ tr {
 	border: 0px;
 }
 
+div.context-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-family: verdana;
+	background: #FFFFFF;
+	border-color: #000000;
+	border-width: 1px;
+	border-style: solid;
+}
+div.context-menu a {
+	display: block;
+	text-decoration: none;
+	cursor: default;
+	outline: none;
+	font-size: 11px;
+	border-width: 0px 0px 1px 0px;
+	border-style: dotted;
+}
+
+.context-menu .separator {
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	display: block;
+	font-size: 1px;
+	background: #000000;
+}
+.context-menu ul, .menu li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.context-menu li {
+	list-style-position: outside;
+}
+
+
 .waiting { 
 	color: #FFF600;
+	text-transform: capitalize;
+	font-weight: bold;
+	}
+
+.paused { 
+	color: #FF6600;
+	text-transform: capitalize;
+	font-weight: bold;
+	}
+
+.stopped { 
+	color: #CC0000;
 	text-transform: capitalize;
 	font-weight: bold;
 	}

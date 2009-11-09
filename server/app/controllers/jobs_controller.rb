@@ -1,13 +1,15 @@
+require 'xmlrpc/client'
+
 class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.xml
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.find(:all, :order => "id desc")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @jobs }
-      format.json { render :json => @jobs.to_json(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime] ) }
+      format.json { render :json => @jobs.to_json(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime, :priority] ) }
     end
   end
 
@@ -85,8 +87,68 @@ class JobsController < ApplicationController
   end
   
   def list
-    @jobs = Job.all
+    items_per_page = 10
     
-    render :partial => 'list'
+    conditions = "" unless params[:filter].nil?
+    
+    @total = Job.count(:conditions => conditions)
+    @jobs = Job.find(:all, :order => "id desc", :conditions => conditions, :limit => items_per_page)
+    respond_to do |format|
+        format.html { render :partial => 'list' }
+        format.xml { render :xml => @jobs.to_xml(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime, :priority] )  }
+        format.json { render :json => @jobs.to_json(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime, :priority] )  }
+    end
+  end
+  
+  
+  #AJAX Handlers 
+  
+  def rename
+    id = params[:job_id].to_i
+    name = params[:job_name]
+    server = XMLRPC::Client.new(AppConfig.lasso_host, "/RPC2", AppConfig.lasso_port)
+    result = server.call("job_rename", id, name)
+    render :text => result
+  end
+  
+  def priority
+    id = params[:job_id].to_i
+    if id = 0 
+      id = params[:id]
+    end
+    priority = params[:job_priority]
+    server = XMLRPC::Client.new(AppConfig.lasso_host, "/RPC2", AppConfig.lasso_port)
+    result = server.call("job_priority", id, priority)
+    render :text => result
+  end
+  
+  def queue
+    id = params[:job_id].to_i
+    if id = 0 
+      id = params[:id].to_i
+    end
+    server = XMLRPC::Client.new(AppConfig.lasso_host, "/RPC2", AppConfig.lasso_port)
+    result = server.call("job_queue", id)
+    render :text => result
+  end
+
+  def pause
+    id = params[:job_id].to_i
+    if id = 0 
+      id = params[:id]
+    end
+    server = XMLRPC::Client.new(AppConfig.lasso_host, "/RPC2", AppConfig.lasso_port)
+    result = server.call("job_pause", id)
+    render :text => result
+  end
+  
+  def stop
+    id = params[:job_id].to_i
+    if id = 0 
+      id = params[:id]
+    end
+    server = XMLRPC::Client.new(AppConfig.lasso_host, "/RPC2", AppConfig.lasso_port)
+    result = server.call("job_stop", id)
+    render :text => result
   end
 end

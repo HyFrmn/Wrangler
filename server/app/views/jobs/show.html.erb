@@ -1,9 +1,7 @@
 <%= stylesheet_link_tag "task_style" %>
 
-<p>
-  <b>Name:</b>
-  <%=h @job.name %>
-</p>
+<div id="job-data">
+<h1><a href="#" onclick="renameDialog(<%= @job.id %>, '<%= @job.name %>')"><%=h @job.name %></a></h1>
 
 <p>
   <b>Status:</b>
@@ -25,14 +23,43 @@
 </p>
 <p>
 	<b>Progress:</b>
-	<%=h Task.count(:conditions => ["job_id = ? AND status = 3", @job.id]) %> / <%=h Task.count(:conditions => ["job_id = ?", @job.id]) %>
+	<%=h @job.progress %>% (<%=h @job.finished %> / <%=h @job.task_count %>)
 </p>
+</div>
 <div id="tasks">
-<%= render :partial => 'tasks/list' %>
+	<table>
+	  <thead>
+		<tr>
+		  <th>Environment</th>
+	      <th>Priority</th>
+	      <th>Command</th>
+	      <th>Status</th>
+	      <th>Job</th>
+	    </tr>
+	  </thead>
+
+	<% @job.tasks.each do |task| %>
+	  <%= link_to (render :partial => 'tasks/row', :locals => { :task => task }), task %>
+	<% end %>
+	</table>
 </div>
 
-<%= periodically_call_remote :update    => 'tasks',
-                             :url       => { :controller => :tasks, :action => :list, :id => @job.id },
-                             :frequency => 2.0 %>
+<script type='text/javascript'>
+var getJobData = function(e) {
+	return '<%= @job.to_json(:except => :meta, :methods => [:progress, :finished, :running, :queued, :waiting, :estimate, :runtime, :priority] )  %>'.evalJSON()
+}
+
+new Proto.Menu({
+  selector: '#job-data', 
+  className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
+  menuItems: jobMenuItems // array of menu items
+})
+
+new Proto.Menu({
+  selector: '.taskTableRow', 
+  className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
+  menuItems: taskMenuItems // array of menu items
+})
+</script>
 
 <%= link_to 'Job List', jobs_path %>

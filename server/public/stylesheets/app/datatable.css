@@ -1,0 +1,35 @@
+/*TAB SORTER */
+body{font-family: Helvetica;}
+
+.data-table{width:100%;font-family: Helvetica;background-color:#E1E1E1;text-align:left;font-size:11px;}
+.data-table th{
+	background-color:#e4e4e4;
+	border:1px solid #FFF;
+	cursor:pointer;
+	background-position:right center;
+	background-repeat:no-repeat;
+	background-image:url(../img/bg.gif);
+}
+
+.data-table th.desc{background-image:url('/images/desc.gif');background-color:#CDDBDC;}
+.data-table th.asc{background-image:url('/images/asc.gif');background-color:#CDDBDC;}
+.data-table th.on{ background-color:#CDDBDC; cursor :pointer;}
+
+.data-table td,.data-table th{ padding : 6px}
+.data-table tr.even{ background-color:#FFF; }
+.data-table tr.odd{ background-color:#F4F4F4; }
+.data-table tr.on{ background-color:#CDDBDC; cursor :pointer;}
+.data-table tr.selected{ background-color:#E4E4E4; cursor :pointer;}
+
+div.data-table-options {border : 1px solid #E1E1E1; font-size:11px; padding :5px 7px;}
+div.data-table-options input, div.data-table-options select{border : 1px solid #CCC; font-size:11px; padding :1px 3px; margin :0 5px;}
+
+div.data-table-pager {border : 1px solid #E1E1E1; font-size:11px; padding :5px 7px; text-align:right;}
+div.data-table-pager .currentpage {padding-left:10px; padding-right:10px;}
+div.data-table-pager .totalpages {padding:0;}
+div.data-table-pager input {border : 1px solid #E1E1E1; font-size:11px; margin :0 3px;}
+
+div.data-table-search {border : 1px solid #E1E1E1; font-size:11px; padding :5px 7px;}
+div.data-table-search input {border : 1px solid #E1E1E1; font-size:11px; margin :0 3px;}
+
+th {font-weight:bold;}

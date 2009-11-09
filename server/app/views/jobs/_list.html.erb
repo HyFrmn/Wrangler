@@ -1,23 +1,22 @@
-<h1>Listing jobs</h1>
-
-<table id="job_list">
+<table id="job_list" class="sortable">
   <thead>
     <tr>
 	  <th>Id</th>
       <th>Name</th>
+      <th>Priority</th>
       <th>Progress</th>
       <th>Status</th>
       <th>Owner</th>
     </tr>
   </thead>
 <% @jobs.each do |job| %>
-  <tr class="<%= cycle("even", "odd") %>">
-	<td><%=h job.id %></td>
-    <td><%=h job.name %></td>
-    <td><%=h number_to_percentage(job.progress, :precision => 1) %></td>
-    <td class="<%=h job.status_string %>"><%=h job.status_string.capitalize %></td>
-    <td><%=h job.owner %></td>
-    <td><%= link_to 'Show', job %></td>
+  <tr class="<%= cycle("even", "odd") %> jobDataRow">
+	<td field='job_id'><%=h job.id %></td>
+    <td field='name' value='<%= job.name %>'><%= link_to job.name, job %></td>
+	<td field='priority'><%=h job.priority %></td>
+    <td field='progress' value='<%= job.progress %>'><%=h number_to_percentage(job.progress, :precision => 1) %></td>
+    <td field='status' value='<%= job.status %>' class="<%=h job.status_string %>"><%=h job.status_string.capitalize %></td>
+    <td field='owner'><%=h job.owner %></td>
   </tr>
 <% end %>
 </table>

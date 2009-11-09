@@ -6,8 +6,16 @@
 
 <%= periodically_call_remote :update    => 'jobs',
                              :url       => { :controller => :jobs, :action => :list},
-                             :frequency => 2.0 %>
+                             :frequency => 5.0 %>
 
 <br />
 
 <%= link_to 'New job', new_job_path %>
+
+<script type='text/javascript'>
+new Proto.Menu({
+  selector: '#jobs', 
+  className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
+  menuItems: jobMenuItems // array of menu items
+});
+</script>

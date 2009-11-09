@@ -6,6 +6,10 @@ class Task < ActiveRecord::Base
     JSON.parse(self[:env])
   end
   
+  def meta_hash
+    JSON.parse(self[:meta])
+  end
+
   def status_string
     @status = self[:status]
     if @status == 0:

@@ -1,329 +1,66 @@
-<div id="tvcontainer" class="yui-navset">
-    <ul class="yui-nav">
-        <li class="selected"><a href="#tab1"><em>Jobs</em></a></li>
-        <li><a href="#tab2"><em>Cattle</em></a></li>
-        <li><a href="#tab3"><em>Queue</em></a></li>
+<div id="jobs">
+</div>    
 
-    </ul>            
-    <div class="yui-content">
-
-        <div id="job_layout">
-            <p>Welcome! There is a DataTable in the second Tab.</p>
-            <div id="job_table"></div>
-            <div id="task_table"></div>
-        </div>
-        <div id="cattle_table"></div>
-        <div id="queue_layout"><p>This is a place holder for the queue.</p></div>
-    </div>
+<div id="tasks">
 </div>
 
-    
-
 <script type="text/javascript">
+function selectJobCallback(event){
+	data = getJobData(event);
+	url = '/tasks/list/' + data.id + '.json'
+	Effect.Fade('tasks', {afterFinish: function(){taskDataTable.updateTable(url, function(){Effect.Appear('tasks')})}});
+}
 
-/* requery method
-http://satyam.com.ar/yui/2.6.0/requery.html
-*/
-
-YAHOO.widget.DataTable.prototype.requery = function(newRequest) {
-	var ds = this.getDataSource();
-	if (ds instanceof YAHOO.util.LocalDataSource) {
-		ds.liveData = newRequest;
-		ds.sendRequest("",
-			{
-				success: this.onDataReturnInitializeTable,
-				failure: this.onDataReturnInitializeTable,
-				scope: this
-			}
-		);
-	} else {
-		ds.sendRequest(
-			(newRequest === undefined?this.get('initialRequest'):newRequest),
-			{
-				success: this.onDataReturnInitializeTable,
-				failure: this.onDataReturnInitializeTable,
-				scope: this
-			}
-		);
-	}
-};
-
-
-YAHOO.util.Event.addListener(window, "load", function() {
-    YAHOO.example.Basic = function() {
-		this.statusFormatter = function(elLiner, oRecord, oColumn, oData){
-			if (oRecord.getData("status") == -3) {
-				elLiner.innerHTML = "Errored";
-			} else if(oRecord.getData("status") == -2) {
-				elLiner.innerHTML = "Stopped";
-			} else if(oRecord.getData("status") == -1) {
-				elLiner.innerHTML = "Paused";
-			} else if(oRecord.getData("status") == 0) {
-				elLiner.innerHTML = "Waiting";
-			} else if(oRecord.getData("status") == 1) {
-				elLiner.innerHTML = "Queued";
-			} else if(oRecord.getData("status") == 2) {
-				elLiner.innerHTML = "Running";
-			} else if(oRecord.getData("status") == 3) {
-				elLiner.innerHTML = "Finished";
-			} else {
-				elLiner.innerHTML = "Unknown";
-			}	
-		};
-
-      var cattleStateFormatter = function(elLiner, oRecord, oColumn, oData){
-          elLiner.innerHTML = oData;
-          if (oData == 0){
-              elLiner.innerHTML = 'Asleep';
-          } else if (oData == 1){
-              elLiner.innerHTML = 'Awake';
-	      } else {
-              elLiner.innerHTML = 'Unknown';
-	      }         	
-      };
-
-      var cattleRowFormatter = function(elTr, oRecord) {
-	  	  var state = oRecord.getData('state');
-          if (state == 0){
-              YAHOO.util.Dom.addClass(elTr, 'disabled');
-          } else {
-		  	  YAHOO.util.Dom.removeClass(elTr, 'disabled')
-		  }
-          return true;
-      };
-
-	  var sleepCallback =
-		{
-		  success:function(o){
-			  true
-		  },
-		  failure:function(o){
-		      alert("XMLRPC called failed.")
-		  }
-		};
-
-      var cattleStateSubmitter = function(fnCallback, oNewValue){
-	  	var oRecord = this.getRecord();
-		var hostname = oRecord.getData('hostname');
-		if (oNewValue == 0){
-			var sUrl = 'lasso/sleep/' + hostname
-		} else {
-			var sUrl = 'lasso/wake/' + hostname
-		}
-		
-		var request = YAHOO.util.Connect.asyncRequest('GET', sUrl,
-		{
-			success: function(o){
-			    fnCallback(true, oNewValue);
+jobTableDefs = [{ 
+					key: 'id',
+					label: 'ID',
+				},
+				{
+					key: 'name',
+					label: 'Name',
+					clickCallback: selectJobCallback,
+				},
+				{
+					key: 'priority',
+					label: 'Priority'
+				},
+				{
+					key: 'status',
+					label: 'Status',
+				},
+				{
+					key: 'progress',
+					label: 'Progress'
+				},
+				{
+					key: 'queued',
+					label: 'Queued'
+				},
+				{
+					key: 'running',
+					label: 'Running'
+				},
+				{
+					key: 'finished',
+					label: 'Finished'
+				},
+				{
+					key: 'started',
+					label: 'Started'
+				},
+				{
+					key: 'progress',
+					label: 'Progress'
+				},
 				
-			},
-			failure: function(o){
-				alert(o.statusText);
-				fnCallback(false, oNewValue);
-			},
-			scope: this
-		} 
-		)
-				
-	  };
+];
 
+var jobDataTable = new DataTable('jobs', jobTableDefs, {url : '/jobs/list/1.json'});
+var taskDataTable = new DataTable('tasks', taskTableDefs, {url : '/tasks/list/1.json'});
 
-		mySimpleDialog = new YAHOO.widget.SimpleDialog("dlg", { 
-			width: "20em", 
-			effect:{effect:YAHOO.widget.ContainerEffect.FADE,
-			        duration:0.25}, 
-			fixedcenter:true,
-			modal:true,
-		    visible:false,
-			draggable:false });
-		mySimpleDialog.setHeader("Warning!");
-		mySimpleDialog.setBody("Are you sure you want to delete this cattle to sleep?");
-		mySimpleDialog.cfg.setProperty("icon",YAHOO.widget.SimpleDialog.ICON_WARN);
-
-		var handleYes = function() {
-		 //user confirms the deletion of this item;
-		 //this method would perform that deletion;
-		 //when ready, hide the SimpleDialog:
-		 this.hide();
-		}
-		var handleNo = function() {
-		 //user cancels item deletion; this method
-		 //would handle the cancellation of the
-		 //process.
-		 //when ready, hide the SimpleDialog:
-		 this.hide();
-		}
-		var myButtons = [ { text:"Yes", 
-							handler:handleYes },
-						  { text:"Cancel", 
-						  	handler:handleNo,
-							isDefault:true } ];
-		mySimpleDialog.cfg.queueProperty("buttons", myButtons);
-
-		mySimpleDialog.render(document.body);
-
-        /*
-        Cattle Data View
-        */
-        var cattleTableDefs = [
-            {key:"id", sortable:true, resizeable:true},
-            {key:"hostname", sortable:true, resizeable:true},
-            {key:"enabled", resizeable:true},
-            {key:"state", formatter:cattleStateFormatter, editor: new YAHOO.widget.DropdownCellEditor({asyncSubmitter: cattleStateSubmitter, dropdownOptions:[{label: "Asleep", value:0}, {label:"Awake", value:1}]})},
-            {key:"running", resizeable:true},
-            {key:"system", resizeable:true},
-            {key:"memory", resizeable:true},
-            {key:"ncpus", resizeable:true},
-            {key:"processor", resizeable:true}
-        ];
-
-        var cattleDataSource = new YAHOO.util.DataSource("cattles.json");
-        cattleDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
-        cattleDataSource.connXhrMode = "queueRequests";
-        cattleDataSource.responseSchema = {
-            fields: ["id", "hostname", "enabled", "state", "running", "system", "memory", "ncpus", "processor"]	
-        };
-
-        var cattleDataTable = new YAHOO.widget.ScrollingDataTable("cattle_table", cattleTableDefs, cattleDataSource, {formatRow: cattleRowFormatter})
-
-        var highlightEditableCell = function(oArgs){
-            var elCell = oArgs.target;
-            if(YAHOO.util.DOM.hasClass(elCell, "yui-dt-editable")){
-                this.highlightCell(elCell);
-            }
-        };
-        cattleDataTable.subscribe("cellMouseoverEvent", highlightEditableCell);
-        cattleDataTable.subscribe("cellMouseoutEvent", cattleDataTable.onEventUnhighlightCell);
-        cattleDataTable.subscribe("cellClickEvent", cattleDataTable.onEventShowCellEditor);
-
-/*
-        var onCattleContextMenuClick = function(p_sType, p_aArgs, p_myDataTable){
-            var task = p_aArgs[1];
-            if(task){
-               //Get the TR (table row) element that trigger event.
-               var elRow = this.contextEventTarget;
-               elRow = p_myDataTable.getTrEl(elRow);
-               
-               if (elRow) {
-                   switch(task.index) {
-                       case 0:  //Put cattle to sleep.
-                           var oRecord = p_myDataTable.getRecord(elRow);
-                           hostname = oRecord.getData("hostname");
-                           var sUrl = 'lasso/sleep/' + hostname
-						   var request = YAHOO.util.Connect.asyncRequest('GET', sUrl, sleepCallback); 
-                   }
-               }
-            }
-        }
-
-
-        var cattleTableContextMenu = new YAHOO.widget.ContextMenu("cattleContextMenu", {trigger: cattleDataTable.getTbodyEl()});
-        cattleTableContextMenu.addItem("Sleep");
-        cattleTableContextMenu.render("cattle_table");
-        cattleTableContextMenu.clickEvent.subscribe(onCattleContextMenuClick, cattleDataTable);
-*/
-        /*
-        
-        Job / Task - View
-        
-        */
-
-
-        var jobTableDefs = [
-            {key:"id", sortable:true, width:"32"},
-            {key:"name", resizeable:true},
-            {key:"status", sortable:true, resizeable:true, formatter:this.statusFormatter},
-            {key:"owner", resizeable:true},
-            {key:"progress"},
-            {key:"waiting"},
-            {key:"queued"},
-            {key:"running"},
-            {key:"finished"},
-            {key:"estimate"}
-        ];
-
-        var jobDataSource = new YAHOO.util.DataSource('jobs.json');
-        jobDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
-        jobDataSource.connXhrMode = "queueRequests";
-        jobDataSource.responseSchema = {
-            fields: ["id", "name", "status", "owner", "progress", "finished", "queued", "running", "waiting", "estimate"]
-        };
-
-        var jobDataTable = new YAHOO.widget.ScrollingDataTable("job_table",
-                jobTableDefs, jobDataSource, { selectionMode: "single", caption: "Jobs", height: "16em"});
-
-
-        var taskTableDefs = [
-            {key:"id", sortable:true, resizeable:false},
-            {key:"job_id", resizeable:true},
-            {key:"status", sortable:true, resizeable:true, formatter:this.statusFormatter},
-            {key:"parent", resizeable:true},
-            {key:"command", resizeable:true},
-            {key:"priority", resizeable:true},
-            {key:"run_count", resizeable:true},
-           
-        ];
-
-
-        var taskDataSource = new YAHOO.util.DataSource('tasks/list/');
-        taskDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
-        taskDataSource.connXhrMode = "queueRequests";
-        taskDataSource.responseSchema = {
-            fields: ["id", "job_id", "status", "parent", "command", "priority", "run_count"]
-        };
-
-        var taskDataTable = new YAHOO.widget.ScrollingDataTable("task_table",
-                taskTableDefs, taskDataSource, {height: "16em"});
-
-
-        var jobPollingCallback = {
-            success: jobDataTable.onDataReturnInitializeTable,
-            failure: function(){
-                YAHOO.log("Polling failure for new jobs.", "error");
-            },
-            scope: jobDataTable
-        }
-        
-        var jobSelectedCallback = {
-            success: taskDataTable.onDataReturnInitializeTable,
-            failure: function(){
-                YAHOO.log("Could not access task list.", "error");
-            },
-            scope: taskDataTable
-        
-        }        
-        
-        var jobClickCallback = function(oArgs, target) {
-            jobDataTable.onEventSelectRow(oArgs, target);
-            var elTarget = oArgs.target;
-            var oRecord = this.getRecord(elTarget);
-            var id = oRecord.getData("id");
-            taskDataTable.requery(id + '.json')
-        }
-
-        
-        jobDataTable.subscribe("rowMouseoverEvent", jobDataTable.onEventHighlightRow);
-        jobDataTable.subscribe("rowMouseoutEvent", jobDataTable.onEventUnhighlightRow);
-        jobDataTable.subscribe("rowClickEvent", jobClickCallback);        
-        
-        jobDataSource.setInterval(15000, null, jobPollingCallback);
-
-        var myTabView = new YAHOO.widget.TabView("tvcontainer"); 
-	    myTabView.getTab(1).addListener("click", function() {jobDataTable.onShow()});
-	    myTabView.getTab(2).addListener("click", function() {cattleDataTable.onShow()}); 
-
-
-        // Initialize views 
-        taskDataTable.requery('1.json');
-
-        return {
-            //oJDS: jobDataSource,
-            //oJDT: jobDataTable,
-            //oCDT: cattleDataTable,
-            //oCDS: cattleDataSource,
-            oTV: myTabView
-      };
-    }();
-});
-
+new Proto.Menu({
+  selector: '#jobs', 
+  className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
+  menuItems: jobMenuItems // array of menu items
+})
 </script>

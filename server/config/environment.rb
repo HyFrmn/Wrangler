@@ -1,4 +1,11 @@
 # Be sure to restart your server when you modify this file
+require 'ostruct'
+require 'yaml'
+
+config = OpenStruct.new(YAML.load_file("#{RAILS_ROOT}/config/config.yml"))
+env_config = config.send(RAILS_ENV)
+config.common.update(env_config) unless env_config.nil?
+::AppConfig = OpenStruct.new(config.common)
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION

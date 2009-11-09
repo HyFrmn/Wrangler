@@ -18,7 +18,7 @@ class Job < ActiveRecord::Base
     elsif @status == -1:
       return 'paused'
     end
-    return self[:status]
+    return self[:status].to_s
   end
 
   def runtime
@@ -27,6 +27,10 @@ class Job < ActiveRecord::Base
 
   def averagetime
     TaskLog.average(:time, :joins => :task, :conditions => ['tasks.job_id = ? and task_logs.time > 0', self[:id]]).to_f
+  end
+  
+  def priority
+    Task.average(:priority, :conditions => ['job_id = ?', self[:id]]).to_i
   end
   
   def task_count

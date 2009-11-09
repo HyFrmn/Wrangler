@@ -1,0 +1,3 @@
+common:
+    lasso_host: marshall-petersens-macbook-pro.local
+    lasso_port: 1234

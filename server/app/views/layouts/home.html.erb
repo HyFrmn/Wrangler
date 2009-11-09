@@ -5,40 +5,18 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Wrangler: <%= controller.action_name %></title>
-
-<!-- Combo-handled YUI CSS files: -->
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.8.0r4/build/fonts/fonts-min.css&2.8.0r4/build/reset/reset-min.css&2.8.0r4/build/grids/grids-min.css&2.8.0r4/build/base/base-min.css&2.8.0r4/build/autocomplete/assets/skins/sam/autocomplete.css&2.8.0r4/build/container/assets/skins/sam/container.css&2.8.0r4/build/menu/assets/skins/sam/menu.css&2.8.0r4/build/button/assets/skins/sam/button.css&2.8.0r4/build/calendar/assets/skins/sam/calendar.css&2.8.0r4/build/carousel/assets/skins/sam/carousel.css&2.8.0r4/build/slider/assets/skins/sam/slider.css&2.8.0r4/build/colorpicker/assets/skins/sam/colorpicker.css&2.8.0r4/build/paginator/assets/skins/sam/paginator.css&2.8.0r4/build/datatable/assets/skins/sam/datatable.css&2.8.0r4/build/editor/assets/skins/sam/editor.css&2.8.0r4/build/resize/assets/skins/sam/resize.css&2.8.0r4/build/imagecropper/assets/skins/sam/imagecropper.css&2.8.0r4/build/layout/assets/skins/sam/layout.css&2.8.0r4/build/logger/assets/skins/sam/logger.css&2.8.0r4/build/progressbar/assets/skins/sam/progressbar.css&2.8.0r4/build/tabview/assets/skins/sam/tabview.css&2.8.0r4/build/treeview/assets/skins/sam/treeview.css&2.8.0r4/build/editor/assets/skins/sam/simpleeditor.css">
-<!-- Combo-handled YUI JS files: -->
-<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.0r4/build/yuiloader/yuiloader-debug.js&2.8.0r4/build/dom/dom-debug.js&2.8.0r4/build/event/event-debug.js&2.8.0r4/build/animation/animation-debug.js&2.8.0r4/build/connection/connection-debug.js&2.8.0r4/build/datasource/datasource-debug.js&2.8.0r4/build/autocomplete/autocomplete-debug.js&2.8.0r4/build/selector/selector-debug.js&2.8.0r4/build/event-delegate/event-delegate-debug.js&2.8.0r4/build/event-mouseenter/event-mouseenter-debug.js&2.8.0r4/build/element/element-debug.js&2.8.0r4/build/dragdrop/dragdrop-debug.js&2.8.0r4/build/container/container-debug.js&2.8.0r4/build/menu/menu-debug.js&2.8.0r4/build/button/button-debug.js&2.8.0r4/build/calendar/calendar-debug.js&2.8.0r4/build/carousel/carousel-debug.js&2.8.0r4/build/json/json-debug.js&2.8.0r4/build/swf/swf-debug.js&2.8.0r4/build/charts/charts-debug.js&2.8.0r4/build/slider/slider-debug.js&2.8.0r4/build/colorpicker/colorpicker-debug.js&2.8.0r4/build/cookie/cookie-debug.js&2.8.0r4/build/paginator/paginator-debug.js&2.8.0r4/build/datatable/datatable-debug.js&2.8.0r4/build/datemath/datemath-debug.js&2.8.0r4/build/editor/editor-debug.js&2.8.0r4/build/element-delegate/element-delegate-debug.js&2.8.0r4/build/event-simulate/event-simulate-debug.js&2.8.0r4/build/history/history-debug.js&2.8.0r4/build/resize/resize-debug.js&2.8.0r4/build/imagecropper/imagecropper-debug.js&2.8.0r4/build/imageloader/imageloader-debug.js&2.8.0r4/build/layout/layout-debug.js&2.8.0r4/build/logger/logger-debug.js&2.8.0r4/build/progressbar/progressbar-debug.js&2.8.0r4/build/swfstore/swfstore-debug.js&2.8.0r4/build/storage/storage-debug.js&2.8.0r4/build/stylesheet/stylesheet-debug.js&2.8.0r4/build/tabview/tabview-debug.js&2.8.0r4/build/treeview/treeview-debug.js&2.8.0r4/build/uploader/uploader-debug.js"></script>
-
-
-
-
-
-
-
-
-
-<!--begin custom header content for this example-->
-<style type="text/css">
-/* custom styles for this example */
-.yui-skin-sam .yui-dt-liner { white-space:nowrap; }
-.yui-dt-bd table { width:100%;}
-
-/* Class for marked rows */ 
-.yui-skin-sam .yui-dt tr.disabled, 
-.yui-skin-sam .yui-dt tr.disabled td.yui-dt-asc, 
-.yui-skin-sam .yui-dt tr.disabled td.yui-dt-desc, 
-.yui-skin-sam .yui-dt tr.disabled td.yui-dt-asc, 
-.yui-skin-sam .yui-dt tr.disabled td.yui-dt-desc { 
-    color: #e5e5e5;
-</style>
-
-<!--end custom header content for this example-->
-
+  <script type="text/javascript" src="javascripts/prototype.js"></script>
+  <script type="text/javascript" src="/javascripts/scriptaculous.js?load=builder,effects"></script>
+  <script type="text/javascript" src="/javascripts/modalbox.js"></script>
+  <script type="text/javascript" src="/javascripts/prototypeUtils.js"></script>
+  <script type="text/javascript" src="/javascripts/proto.menu.0.6.js"></script>
+  <script type="text/javascript" src="javascripts/app/dialogs.js"></script>
+  <script type="text/javascript" src="javascripts/app/datatable.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="stylesheets/modalbox.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/stylesheets/app/datatable.css" type="text/css" media="screen" />
 </head>
-<body class="yui-skin-sam">
-
+<body>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield %>

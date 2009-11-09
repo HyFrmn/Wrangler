@@ -1,11 +1,12 @@
-<tr class="<%= cycle("even", "odd") %>" class="<%=h task.status_string %>">
-	<td><%=h task.env_hash['WRANGLER_FRAME'] %></td>
-    <td><%=h task.priority %></td>
-    <td><%=h task.command %></td>
-    <td class="<%=h task.status_string %>"><%=h task.status_string.capitalize %></td>
-    <td><%=h task.job.name %></td>
-    <td><%= link_to 'Show', task %></td>
+<tr class="<%= cycle("even", "odd") %> taskTableRow" id="taskDataRow<%= task.id %>">
+	<td field="frame"><%=h task.env_hash['WRANGLER_FRAME'] %></td>
+    <td field="priority"><%=h task.priority %></td>
+    <td field="command"><%=h task.command %></td>
+    <td field="status" value="<%=h task.status %>"class="<%=h task.status_string %>"><%=h task.status_string.capitalize %></td>
+    <td field="job" value="<%= task.job.id %>"><%=h task.job.name %></td>
+    <td field="id" value="<%= task.id %>"><%= link_to 'Show', task %></td>
     <% if task.running > 0 %>
         <td>Kill</td>
     <% end %>
+    <div>
 </tr>
