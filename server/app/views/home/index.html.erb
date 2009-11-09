@@ -3,80 +3,80 @@
 <div id="jobs">
 </div>    
 
-<div id="chart" style="width: 50%">
-
+<div id="chart" style="width: 50%; float: right; margin: 20px;">
 </div>
 
-<div id="tasks">
+<div id="tasks" style="width: 50%;">
+
 </div>
-
-
 
 <script type="text/javascript">
-function selectJobCallback(event){
-	data = getJobData(event);
-	url = '/tasks/list/' + data.id + '.json'
-	Effect.Fade('tasks', {afterFinish: function(){taskDataTable.updateTable(url, function(){Effect.Appear('tasks')})}});
-}
+//Event.observe(window, 'load', function(){
+    function selectJobCallback(event){
+    	data = getJobData(event);
+    	url = '/tasks/list/' + data.id + '.json'
+    	Effect.Fade('tasks', {afterFinish: function(){taskDataTable.updateTable(url, function(){Effect.Appear('tasks')})}});
+    }
 
-jobTableDefs = [{ 
-					key: 'id',
-					label: 'ID',
-				},
-				{
-					key: 'name',
-					label: 'Name',
-					clickCallback: selectJobCallback,
-				},
-				{
-					key: 'priority',
-					label: 'Priority'
-				},
-				{
-					key: 'status',
-					label: 'Status',
-				},
-				{
-					key: 'progress',
-					label: 'Progress'
-				},
-				{
-					key: 'queued',
-					label: 'Queued'
-				},
-				{
-					key: 'running',
-					label: 'Running'
-				},
-				{
-					key: 'finished',
-					label: 'Finished'
-				},
-				{
-					key: 'started',
-					label: 'Started'
-				},
-				{
-					key: 'progress',
-					label: 'Progress'
-				},
-				
-];
+    jobTableDefs = [{ 
+    					key: 'id',
+    					label: 'ID',
+    				},
+    				{
+    					key: 'name',
+    					label: 'Name',
+    					clickCallback: selectJobCallback,
+    				},
+    				{
+    					key: 'priority',
+    					label: 'Priority'
+    				},
+    				{
+    					key: 'status',
+    					label: 'Status',
+    				},
+    				{
+    					key: 'progress',
+    					label: 'Progress'
+    				},
+    				{
+    					key: 'queued',
+    					label: 'Queued'
+    				},
+    				{
+    					key: 'running',
+    					label: 'Running'
+    				},
+    				{
+    					key: 'finished',
+    					label: 'Finished'
+    				},
+    				{
+    					key: 'started',
+    					label: 'Started'
+    				},
+    				{
+    					key: 'progress',
+    					label: 'Progress'
+    				},
+    				
+    ];
 
-var jobDataTable = new DataTable('jobs', jobTableDefs, {url : '/jobs/list/1.json'});
-var taskDataTable = new DataTable('tasks', taskTableDefs, {url : '/tasks/list/1.json'});
+    var jobDataTable = new DataTable('jobs', jobTableDefs, {url : '/jobs/list/1.json'});
+    var taskDataTable = new DataTable('tasks', taskTableDefs, {url : '/tasks/list/1.json'});
 
-new Proto.Menu({
-  selector: '#jobs', 
-  className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
-  menuItems: jobMenuItems // array of menu items
-})
+    new Proto.Menu({
+      selector: '#jobs', 
+      className: 'context-menu', // this is a class which will be attached to menu container (used for css styling)
+      menuItems: jobMenuItems // array of menu items
+    })
 
-new Proto.Chart($('chart'),[
-    {data: [[0, 0], [1, 0], [2, 8], [3, 21], [4, 0], [5, 0], [6, 42], [7, 63], [8, 32], [9, 81], [10, 90], [11, 99], [12, 36], [13, 169]], label: "Data 1"}   
-],
-{
-    bars: {show: true},
-    xaxis: {min: -1, max: 15, tickSize: 1}
-})
+    new Proto.Chart($('chart'),[
+        {data: [[0, 0], [1, 0], [2, 8], [3, 21], [4, 0], [5, 0], [6, 42], [7, 63], [8, 32], [9, 81], [10, 90], [11, 99], [12, 36], [13, 169]], label: "Data 1"}   
+    ],
+    {
+        bars: {show: true},
+        xaxis: {min: -1, max: 15, tickSize: 1}
+    })
+//});
 </script>

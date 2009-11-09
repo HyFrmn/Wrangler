@@ -32,11 +32,15 @@ DataTable.prototype = {
 			headerClass: 'data-table-header',
 		}, options || {});
 		
-        this.ajaxParams = {
-            page: 1,
+                this.ajaxParams = {
+                     page: 1,
 		}
 		this.parseDefs(def);
 		this.container = $(element);
+		if (!this.container){
+		    alert('Missing container for datatable ' + element + '.')
+		}
+		
 		this.createTable();
 		this.getData(this.createRows.bind(this));
 	},
@@ -103,7 +107,6 @@ DataTable.prototype = {
 	createRow : function(data){
 		var tr = Builder.node('tr');
 		var values = Object.values(data);
-		
 		this.def.each(function(d){
 			td = Builder.node('td',{ field: d.key});
 			td.innerHTML = data[d.key];
