@@ -28,6 +28,7 @@ _api_ = ['cattle_sleep',
          'task_pause',
          'task_priority',
          'lasso_submit_job',
+         'lasso_list_queue',
          'help',
          'help_task',
          'help_cattle',
@@ -95,67 +96,78 @@ def _job_update(job):
         status_list.append(task.status)
     if task.ERROR in status_list:
         job.status = job.ERROR
-    elif all(map(lambda x: x==task.FINISHED, status_list)):
-        job.status = job.FINISHED
-        if not job.finished:
-            job.finished = datetime.datetime.now()
-    elif any(map(lambda x: x==task.RUNNING, status_list)):
+
+    if task.RUNNING in status_list:
         job.status = job.RUNNING
         if not job.started:
             job.started = datetime.datetime.now()
+        return job.status
+
+    if task.QUEUED in status_list:
+        job.status = job.QUEUED
+        return job.status
+
+    if task.WAITING in status_list:
+        job.status = job.WAITING
+        return job.status
+
+    if all(map(lambda x: x==task.FINISHED or x==task.ERROR, status_list)):
+        if task.ERROR in status_list:
+            job.status = job.ERROR
+        else:
+            job.status = job.FINISHED
+        if not job.finished:
+            job.finished = datetime.datetime.now()
+
+    if all(map(lambda x: x==task.PAUSED, status_list)):
+        job.status = job.PAUSED
+        return job.status
+
+    if all(map(lambda x: x==task.STOPPED, status_list)):
+        job.status = job.STOPPED
+        return job.status
+
+    job.status = min(status_list)
     return job.status
 
 def job_stop(lassod, *ids):
     """Stop the speciefed job, and currently running tasks of job. Mark all unfinished
-    tasks as stopped. Return a list of killed tasks."""
+    tasks as stopped. Return a list of stopped jobs."""
     db = Session()
     tasks = list()
     output = []
     for job in db.query(Job).filter(Job.id.in_(ids)):
-        for task in job.tasks:
-            if task.status == task.WAITING or task.status == task.QUEUED:
-                task.status = task.STOPPED
-                print task.id, 'has been set to stop.'
-            if task.status == task.RUNNING:
-                cattle_id = task.running
-                cattle = db.query(Cattle).filter(Cattle.id==cattle_id).first()
-                client = CattleClient(cattle.hostname)
-                if client.kill_task(task.id):
-                    output.append(task.id)
-                    print task.id, 'has been killed.'
+        job.stop()
         _job_update(job)
-    lassod.queue_dirty = True
+        output.append(job.id)
     db.commit()
+    lassod.info('Job "%s" was stopped. [%d]' % (job.name, job.id))
     db.close()
     return output
 
 def job_pause(lassod, *ids):
-    """Pause all unfinished tasks associated with specifed jobs."""
+    """Pause all unfinished tasks associated with specified jobs. Return a list paused jobs."""
     db = Session()
     output = list()
     for job in db.query(Job).filter(Job.id.in_(ids)):
-        for task in job.tasks:
-            task.status = task.PAUSED
+        job.pause()
         _job_update(job)
-    lassod.queue_dirty = True
+        output.append(job.id)
     db.commit()
     db.close()
-    return True
+    return output
 
 def job_queue(lassod, *ids):
     """Queue all unfinished tasks associated with specified jobs. Return a list 
     of tasks that are waiting."""
-    lassod.normalize_queue()
+    print ids
     db = Session()
     output = list()
     for job in db.query(Job).filter(Job.id.in_(ids)):
-        for task in job.tasks:
-            if task.status == task.PAUSED and task.status == task.STOPPED:
-                task.status = task.WAITING
-                output.append(task.id)
+        log.info("Adding job %d to queue." % job.id)
+        job.queue()
         _job_update(job)
-    lassod.queue_dirty = True
-    lassod.update_queue()
+        output.append(job.id)
     db.commit()
     db.close()
     return output
@@ -179,7 +191,7 @@ def job_priority(lassod, id, priority):
     job = db.query(Job).filter(Job.id==id).first()
     if job:
         for task in job.tasks:
-            task.priority = priority
+            task.set_priority(priority)
         db.commit()
         db.close()
         return True
@@ -209,6 +221,10 @@ def lasso_configure(lassod):
     """Reconfigure lasso daemon."""
     return False
 
+def lasso_list_queue(lassod):
+    """Return a list of task ids currently in the queue."""
+    return lassod.queue.list()
+
 def lasso_submit_job(lassod, job_data):
     """Add job to the queue and return the job's id number."""
     gen = job_data.pop('generator')
@@ -216,13 +232,11 @@ def lasso_submit_job(lassod, job_data):
     db = Session()
     db.add(job)
     log.debug('Adding job "%s" to queue.' % job.name)
-    job.status = Job.WAITING
-    for task in job.tasks:
-        task.status = task.WAITING
     db.commit()
+    job.queue()
     jobid = job.id
     log.debug('Added job "%s" to queue. [%d]' % (job.name, job.id))
-    lassod.queue_dirty = True
+    db.commit()
     db.close()
     return jobid
 
@@ -248,10 +262,9 @@ def task_stop(lassod, *ids):
     output = []
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
     for task in tasks:
-        task.status = Task.STOPPED
+        task.stop()
         output.append(task.status)
         _job_update(task.job)
-    lassod.queue_dirty = True
     db.commit()
     db.close()
     return output
@@ -262,11 +275,9 @@ def task_queue(lassod, *ids):
     output = list()
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
     for task in tasks:
-        if task.status == task.STOPPED or task.status == task.PAUSED:
-            task.status = Task.WAITING
+        task.queue()
         output.append(task.status)
         _job_update(task.job)
-    lassod.queue_dirty = True
     db.commit()
     db.close()
     return output
@@ -277,18 +288,21 @@ def task_pause(lassod, *ids):
     output = list()
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
     for task in tasks:
-        if task.status == task.WAITING or task.status == task.QUEUED:
-            task.status = Task.PAUSED
+        task.pause()
         output.append(task.status)
         _job_update(task.job)
-    lassod.queue_dirty = True
     db.commit()
     db.close()
     return output
 
-def task_priority(lassod, *ids):
+def task_priority(lassod, id, priority):
     """Set the priority of the specified tasks."""
-    return False
+    db = Session()
+    task = db.query(Task).filter(Task.id==id).first()
+    task.set_priority(priority)
+    db.commit()
+    db.close()
+    return priority
 
 def help(lassod, regex=None):
     output = ''

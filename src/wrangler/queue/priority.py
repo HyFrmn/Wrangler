@@ -1,22 +1,42 @@
 #!/usr/bin/env python
 
 import math
-import heapq
+import bisect
+import logging
 
 from wrangler.queue.interface import WranglerQueueInterface
 
+log = logging.getLogger('wrangler.lasso')
+
 class PriorityQueue(WranglerQueueInterface):
     def __init__(self):
-        self.heap = []
+        self.queue = []
 
-    def queue_task(self, task, priority=500):
+    def add(self, task, priority=500):
+        if task in self.queue:
+            return
         priority = max(0, priority)
         priority = min(1000, priority)
-        heapq.heappush(self.heap, (1000 - priority, task))
+        bisect.insort(self.queue,(1000 - priority,task))
 
-    def next_task(self):
+
+    def next(self):
         try:
-            priority, task = heapq.heappop(self.heap)
+            priority, task = self.queue.pop(0)
         except IndexError:
             return -1
         return task
+
+    def remove(self, task):
+        try:
+            task = int(task)
+            ids = [int(id) for priority, id in self.queue]
+            index = ids.index(task)
+            priority, id = self.queue.pop(index)
+            return True
+        except ValueError, msg:
+            log.warning(msg)
+            return False
+
+    def list(self):
+        return [id for priority, id in self.queue]

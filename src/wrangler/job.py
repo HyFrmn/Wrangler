@@ -41,3 +41,16 @@ class Job(Base):
             self.env = env
         else:
             self.env = {}
+
+    def queue(self):
+        for task in self.tasks:
+            task.queue()
+
+    def pause(self):
+        for task in self.tasks:
+            task.pause()
+
+    def stop(self):
+        for task in self.tasks:
+            task.stop()
+

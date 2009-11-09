@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import sys
 import logging
 
 from wrangler.log import TaskLog
@@ -16,3 +16,12 @@ __all__ = ['Job',
            'RenderJob',
            'Cattle',
            'CattleMetrics']
+
+log = logging.getLogger('wrangler')
+log.propagate = False
+log.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+log.addHandler(handler)

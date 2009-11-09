@@ -11,6 +11,8 @@ from hardware import info
 
 _base_dir = os.path.dirname(__file__) 
 
+log = logging.getLogger('wrangler')
+
 class ConfigureError(Exception):pass
 
 def check_environment():
@@ -26,50 +28,52 @@ def check_environment():
 
 home = check_environment()
 
-def config_logging(home=home):
-    log = logging.getLogger('wrangler')
-    log.propagate = False
-    log.setLevel(logging.FATAL)
-    config = config_base()
-    log_dir = os.path.expandvars(config.get('logging', 'server-dir'))
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-    handler = logging.StreamHandler(sys.stdout)
-    log.addHandler(handler)
-    
-    #Setup Cattle Log
-    cattle_log = logging.getLogger('wrangler.cattle')
-    cattle_log.setLevel(logging.INFO)
-    cattle_log.propagate = False
-    file_path = os.path.join(log_dir, info.hostname() + '.log')
-    file_path = os.path.expandvars(file_path)
-    handler = logging.FileHandler(file_path)
-    cattle_log.addHandler(handler)
-    
-    #Setup Lasso Log
-    lasso_log = logging.getLogger('wrangler.lasso')
-    lasso_log.setLevel(logging.INFO)
-    lasso_log.propagate = False
-    file_path = os.path.join(log_dir, 'lasso.log')
-    file_path = os.path.expandvars(file_path)
-    handler = logging.FileHandler(file_path)
-    lasso_log.addHandler(handler)
-    return log
+def _load_config_file(config, file_path):
+    log.debug('Loading config file "%s"' % file_path)
+    config.read(file_path)
+    return config
 
 def config_base(home=home):
-    config = ConfigParser.SafeConfigParser()
-    config.read(os.path.join(_base_dir, 'defaults.cfg'))
-    config.read(os.path.join(home, 'farm.cfg'))
+    default_cfg = os.path.join(_base_dir, 'defaults.cfg')
+    config = _load_config_file(ConfigParser.SafeConfigParser(), default_cfg)
+    farm_cfg = os.path.join(home, 'farm.cfg')
+    _load_config_file(config, farm_cfg)
     return config
 
 def config_lasso(home=home):
-    config.read(os.path.join(home, 'lasso.cfg'))
+    lasso_cfg = os.path.join(home, 'lasso.cfg')
+    _load_config_file(config_base(), lasso_cfg)
     return config
 
 def config_cattle(home=home):
-    config = config_base()
-    config.read(os.path.join(home, 'cattle.cfg'))
+    cattle_cfg = os.path.join(home, 'cattle.cfg')
+    _load_config_file(config_base(), cattle_cfg)
     return config
 
-log = config_logging(home)
-config = config_base(home)
+config = config_base()
+log_dir = os.path.expandvars(config.get('logging', 'server-dir'))
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
+#Setup Cattle Log
+cattle_log = logging.getLogger('wrangler.cattle')
+cattle_log.setLevel(logging.DEBUG)
+file_path = os.path.join(log_dir, info.hostname() + '.log')
+file_path = os.path.expandvars(file_path)
+handler = logging.FileHandler(file_path)
+handler.setFormatter(formatter)
+cattle_log.addHandler(handler)
+
+#Setup Lasso Log
+lasso_log = logging.getLogger('wrangler.lasso')
+lasso_log.setLevel(logging.DEBUG)
+file_path = os.path.join(log_dir, 'lasso.log')
+file_path = os.path.expandvars(file_path)
+handler = logging.FileHandler(file_path)
+handler.setFormatter(formatter)
+lasso_log.addHandler(handler)
+
+client_log = logging.getLogger('wrangler.client')
+client_log.setLevel(logging.INFO)

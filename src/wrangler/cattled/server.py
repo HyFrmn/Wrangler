@@ -77,12 +77,14 @@ class CattleServer(WranglerServer):
         disconnect_cattle(self.hostname)
 
     def sleep(self):
+        self.info("Cattle is going to sleep.")
         if self._state == self.AWAKE:
             self._state = self.ASLEEP
             sleep_cattle(self.hostname)
         return self._state
 
     def wake(self):
+        self.info("Cattle is waking up.")
         if self._state == self.ASLEEP:
             self._state = self.AWAKE
             wake_cattle(self.hostname)
@@ -98,7 +100,7 @@ class CattleServer(WranglerServer):
         self.debug('Requesting task from server.')
         taskid = self.client.next_task(self.hostname)
         if taskid > 0:
-            self.debug('Task %d was recieved from server.' % taskid)
+            self.info('Task %d was received from server.' % taskid)
             db = Session()
             task = db.query(Task).filter_by(id=taskid).first()
             db.expunge(task)
@@ -112,7 +114,7 @@ class CattleServer(WranglerServer):
                     self._clean_up_task(task)
                 self._no_tasks = False
         else:
-            self.debug('No task was recieved from server.')
+            self.debug('No task was received from server.')
             self._no_tasks = True
 
     def monitor_connect(self, task_id):
@@ -145,6 +147,7 @@ class CattleServer(WranglerServer):
         return pid
 
     def monitor_probe(self, task_id, probes):
+        self.debug("Logging probe for %d" % task_id)
         task = self.running_tasks[task_id]
         db = Session()
         probe = TaskProbe()

@@ -3,7 +3,7 @@
 import datetime
 import logging
 import cPickle
-log = logging.getLogger('wrangler')
+log = logging.getLogger('wrangler.cattle')
 
 from wrangler import *
 from wrangler.db.core import *
@@ -122,10 +122,10 @@ def update_task_log(task_log, returncode, delta_time):
     task.running = 0
     if task_log.returncode == 0:
         task.status = Task.FINISHED
-        log.debug('Finished task %d' % task.id)
+        log.info('Finished task %d' % task.id)
     else:
         task.status = Task.ERROR
-        log.debug('Task %d errored out.' % task.id)
+        log.info('Task %d errored out.' % task.id)
     task.run_count += 1
     if returncode == 1 and task.run_count < 3:
         log.info('Requeueing task %d' % task.id) 

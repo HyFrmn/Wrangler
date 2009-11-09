@@ -15,3 +15,14 @@ class LIFOQueue(WranglerQueueInterface):
         except IndexError:
             task = -1
         return task
+
+    def remove_task(self, task):
+        try:
+            self.queue.remove(task)
+            return True
+        except ValueError:
+            return False
+
+
+    def list(self):
+        return self.queue

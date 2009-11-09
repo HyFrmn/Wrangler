@@ -3,6 +3,7 @@
 import sys
 import cPickle
 import thread
+import logging
 import traceback
 import datetime
 import threading
@@ -22,18 +23,19 @@ from wrangler.cattled.client import CattleClient
 
 
 config = config_lasso()
-
-
+log = logging.getLogger('wrangler.lasso')
 
 class CattleRuntime(object):
     """Holds runtime information about cattle."""
-    def __init__(self):
+    def __init__(self, hostname):
+        self.hostname = hostname
         self.started = datetime.datetime.now()
         self.tasks = {}
         self.pulse()
 
     def pulse(self):
         self.last_pulse = datetime.datetime.now()
+        log.debug('Received pulse from %s.' % self.hostname)
         return self.last_pulse
 
     def add_task(self, taskid, pid):
@@ -44,16 +46,70 @@ class CattleRuntime(object):
 
 class LassoServer(WranglerServer):
     def __init__(self):
+        #Get configuration 
         config = config_lasso()
         hostname = config.get('lasso', 'hostname')
         port = config.getint('lasso', 'port')
         WranglerServer.__init__(self, hostname, port, 'wrangler.lasso')
 
+        #Setup Code Objects
+        self.decorate_task_object()
+
+        #Clean Up Database
+        db = Session()
+        tasks = db.query(Task).filter(Task.status==Task.QUEUED).all()
+        for task in tasks:
+            task.status = task.WAITING
+        db.commit()
+        db.close()
+
         #Initialize
         self.heard = dict()
-        self.queue_dirty = True
         self.next_task_lock = thread.allocate_lock()
         self.queue = PriorityQueue()
+
+    def decorate_task_object(self):
+        """Decorate task object to interface with lasso daemon."""
+        
+        def add_queue(task):
+            self.next_task_lock.acquire()
+            self.info("Adding %d to queue." % task.id)
+            self.queue.add(task.id, task.priority + task.adjustment)
+            task.status = task.QUEUED
+            self.next_task_lock.release()
+        Task._add_queue = add_queue
+
+        def update_queue(task):
+            self.next_task_lock.acquire()
+            self.info("Updating %d priority in queue." % task.id)
+            if self.queue.remove(task.id):
+                self.queue.add(task.id, task.priority + task.adjustment)
+            self.next_task_lock.release()
+        Task._update_queue = update_queue
+        
+        def remove_queue(task):
+            self.next_task_lock.acquire()
+            self.info("Removing %d from queue." % task.id)
+            self.queue.remove(task.id)
+            self.next_task_lock.release()
+        Task._remove_queue = remove_queue
+
+        def kill_hook(task):
+            self.info("Stopped task %d." % task.id)
+            self.queue.remove(task.id)
+            if task.status == task.RUNNING:
+                cattle_id = task.running
+                cattle = db.query(Cattle).filter(Cattle.id==cattle_id).first()
+                client = CattleClient(cattle.hostname)
+                if client.kill_task(task.id):
+                    output.append(task.id)
+                    print task.id, 'has been killed.'
+        Task._kill_hook = kill_hook
+
+        def pause_hook(task):
+            self.info("Paused task %d." % task.id)
+            self.queue.remove(task.id)
+        Task._pause_hook = pause_hook
 
     def configure(self):
         self.config = config_lasso()
@@ -72,59 +128,23 @@ class LassoServer(WranglerServer):
             if callable(func):
                 self.server.register_function(self._decorate_interface(func), func_name)
 
-        self.normalize_queue()
 
     def pulse(self, hostname):
         if hostname not in self.heard.keys():
             #Cattle is not connected.
-            self.heard[hostname] = CattleRuntime()
+            self.heard[hostname] = CattleRuntime(hostname)
         return self.heard[hostname].pulse()
 
     def next_task(self, hostname):
         """Return the next task (id) in the queue."""
-        self.debug('Requesting next task from lasso.')
         self.next_task_lock.acquire()
-        taskid = self.queue.next_task()
+        task_id = self.queue.next()
         self.next_task_lock.release()
-        return taskid
-
-    def normalize_queue(self):
-        self.debug("Normalizing queue.")
-        self.next_task_lock.acquire()
-        db = Session()
-        tasks = db.query(Task).filter(Task.status==Task.QUEUED).all()
-        for task in tasks:
-            task.status = Task.WAITING
-        db.commit()
-        db.close()
-        self.queue = PriorityQueue()
-        self.next_task_lock.release()
-
-    def update_queue(self):
-        self.debug("Updating queue.")
-        self.next_task_lock.acquire()
-        db = Session()
-        tasks = db.query(Task).filter(Task.status==Task.WAITING).order_by(desc(Task.priority)).limit(100)
-        for task in tasks:
-            if task.status == task.WAITING:
-                if task.parent:
-                    if task.parent.status != task.FINISHED:
-                        return
-                task.status = task.QUEUED
-                self.queue.queue_task(task.id, task.priority + task.adjustment)
-        db.commit()
-        db.close()
-        self.next_task_lock.release()
+        self.info("Sending task %d to %s." % (task_id, hostname))
+        return task_id
 
     def _decorate_interface(self, func):
         def decorated(*args):
             return func(self, *args)
         decorated.__doc__ = func.__doc__
         return decorated
-
-    def _handle_main(self):
-        if self._timeout('update-queue'):
-            self.queue_dirty = True
-        if self.queue_dirty:
-            self.update_queue()
-            self.queue_dirty = False

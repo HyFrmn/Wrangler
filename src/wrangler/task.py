@@ -45,6 +45,93 @@ class Task(Base):
         self.meta = dict()
         self.run_count = 0
         self.running = 0
+        
+        self.add_probe('memory')
+        self.add_probe('pcpu')
+
+    def _add_queue(self):pass
+
+    def _update_queue(self):pass
+    
+    def _remove_queue(self):pass
+
+    def _stop_hook(self):pass
+
+    def _kill_hook(self):pass
+
+    def _pause_hook(self):pass
+
+    def queue(self, force=False):
+        change = False
+        if self.status in [self.STOPPED, self.WAITING, self.PAUSED]:
+            change = True
+        elif (self.status == self.ERROR or self.status == self.FINISHED) and force:
+            change = True
+        if change:
+            self.status = self.WAITING
+            self._add_queue()
+            return True
+        return False
+
+    def stop(self, force=False):
+        change = False
+        if self.status in [self.WAITING, self.QUEUED, self.PAUSED]:
+            change = True
+        elif force:
+            change = True
+        if change:
+            if self.status == self.RUNNING:
+                self.kill()
+            self._remove_queue()
+            self.status = self.STOPPED
+            self._stop_hook()
+            return True
+        return False
+
+    def pause(self, force=False):
+        change = False
+        if self.status in [self.WAITING, self.QUEUED, self.PAUSED]:
+            change = True
+        elif force:
+            change = True
+        if change:
+            self.status = self.PAUSED
+            self._remove_queue()
+            self._pause_hook()
+            return True
+        return False
+
+    def kill(self):
+        self._kill_hook()
+
+    def set_priority(self, priority):
+        self.priority = int(priority)
+        self._update_queue()
+
+    def set_adjustment(self, adjustment):
+        self.adjustment = int(adjustment)
+        self._update_queue()
+
+    def add_probe(self, probe):
+        try:
+            probe_list = self.meta['probes']
+        except:
+            probe_list = list()
+        probe_list.append(probe)
+        self.meta['probes'] = probe_list
+        return probe_list
+
+    def remove_probe(self, probe):
+        try:
+            probe_list = self.meta['probes']
+        except:
+            return False
+        try:
+            probe_list.remove(probe) 
+        except ValueError:
+            return False
+        self.meta['probes'] = probe_list
+        return True
 
 class TaskProbe(Base):
     __tablename__ = 'task_probes'

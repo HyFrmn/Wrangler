@@ -61,7 +61,7 @@ class ProcessMonitor(object):
         try:
             os.setuid(self.uid)
         except OSError:
-            print "ERROR: Could not set user id [ %d] for task %d." % (self.uid, self.task_id)
+            print "ERROR: Could not set user id [%d] for task %d." % (self.uid, self.task_id)
             sys.exit(1)
 
         #Setup user environment
