@@ -3,20 +3,38 @@
 <div id="jobs">
 </div>    
 
-<div id="chart" style="width: 50%; float: right; margin: 20px;">
+<div style="float: right;">
+  <div id="tasks" "width: 600px; height: 400px; display: block">
+  </div>
 </div>
 
-<div id="tasks" style="width: 50%;">
-
+<div style="float: right;">
+  <div id="chart" style="width: 600px; height: 400px; display: block">
+  </div>
 </div>
 
 <script type="text/javascript">
-//Event.observe(window, 'load', function(){
-    function selectJobCallback(event){
+Event.observe(window, 'load', function(){
+    function jobSelectCallback(event){
     	data = getJobData(event);
-    	url = '/tasks/list/' + data.id + '.json'
+     	url = '/tasks/list/' + data.id + '.json'
     	Effect.Fade('tasks', {afterFinish: function(){taskDataTable.updateTable(url, function(){Effect.Appear('tasks')})}});
+        drawGraph();
     }
+
+	function jobMouseoverCallback(event){
+		tr = Event.findElement(event, 'tr')
+		tr.addClassName("mouseover")
+	}
+
+	function jobMouseoutCallback(event){
+		tr = Event.findElement(event, 'tr')
+		tr.removeClassName("mouseover")
+	}
+
+	function callback(event){
+		alert(event)
+	}
 
     jobTableDefs = [{ 
     					key: 'id',
@@ -25,7 +43,7 @@
     				{
     					key: 'name',
     					label: 'Name',
-    					clickCallback: selectJobCallback,
+    					clickCallback: jobSelectCallback,
     				},
     				{
     					key: 'priority',
@@ -71,12 +89,13 @@
       menuItems: jobMenuItems // array of menu items
     })
 
-    new Proto.Chart($('chart'),[
-        {data: [[0, 0], [1, 0], [2, 8], [3, 21], [4, 0], [5, 0], [6, 42], [7, 63], [8, 32], [9, 81], [10, 90], [11, 99], [12, 36], [13, 169]], label: "Data 1"}   
-    ],
-    {
-        bars: {show: true},
-        xaxis: {min: -1, max: 15, tickSize: 1}
-    })
-//});
+	function drawGraph(){
+	random_data = [[0, Math.floor(Math.random()*200)], [1, Math.floor(Math.random()*200)], [2, Math.floor(Math.random()*200)], [3, Math.floor(Math.random()*200)], [4, Math.floor(Math.random()*200)], [5, Math.floor(Math.random()*200)], [6, Math.floor(Math.random()*200)], [7, Math.floor(Math.random()*200)], [8, Math.floor(Math.random()*200)], [9, Math.floor(Math.random()*200)], [10, Math.floor(Math.random()*200)], [11, Math.floor(Math.random()*200)], [12, Math.floor(Math.random()*200)], [13, Math.floor(Math.random()*200)]];
+    new Flotr.draw($('chart'),[
+        {data: random_data, label: "Data 1"}   
+    ]);
+	};
+	
+    drawGraph();
+});
 </script>

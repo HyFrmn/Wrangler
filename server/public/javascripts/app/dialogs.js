@@ -8,7 +8,7 @@ function removeDOM_id(element)
 
 function renameJobDialog(job) {	
 	//Build Dialog
-	dialog = Builder.node('form', {action: '/jobs/rename', method: 'post', id: 'dialog', onSubmit: "new Ajax.Request('/jobs/rename', {asynchronous:true, evalScripts:true, onComplete:function(request){Modalbox.hide()}, onFailure:function(request){console.log(request.responseText)}, parameters:Form.serialize(this)}); return false;"})
+	dialog = Builder.node('form', {action: '/jobs/rename', method: 'post', id: 'dialog', onSubmit: "new Ajax.Request('/jobs/rename', {asynchronous:true, evalScripts:true, onComplete:function(request){Modalbox.hide()}, onFailure:function(request){alert(request.responseText)}, parameters:Form.serialize(this)}); return false;"})
 	label = Builder.node('label')
 	label_span = Builder.node('span')
 	label_span.innerHTML = 'New Name:'
@@ -96,7 +96,6 @@ function getRowData(tr){
 	task_data = {};
 	for (var i = 0; i < fields.length; i++){
 	    field = fields[i]
-	    console.log(field);
 	    field_name = field.readAttribute('field');
 	    field_value = field.readAttribute('value');
 	    if (!field_value){

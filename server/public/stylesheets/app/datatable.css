@@ -1,7 +1,7 @@
 /*TAB SORTER */
 body{font-family: Helvetica;}
 
-.data-table{width:100%;font-family: Helvetica;background-color:#E1E1E1;text-align:left;font-size:11px;}
+.data-table{width:90%;font-family: Helvetica;background-color:#E1E1E1;text-align:left;font-size:11px;}
 .data-table th{
 	background-color:#e4e4e4;
 	border:1px solid #FFF;
@@ -19,7 +19,8 @@ body{font-family: Helvetica;}
 .data-table tr.even{ background-color:#FFF; }
 .data-table tr.odd{ background-color:#F4F4F4; }
 .data-table tr.on{ background-color:#CDDBDC; cursor :pointer;}
-.data-table tr.selected{ background-color:#E4E4E4; cursor :pointer;}
+.data-table tr.mouseover{ background-color:#B8B8B8; cursor :pointer;}
+.data-table tr.selected{ background-color:#000000; color: #FFF; cursor :pointer;}
 
 div.data-table-options {border : 1px solid #E1E1E1; font-size:11px; padding :5px 7px;}
 div.data-table-options input, div.data-table-options select{border : 1px solid #CCC; font-size:11px; padding :1px 3px; margin :0 5px;}
